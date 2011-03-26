@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<grammar languaje="Spanish">
+  
+  <command name="pause">
+    <choice>
+      <element>pausar</element>
+    </choice>
+    <choice>
+      <element>la</element>
+      <element></element>
+    </choice>
+    <choice>
+      <element>cancion</element>
+      <element>reproduccion</element>
+      <element>musica</element>
+      <element></element>
+    </choice>
+  </command>
+    
+</grammar>
+
+

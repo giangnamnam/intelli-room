@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="59b871ca-4d3a-412d-8a67-3894bb89c28d" name="Diagrama de Diseño" linkedPackageId="08f8c376-27bd-4a34-9c35-980f393ccc5a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8c49bf1b-c9cb-4c68-b098-f1446d125030" name="VoiceEngine" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="537b4639-f95e-4c96-bfa6-3242683d6890" />
+        <targetEnds>
+          <association Id="22c1dd5c-ccff-4003-8a54-5cb6e9afd885" isDerived="false" sourceEndRoleName="VoiceEngine" targetEndRoleName="Recognizer" isLeaf="false" isAbstract="false">
+            <classMoniker Id="fd42be8f-4c7a-4a72-a29f-c9c87e453d5a" LastKnownName="Recognizer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5d143fc5-8fc1-4056-896a-f87b04a29e53" name="VoiceEngine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="795626ff-9377-4f12-a3dc-09e579f16ccb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6b25f37-04b1-4967-b0ee-9be4f57ac57b" name="Recognizer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1d9e7059-087e-4748-a403-e9416a144e33" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="82672e87-1bcc-454e-82d0-b9e138073e79" />
+          </association>
+          <association Id="a508a9e0-e929-4574-88e2-c636aee76e34" isDerived="false" sourceEndRoleName="VoiceEngine" targetEndRoleName="Sintetizer" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7e786a27-f422-478f-a430-26ca2aeb1614" LastKnownName="Sintetizer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a214f720-3b81-4ff0-916a-d3f362b1a424" name="VoiceEngine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="29460a03-faf6-4f20-b043-7b9fceb8e477" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fed71b04-5439-4918-bd4d-1546e1043d7c" name="Sintetizer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8fb61917-e8df-4721-99a5-4db6854c8d4a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5b918be7-bf3e-4939-b1fa-2f273437434b" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="32537b89-4bd8-47d9-b7c0-715763aabf78" name="RecognizerEvent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7e371528-7473-4e00-af37-7a361dfd80b1" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="5ae20c56-1d83-4b49-8d01-9e8d9185f4fc" name="ChangePrecisionRecognizer" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="772682ff-9536-4e01-ac92-224714bfa599" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2fddccc6-5114-4402-9b16-5db699c53d59" name="percentaje" direction="In">
+                  <elementDefinition Id="08c7d58a-81b5-41fc-b965-7c665ab12932" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="e1870ef1-dd80-4523-affb-0238ff6faa9d" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="dcc5f7fc-c021-4469-8d24-1d0ba627fff9" name="AddGrammar" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="59bc593d-bc7f-483d-915c-4a47bee9ffda" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="449f3d49-1784-48e6-b997-f0acc23f3f82" name="grammar" direction="In">
+                  <elementDefinition Id="f98388be-8ea8-4fb0-b9c0-013be684b4bf" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0947d4f0-e526-472e-94a8-2be8e6dfd03d" LastKnownName="Grammar" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="519ff422-7e95-4b55-bdec-23169070991c" name="Speak" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="31c897a5-dc04-4663-8bfc-8d5c42b30f7e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cfdc46a7-6123-4e13-8540-8dac8eda1325" name="text" direction="In">
+                  <elementDefinition Id="a3fca655-f652-4a7f-af98-346db5eb8ed0" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="ac93c256-cf6a-4ca5-9d5c-56ce3cd244d5" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fa636629-7dce-4d0b-a2aa-616732f93b7c" name="enqueue" direction="In">
+                  <elementDefinition Id="2096c2f0-3db4-4953-9ca1-21003032160d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="88044eb8-151d-4d62-b44e-85410752575a" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d20d0763-02af-4855-b41a-23d4e4d295c0" name="DeleteAllGrammars" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c819e94b-d8e6-443f-8a69-54b4a0fc864a" />
+          </operation>
+          <operation Id="e82ef0e4-f5ae-472a-8c52-0c90fee19689" name="DictationMode" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="82d30410-00d8-4fab-92da-47ea8d5707bc" />
+          </operation>
+          <operation Id="bae7ad65-4b45-428c-b800-eb1ab35554ce" name="Speak" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="15e8c7dd-868f-40ce-9cd5-2c45803c05f5" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ea4ac2bc-8014-43a3-8bb7-03b1b6f2f634" name="text" direction="In" isUnique="false">
+                  <elementDefinition Id="40c95a2b-0cb0-45d9-800f-d1bc55ee2eb5" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="d6e0aa04-9a89-4add-b403-fae89fec3957" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7e786a27-f422-478f-a430-26ca2aeb1614" name="Sintetizer" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6eb57877-30f9-4535-81d5-9350e7af0e27" />
+        <ownedAttributesInternal>
+          <property Id="b5170d02-7051-437f-9028-3e19b74266b1" name="speechSyntethesizer" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="da519dd1-6025-43dc-a539-2b476e88be8b" />
+          </property>
+          <property Id="099a79fa-d875-401f-a4dc-e6fbab8304a1" name="inUse" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ad840649-b6c7-448b-bbf7-46fa30f138c1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9a6da70c-b0d7-421f-9e32-006f38d5a6fd" LastKnownName="Boolean" />
+            </type_NamedElement>
+          </property>
+          <property Id="39d7422a-b3b3-4de8-bfc9-eb674eb52d69" name="queueSpeech" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3e5051f8-69b3-467e-9c54-eb6d8a6e997d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2159872e-a874-4f64-8e13-ea8eac37e526" LastKnownName="Queue&lt;String&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="bc67bea3-7429-498d-9e1b-f39cc5ef5e69" name="finishSpeechEvent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2eac8617-6594-4bd0-a6fa-41e3f6872eec" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="f79f8827-2788-4653-a6b2-a736af0c349e" name="SpeakText" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0843be6b-4840-4e9b-b66a-4efd1b50a502" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5cd57860-d37e-4f14-897f-1fce6b68e6e9" name="text" direction="In">
+                  <elementDefinition Id="6877bbcf-4d38-4f5c-a488-e098eb8f6967" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="ac93c256-cf6a-4ca5-9d5c-56ce3cd244d5" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="02425ebe-541f-427c-9756-4c49904670f0" direction="Return">
+                  <elementDefinition Id="f24684a4-c57f-42a5-a14d-8cd35ed85b3f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="284d316a-6e23-4386-ad93-d1725701ad78" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="0c14c1f5-ec82-4ca9-8d8c-f0a54f7522d1" name="SpeakTextQueue" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="42ffe703-ba1a-4fa7-9a34-e18ce62e59c6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9f43e4db-57bc-41d4-b6cb-f347702bc44b" name="text" direction="In">
+                  <elementDefinition Id="b729100a-031b-4123-9fb0-b019fb3a4854" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4612c4a0-e7b7-4e1c-94b5-0775d8b91d78" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="cd205073-6c70-4d0f-8109-71638fb2af22" name="EmptyQueue" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4276f9d2-83c7-442c-be5f-ded44d47b75e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b9e33379-022b-4987-9b1c-d7ac39df744a" direction="Return">
+                  <elementDefinition Id="62b2b73f-7f56-4917-b5d8-aba97c9351ce" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="4c1a77af-37b1-4195-8ce0-6f68b4e40f88" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="ab957951-f89c-4f56-8f8f-4b2074be3c0f" name="SpeakNextTextInQueue" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b8b6f07b-79d9-4811-a9e6-7e4f16849139" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fd42be8f-4c7a-4a72-a29f-c9c87e453d5a" name="Recognizer" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f4313156-cf01-4ea4-a7ca-13aad71836c4" />
+        <ownedAttributesInternal>
+          <property Id="d1e4b9ad-5b55-4099-bb6b-44ebc5112771" name="speechRecognition" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0dc1f50f-04bb-4c70-8c64-e2993f3373f1" />
+          </property>
+          <property Id="b92fb7b2-4631-4174-a4eb-9831302a7d96" name="isAvailable" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="66bdbda5-88d7-4fde-b036-809c4872d414" />
+          </property>
+          <property Id="61960bbe-1322-47ae-aea1-28992b40a390" name="dictationMode" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4baed8e1-8d17-45d0-962b-24e47742b416" />
+          </property>
+          <property Id="f910cec9-98c8-4fc9-a8cb-e027b39bbf6e" name="precision" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="23759acd-1737-4033-82a9-7bf59faf45f9" />
+          </property>
+          <property Id="3db4eb02-1090-4a23-8ba8-2a05639e2ab5" name="speechRecognized" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8390d69b-cd22-44c9-bb17-daeae816ee71" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="a5113f43-448f-4077-862e-1b397b3d06e4" name="InitRecognizer" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="df43d5ed-c06c-472c-9c4c-cdf30ff55958" />
+          </operation>
+          <operation Id="5f83a5d0-d61f-4fa0-b4ea-e1258d7d32d8" name="AddGrammar" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e6b4402d-7700-49d1-bda4-dac3c41c59f0" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b4d26386-6d7a-44e6-9f90-6beddf85f720" name="grammar" direction="In">
+                  <elementDefinition Id="1a808187-ab72-4604-85a4-e2ac6ffdc6c9" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0947d4f0-e526-472e-94a8-2be8e6dfd03d" LastKnownName="Grammar" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="66b5e777-69cf-452c-8073-2603a4c8912d" name="DictationMode" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="806b7adc-43b8-4de3-97e9-53b6f79c8e6c" />
+          </operation>
+          <operation Id="58a3ce27-82d8-449b-82a1-67bd756ecd85" name="DeleteAllGrammars" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="805c43f7-30d4-4891-bf4e-23c9c77cf807" />
+          </operation>
+          <operation Id="4e642265-c0e3-4cf9-b615-e63bc2e9711c" name="InactiveRecognizer" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="521fff25-f776-420b-9a0b-c2f74c605e69" />
+          </operation>
+          <operation Id="45474fc1-c805-481f-8cf0-8d8d1fae7334" name="ActiveRecognizer" visibility="Package" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c9f388a7-5cc3-45f4-9390-bfb9ff9c06ec" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="ac93c256-cf6a-4ca5-9d5c-56ce3cd244d5" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="88044eb8-151d-4d62-b44e-85410752575a" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e1870ef1-dd80-4523-affb-0238ff6faa9d" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="0947d4f0-e526-472e-94a8-2be8e6dfd03d" name="Grammar" isAbstract="false" isLeaf="false" cachedFullName="Grammar">
+        <elementDefinition Id="7314fae5-a3fd-45bf-8826-8fea78689e6b" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d6e0aa04-9a89-4add-b403-fae89fec3957" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="4612c4a0-e7b7-4e1c-94b5-0775d8b91d78" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="4c1a77af-37b1-4195-8ce0-6f68b4e40f88" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="9a6da70c-b0d7-421f-9e32-006f38d5a6fd" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2159872e-a874-4f64-8e13-ea8eac37e526" name="Queue&lt;String&gt;" isAbstract="false" isLeaf="false" cachedFullName="Queue&lt;String&gt;">
+        <elementDefinition Id="aded5dc5-1928-4147-9729-472bbb272c11" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="284d316a-6e23-4386-ad93-d1725701ad78" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="08f8c376-27bd-4a34-9c35-980f393ccc5a" name="Modelado">
+    <elementDefinition Id="8a30dcdf-14d7-45ea-882c-06c551b499c4" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b6884c35-bea1-4aee-a7fe-c5b4c49d8ad1">
+        <profileInstance Id="efaf2b4f-4780-40a9-916c-f8882c6f6ccc" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e3a8cbcf-ed12-49de-a9cf-4b33454c1ae0">
+        <profileInstance Id="44520f03-07fc-4c7c-9a1a-d977c326100a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

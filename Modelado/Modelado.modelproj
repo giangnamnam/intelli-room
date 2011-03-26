@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4bd13db7-78ca-467d-812a-b7e7d8d4c90c}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>Modelado</Name>
+    <RootNamespace>Modelado</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="ModelDefinition\Package_1057.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1059.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Diagrama de Analisis.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Diagrama de Analisis.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Diagrama de Analisis.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Voice DiagramaDiseño.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Voice DiagramaDiseño.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Voice DiagramaDiseño.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Modelado.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="DiagramaCapas.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="DiagramaCapas.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="DiagramaCapas.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+</Project>

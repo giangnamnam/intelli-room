@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b7c6ff51-2d7e-40b4-926b-ae6da7986844" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="f1ab8fe4-ac00-4116-91ab-d397acf2720c" name="Presentación">
+      <childLayers>
+        <layer Id="55932b52-e4f2-436f-af5d-7d71e20af258" name="Command" />
+        <layer Id="27b71e24-ebb0-4583-a0ca-004742ccaa34" name="GUI" />
+      </childLayers>
+    </layer>
+    <layer Id="8b87a4ac-a49f-4d92-b87d-a7a0d93117ae" name="Lógica de negocio">
+      <childLayers>
+        <layer Id="362f3998-4910-44a8-a0c6-543129f4a393" name="Serial&#xD;&#xA;" />
+        <layer Id="a0ae9403-21fd-4a4c-8e0b-6ce9e6e0d7ac" name="Ligthing&#xD;&#xA;" />
+        <layer Id="4b92ee6d-8f55-4f8f-8a64-cecad72dfa3f" name="Electric&#xD;&#xA;" />
+        <layer Id="29efd88f-742d-49c0-802c-2737ff96cee5" name="Camera&#xD;&#xA;" />
+        <layer Id="1dd88442-82d6-48bd-bfac-a9df081359f7" name="Emgu CV&#xD;&#xA;" />
+        <layer Id="ba777185-c8f4-44a9-b03e-ab1c3309b056" name="Media" />
+        <layer Id="9080d2bb-a6b1-41b3-8df5-50aec86c3ba1" name="Voice" />
+        <layer Id="90ba9454-8408-4c01-b1e4-f8c8adeb6edc" name="WMPLib" />
+        <layer Id="eb844942-7351-48f6-9ed3-cbdbc21e4f60" name="SAPI&#xD;&#xA;" />
+        <layer Id="9fe3d40b-a716-4914-b18a-7c5f65ae5541" name="IntelliRoom" />
+      </childLayers>
+    </layer>
+    <layer Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" name="Datos">
+      <childLayers>
+        <layer Id="22afc8cf-8386-46a8-8755-7cda6804a5d0" name="HTTP Request" />
+        <layer Id="1b40d92e-d900-4cee-a4f9-443e5d8d66d7" name="Config" />
+        <layer Id="3db8a1ee-912f-4430-b248-8816e0c8e18b" name="Parser" />
+        <layer Id="a3e8c7d8-bd15-44d5-a093-bb6b71795871" name="..." />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

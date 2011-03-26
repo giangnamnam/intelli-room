@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9670b839-3d84-4cac-8e60-2456250e7b97" name="Diagrama de Analisis" linkedPackageId="8603e480-2687-4217-83e6-c0a2dff062b9" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="c20c77e4-1478-4364-9c82-4c3307559c9c" name="Primitive Operations">
+        <elementDefinition Id="3eb7ab9e-d945-4434-bc32-21559376cb17" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="01bf3940-cdf1-47f0-9254-f2c91d166bf6" name="Electric" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="6fb50342-1981-4f74-bc25-f1db757a0d8c" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="5be3f52b-1fd5-4e80-ac76-8ef4896e8008" name="Lighting" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="a1966ba8-fc77-4d86-bfaf-c3974413345a" />
+              <ownedOperationsInternal>
+                <operation Id="e2d04e55-c133-4d90-a58c-78bbd571ecb2" name="SetColor" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="4d3279ea-40e8-4d70-9cd3-641961abef74" />
+                </operation>
+                <operation Id="22406dd8-3bd4-40ec-a410-48323852e6f3" name="GetColor" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="6d3a7613-b17a-49f7-a026-443da8c870fc" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="86c61307-58f8-448d-bc46-a4ec762423c8" name="Music" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="e93f0a2f-75aa-4434-8a39-5e87a1be7320" />
+              <ownedOperationsInternal>
+                <operation Id="6addd1d1-5fe7-424c-952a-879960b0dbe4" name="Play" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="6e40fe2c-3d5e-4928-b845-cdf212130294" />
+                </operation>
+                <operation Id="98288b55-6e55-4b1a-8117-6a876c6eda9c" name="Pause" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="490f8ec6-937a-4936-9a24-46f9b12eedfb" />
+                </operation>
+                <operation Id="8ecc0178-644b-4e85-8009-171f17344687" name="GetVolume" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="17aa8cdc-2909-4d1c-ab2c-8a5f97fbfb47" />
+                </operation>
+                <operation Id="bd637356-e4fb-43ba-89a0-10d4b6555233" name="SetVolume" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="6e403d1e-ae4c-4fe7-bca9-c7dff41e9fa4" />
+                </operation>
+                <operation Id="7cdcfc82-4d22-4c14-b6c5-b87c0446cef1" name="Stop" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="4ee7f0d6-dbde-42cd-93ee-173fb8baa00a" />
+                </operation>
+                <operation Id="0db0a408-686f-4c73-b16c-03714684c12e" name="GetArchiveName" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="82732e6f-7cb6-44e8-8849-603bdace115e" />
+                </operation>
+                <operation Id="034da218-b3dc-4357-80d5-7b2f296281a1" name="GetAutor" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="7f170d93-c696-4db5-82e2-8b94d0fb01e0" />
+                </operation>
+                <operation Id="a5c38a94-17d3-458e-b8fc-e4099ddca932" name="GetTitle" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="ba3cf5c1-b360-4ecc-98f3-42cb2e379f4d" />
+                </operation>
+                <operation Id="1834503e-8ef2-4811-829d-063878e66bdc" name="GetNameDisc" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="e4bf103c-0f78-4f55-a928-160b828414d3" />
+                </operation>
+                <operation Id="14737537-c975-43c0-9d8b-03d5fbc63a6d" name="GetDuration" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="63f4743b-9c46-405f-adad-8df8719e0b83" />
+                </operation>
+                <operation Id="eabf4486-0542-4d83-9c99-67904d2c57fe" name="SetSilence" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="5bb16870-6b25-463c-9c9a-99627916b7d4" />
+                </operation>
+                <operation Id="9dd559b5-ed1c-4217-ad15-bb9c830a11a9" name="Shufle" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="ae51afc1-2628-49b4-bc8b-146c7d95ebdd" />
+                </operation>
+                <operation Id="4f36c636-538e-42c3-901e-7f657fb33a77" name="Repeat" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="e1391a58-ac3c-4f66-abb1-e93afbab97fd" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="2378cf59-78ab-4dca-ae99-0e19d4702569" name="Voice" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="6d68d11d-bbfb-4871-b0b0-67a49b3ad133" />
+              <ownedAttributesInternal>
+                <property Id="06f8a57e-a6f4-4523-a531-ad1932e4b754" name="RecognizerEvent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6820594a-2230-4e23-acdc-0c02d6d9a4ab" />
+                </property>
+                <property Id="1d0f65fa-4841-4762-aa08-c3734b5cca00" name="LastRecognizer" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b9d4f6f2-4cd1-457e-bfc4-c52cddcb3595" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="da93dfd2-fa59-4b77-a13a-95a87a3f597f" name="StartEngine" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="4dc4255b-a7db-4773-b06d-a693259d88a7" />
+                </operation>
+                <operation Id="75c922eb-b793-4c4f-b69f-dc5df831cbbe" name="Speech" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="83325fc7-1779-471c-91bf-839d3e591deb" />
+                </operation>
+                <operation Id="47bd40bb-0914-4844-9f6d-465180b5cf6a" name="SetGrammar" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="8be2a640-0a58-4dc7-807e-8f0de54bac51" />
+                </operation>
+                <operation Id="31a8b0f2-da63-450b-a2c4-8aeb6441397e" name="DeleteGrammar" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b3889c03-267a-4463-8dbf-9a4aa4d89cde" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="3a59fb8f-7b7d-4b02-a00c-b133497f0827" name="Camera" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="7f603bc1-8143-4da6-8d8e-4005333a69ee" />
+              <ownedOperationsInternal>
+                <operation Id="82ddfad4-27c2-470e-b14c-448dbe3dc94f" name="StartCamera" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="9fa43ebf-b07b-4f99-bcea-57f301060511" />
+                </operation>
+                <operation Id="7d664dcb-f64d-4e09-87f5-0e328843dfcb" name="StopCamera" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="60b4c52b-9cc1-4b27-a39c-c3adad43508d" />
+                </operation>
+                <operation Id="a120e459-6dc0-4430-aec1-04937dcf477f" name="DetectMotion" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="ae6e774b-0805-47bd-8e61-49794a7637eb" />
+                </operation>
+                <operation Id="eb275103-6c29-4e76-a3a9-a6eaa84ba71e" name="GetIluminance" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="8dd11e10-5ac2-4f5c-a7a8-ddfbb9bb8426" />
+                </operation>
+                <operation Id="e315030d-6b02-4328-ab15-4d06902b9c8c" name="GetFrame" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="50751fe6-fe8f-4411-bf8a-19d2ff400a42" />
+                </operation>
+                <operation Id="e0d41393-cdf7-4708-b43b-fde5384ca1d0" name="FaceDetected" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="fed9f326-811f-4b06-83b5-d23e280201d2" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="806c14ea-70a9-4bad-ac47-6833b39d0f5d" name="Engine">
+        <elementDefinition Id="2ba06117-a6d1-478b-8e02-db9672d8d0d0" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="137942fc-7a6c-43bb-9a10-c8df153b672a" name="Commands" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="34137dae-8b9f-4dfa-aa73-e7907f2dd582" />
+              <ownedOperationsInternal>
+                <operation Id="dc57ec42-32ef-40d4-af85-bfb7d05c17d2" name="GetIluminance" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="9dca837c-d13a-43c8-bab3-6684635f3cef" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="08ed95bc-c1e6-4e70-a6d6-beadec6bafdd" name="Programmer" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="45785ff1-570f-4bc5-bd00-1c2c38195de3" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="2a17f569-1cca-407e-ad21-c6b1b4e64f8b" name="Actions" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="62543c4a-3847-4b63-80b9-b9b0cb737e97" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="3c8524a6-49e2-4920-baa6-90ffc1746afc" name="GenerateGrammar" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="7cde6b64-35aa-4969-a9eb-3c7bfcb89fea" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="2a893de6-a229-40c0-b584-a83ef20419cc" name="Language" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="bf2fcca8-62a9-4bfc-97d7-5d524ee37a50" />
+              <ownedAttributesInternal>
+                <property Id="39f80a6a-91d4-44bb-ad31-1cc2c03d12f0" name="languaje" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2280ebc4-9b5d-4694-b2cd-35d717c463b3" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="8ef0428c-4e35-4d44-91c5-61849c02dd4a" name="GetLanguaje" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="25cc9bf0-8862-4b19-a5eb-cf61e11c3395" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="796f3516-6caf-48d8-9bb1-4e952d9ba14f" direction="Return">
+                        <elementDefinition Id="219a3d49-dfe8-4af4-be3b-34a7026c2ba3" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="48d1eba3-79ed-4fde-8380-c5543c926a35" LastKnownName="String" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+                <operation Id="61a9b7b8-d1c7-4a17-a56a-4e0f7d837a1e" name="GetText" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="780bf8c2-737e-49ba-acb5-af0c1a811306" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="fd18f821-2e0a-4ed1-bc4e-02eb3507572a" direction="Return">
+                        <elementDefinition Id="ec09503c-347c-400e-8dba-44d31f8b89e8" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="873378bd-0a5c-41c9-b1b2-85a7c96b8300" LastKnownName="String" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="ae7db976-debf-4467-ab53-9c905665d6a2" name="text" direction="In">
+                        <elementDefinition Id="2653002d-4e50-4ef6-9e2f-b43ad6d9f8f3" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="7b5c7df8-ea22-406a-86fe-99bf551e353f" LastKnownName="String" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="40947077-ebbd-4d69-a6f8-1fe40f51960c" name="Theme" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="0287cfc6-bdbd-47b6-9ae5-f50b5d26da3c" />
+              <ownedAttributesInternal>
+                <property Id="4764f8b3-25de-4018-8e2d-e95d35022e28" name="nameTheme" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="03a685be-af67-47eb-b89c-585b2939e151" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="1c21c56b-c478-4f84-93e6-cd3334580247" name="Config" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="faecf367-0934-4387-897b-ec79fd740c00" />
+              <ownedAttributesInternal>
+                <property Id="6296a7f0-f1ee-4253-8efb-b354e9c661d6" name="Language" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7497d0f6-5f2d-4ef2-9ba9-c5d7b2ebd042" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="8f9e2fe9-8af7-480d-9faf-f11b95ec6bac" name="Utils" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="8e71ab10-463c-43a8-9caf-4610f05d3347" />
+              <ownedOperationsInternal>
+                <operation Id="52c58023-07c8-4924-9b1f-603469e535e4" name="GetWeather" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="6049325f-4ba1-4039-8e1f-b98a24d2aa43" />
+                </operation>
+                <operation Id="386739e0-29cc-46b0-9356-704bf48c695b" name="GetDate" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="4e6bc0ba-41c4-433b-998c-f72c90377062" />
+                </operation>
+                <operation Id="0df325a6-5b1f-47af-b494-d89a28937f2a" name="GetHour" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="906d8789-abe8-4d85-b45d-68e8a0ef6b1b" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="544a7092-6355-4695-b3b8-952f4451b0e4" name="Alarms" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="b4fc4f3b-735d-4aee-afda-3076ad71ad1b" />
+              <ownedOperationsInternal>
+                <operation Id="6b88d241-c108-4aa8-93c4-84f740dbe25f" name="GetAlarms" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="fe6302f0-2fff-4a11-946a-482eb72c3988" />
+                </operation>
+                <operation Id="f414fe48-3f8a-49d8-9429-589dc7f63751" name="AddAlamr" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="aad9258e-9294-4a5a-b977-22e871af5e3f" />
+                </operation>
+                <operation Id="f3211851-8972-41dd-af35-a2c120806c97" name="RemoveAlarm" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="2129b74a-26e6-498a-b8d1-235e1a08b1aa" />
+                </operation>
+                <operation Id="432db6ea-33fc-474b-acf1-69826064ff03" name="SetDefaultSing" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="f6df88f4-1338-40d0-a758-612d92da8695" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="5ac5ebce-aece-4946-a1bc-f347bdd698c3" name="Functions" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="35cd13d1-7745-41bd-9a3b-2160218dbb96" />
+              <ownedOperationsInternal>
+                <operation Id="6c562f86-61a0-4d52-88a4-3e0eabe4a3a0" name="WakeUp" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="3ad50ffa-316b-4e87-b935-497ba558b5b2" />
+                </operation>
+                <operation Id="472a20fe-da48-4716-964c-251495e55e71" name="Suspend" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="8040fa4c-1a88-4584-b970-0061ea3ede2c" />
+                </operation>
+                <operation Id="3bc81c7a-33e1-4b23-8538-1c121927601f" name="Sleep" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="f9e32511-4631-4db7-933b-7e2fec0ac271" />
+                </operation>
+                <operation Id="a3e287cb-bcdb-48d0-b452-d63ba83dc045" name="Shutdown" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="f7ca4c35-cc66-48b6-88db-b6c6802423cb" />
+                </operation>
+                <operation Id="e0233715-93c1-4124-a748-4eed4e08f917" name="Hibernate" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="7897266f-85d3-45d0-bdc8-065b44f496c3" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1a14ec8f-d63f-45b5-8121-49c72ebee901" name="Console" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5bcc969d-1766-4541-8a91-d28fa187bed1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="337cf0bf-5b25-4fb1-bfd6-d815734773c7" name="GUI" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="31dff51a-af98-4a89-8d73-009af5bdad22" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="7b5c7df8-ea22-406a-86fe-99bf551e353f" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a7c205ed-195d-4f7d-a11d-caf99a45a73e" name="Movil or Internet?" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="92ccf02c-d81d-414c-b98e-2cb0d949e2f1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="48d1eba3-79ed-4fde-8380-c5543c926a35" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="873378bd-0a5c-41c9-b1b2-85a7c96b8300" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="8603e480-2687-4217-83e6-c0a2dff062b9" name="Modelado">
+    <elementDefinition Id="8a30dcdf-14d7-45ea-882c-06c551b499c4" />
+    <profileInstances>
+      <packageHasProfileInstances Id="d74a7080-3576-4642-b841-c5dcf13ec9ff">
+        <profileInstance Id="f5671eb7-9ecf-4a7e-bb70-e9bde0b7fa5d" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d96e20fe-9a5f-4b54-9d73-6faad51e2f53">
+        <profileInstance Id="7005c1b6-07fb-481e-8c8f-2b6929d4d905" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

@@ -6,7 +6,7 @@ using System.IO.Ports;
 
 namespace Serial
 {
-    public class Serial : ISerial
+    public class Serial
     {
         private SerialPort serial;
         public event EventHandler<SerialDataReceivedEventArgs> serialReceived;

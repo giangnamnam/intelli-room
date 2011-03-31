@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using Serial;
 
 namespace Lighting
 {
     public class Lighting : ILighting 
     {
-        private Serial.ISerial serialPort;
+        private Serial serialPort;
 
         public Lighting()
         {
-            serialPort = new Serial.Serial();
+            serialPort = new Serial();
         }
 
         public void TurnOffLight()

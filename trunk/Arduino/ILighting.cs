@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Lighting
+namespace Arduino
 {
     public interface ILighting
     {

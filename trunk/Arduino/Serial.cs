@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace Serial
+namespace Arduino
 {
     public class Serial
     {

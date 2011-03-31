@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Grammar", "Test\Test G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Voice", "PruebasVoice\Test Voice.csproj", "{1899641E-D935-4CF9-A6B1-7F7655FC9027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Language", "Test2\Test Language.csproj", "{3F34B66F-1373-415B-AFA9-634AABC2B04E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Media", "TestMedia\Test Media.csproj", "{3F874554-0BB5-4A24-A9C5-AC8AA762E8CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test XML", "Test3\Test XML.csproj", "{4D8EC0DB-5867-4CE3-812D-4B995504600B}"
@@ -109,16 +107,6 @@ Global
 		{1899641E-D935-4CF9-A6B1-7F7655FC9027}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1899641E-D935-4CF9-A6B1-7F7655FC9027}.Release|x86.ActiveCfg = Release|x86
 		{1899641E-D935-4CF9-A6B1-7F7655FC9027}.Release|x86.Build.0 = Release|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Debug|x86.ActiveCfg = Debug|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Debug|x86.Build.0 = Debug|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Release|Any CPU.ActiveCfg = Release|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Release|Mixed Platforms.Build.0 = Release|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Release|x86.ActiveCfg = Release|x86
-		{3F34B66F-1373-415B-AFA9-634AABC2B04E}.Release|x86.Build.0 = Release|x86
 		{3F874554-0BB5-4A24-A9C5-AC8AA762E8CF}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{3F874554-0BB5-4A24-A9C5-AC8AA762E8CF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{3F874554-0BB5-4A24-A9C5-AC8AA762E8CF}.Debug|Mixed Platforms.Build.0 = Debug|x86

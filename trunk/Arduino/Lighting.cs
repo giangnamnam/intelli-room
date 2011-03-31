@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace Lighting
+namespace Arduino
 {
     public class Lighting : ILighting 
     {

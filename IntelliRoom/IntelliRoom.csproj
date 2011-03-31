@@ -74,13 +74,13 @@
     <Content Include="Language\Example.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arduino\Arduino.csproj">
+      <Project>{33AC1B04-A0E5-443C-810C-7AF4D766A37D}</Project>
+      <Name>Arduino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Camera\Camera.csproj">
       <Project>{732FDF8A-2189-4A8D-A634-0B0BF5C53EC6}</Project>
       <Name>Camera</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Light\Lighting.csproj">
-      <Project>{F693FA20-E596-4A4A-BCDE-9298C59E194A}</Project>
-      <Name>Lighting</Name>
     </ProjectReference>
     <ProjectReference Include="..\Media\Media.csproj">
       <Project>{84F1E4D7-D702-41D7-8CE3-9FA733B61B11}</Project>

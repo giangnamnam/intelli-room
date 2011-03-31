@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F693FA20-E596-4A4A-BCDE-9298C59E194A}</ProjectGuid>
+    <ProjectGuid>{33AC1B04-A0E5-443C-810C-7AF4D766A37D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lighting</RootNamespace>
-    <AssemblyName>Lighting</AssemblyName>
+    <RootNamespace>Arduino</RootNamespace>
+    <AssemblyName>Arduino</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,15 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Electric.cs" />
     <Compile Include="ILighting.cs" />
     <Compile Include="Lighting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Serial\Serial.csproj">
-      <Project>{4532E858-7B1F-417D-AADD-1C2F73351968}</Project>
-      <Name>Serial</Name>
-    </ProjectReference>
+    <Compile Include="Serial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

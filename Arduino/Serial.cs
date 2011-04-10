@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO.Ports;
+using System.Threading;
 
 namespace Arduino
 {
@@ -10,6 +11,7 @@ namespace Arduino
     {
         private SerialPort serial;
         public event EventHandler<SerialDataReceivedEventArgs> serialReceived;
+        public object WriteMonitor = new Object();
 
         public Serial ()
         {
@@ -30,17 +32,34 @@ namespace Arduino
 
         public void Write(byte[] data)
         {
-            serial.Open();
-            serial.Write(data, 0, data.Length);
-            serial.Close();
+            try
+            {
+                Monitor.Enter(WriteMonitor);
+                serial.Open();
+                serial.Write(data, 0, data.Length);
+                serial.Close();
+                Monitor.Exit(WriteMonitor);
+            }
+            catch (Exception)
+            {
+               
+            }
         }
 
         public void Write(string data)
         {
-            serial.Open();
-            serial.WriteLine(data);
-            serial.Close();
-        } 
-        
+            try
+            {
+                Monitor.Enter(WriteMonitor);
+                serial.Open();
+                serial.WriteLine(data);
+                serial.Close();
+                Monitor.Exit(WriteMonitor);
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
     }
 }

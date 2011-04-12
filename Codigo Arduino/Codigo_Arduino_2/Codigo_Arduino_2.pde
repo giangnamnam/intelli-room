@@ -1,9 +1,9 @@
 /*
 IntelliRoom Arudino 2.0
 */
-#include <Messenger.h> //importamos una libreria para hacer mas facil el soporte de mensajes
+#include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
-Messenger message = Messenger();
+Messenger message = Messenger(); //iniciamos los mensajes
 
 //Configuracion de pines
 int pinLedR = 9;  //Red LED
@@ -51,7 +51,7 @@ void loop()
 {
    while ( Serial.available() )  message.process(Serial.read ());
    
-   if(timeEnd > timeNow)
+   if(timeEnd > timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
    {
      rNow = CalculeValue(rInit,rEnd); //Calculamos la componente roja
      gNow = CalculeValue(gInit,gEnd); //Calculamos la componente verde
@@ -77,11 +77,27 @@ byte CalculeValue(byte initColor, byte endColor)
   return (timeNow*(endColor-initColor)/timeEnd)+initColor; //hacemos el calculo del valor actual por medio de una formula (documentado en la documentacion)
 }
 
+//Metodo que contiene las funciones a ejecutar
 void messageReady()
 {
   if ( message.available() )
-  {   
-    //modo directo
+  { 
+    //METODOS DE COLOR
+    //Modo encendido
+    if(message.checkString("WHITE"))
+    {
+      SetColor(255,255,255);
+      timeNow = 0;
+      timeEnd = 0;
+    }
+    //Modo apagado
+    if(message.checkString("BLACK"))
+    {
+      SetColor(255,255,255);
+      timeNow = 0;
+      timeEnd = 0;
+    }
+    //Modo directo
     if( message.checkString("DIRECT"))
     {
       rInit = message.readInt();
@@ -91,8 +107,7 @@ void messageReady()
       timeEnd = 0;
       SetColor(rInit,gInit,bInit);
     }
-    
-    //modo degradado
+    //Modo degradado
     if (message.checkString("DEGRADED"))
     {
       rEnd = message.readInt();
@@ -103,7 +118,8 @@ void messageReady()
       SetColor(rEnd,gEnd,bEnd);
     }
     
-    //modo encender dispositivo
+    //METODOS DISPOSITIVO
+    //Encender dispositivo
     if( message.checkString("SWITCHON"))
     {
      int device = message.readInt(); 
@@ -118,7 +134,7 @@ void messageReady()
      if(device == 8){ digitalWrite(dev8, HIGH); }
      if(device == 9){ digitalWrite(dev9, HIGH); }
     }
-    
+    //Apagar dispositivo
     if( message.checkString("SWITCHOFF"))
     {
      int device = message.readInt(); 

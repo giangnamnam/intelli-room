@@ -37,6 +37,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="5b918be7-bf3e-4939-b1fa-2f273437434b" />
           </association>
+          <association Id="44958385-44d0-43c1-b079-b5f43a28b7af" isDerived="false" sourceEndRoleName="VoiceEngine" targetEndRoleName="IVoiceEngine" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="7e2cd45f-46d8-4664-9125-618d66e8c2d6" LastKnownName="IVoiceEngine" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0f9ed468-465a-41de-b64b-939e499deabc" name="VoiceEngine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f44e68a2-80a3-4476-95bb-704186dfa9f2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0215bd19-f296-466f-aefb-10507a1265a3" name="IVoiceEngine" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0dedfcef-28e7-4e7d-a602-bc78403d1ee1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="53edd145-d7d1-43c8-ae73-fa623fae86f6" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="32537b89-4bd8-47d9-b7c0-715763aabf78" name="RecognizerEvent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -290,6 +306,104 @@
     <packageHasNamedElement>
       <referencedType Id="284d316a-6e23-4386-ad93-d1725701ad78" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
         <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="7e2cd45f-46d8-4664-9125-618d66e8c2d6" name="IVoiceEngine" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1aa6139a-b264-4562-8b9d-2c58b5e3fa64" />
+        <ownedOperations>
+          <operation Id="44f1111a-0c3b-41c1-9fa3-d036d36680f2" name="AddGrammar" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ae86a708-7005-4f47-a170-9399804744c6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0bfe4749-9e0d-4817-be3e-6f6d2aba94dd" name="grammar" direction="In">
+                  <elementDefinition Id="97289b07-ff6e-4b69-b5f4-1706bbc6735d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="26a907ae-86ef-4314-a0ea-a590259c2f04" LastKnownName="Grammar" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="0745152c-2f72-4e5a-b6e1-e83000e25720" name="ChangePrecisionRecognizer" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="590c753a-c7a2-4522-9426-522f1baefe01" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="69f6706a-a1d9-458e-93fd-40c90a132f88" name="percentaje" direction="In">
+                  <elementDefinition Id="538f9caa-7509-4348-8b03-868b12fae43d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6cb09ea1-326e-4fbc-8170-488a6ef0c929" LastKnownName="Integer" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="2103cd6d-dc8a-4cc9-b9a1-58957bd10ff5" name="DeleteAllGrammars" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="96f1feb2-b22d-44d6-a2a1-7eb1b6f52a7e" />
+          </operation>
+          <operation Id="efff8a39-0d52-4fb2-af37-02e697bb42ef" name="DictationMode" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e4fe6674-eb61-410d-9792-4d00bce54c2d" />
+          </operation>
+          <operation Id="9e3f5134-688d-46c5-92f9-46de1421b177" name="Speak" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8e76aa75-5db8-413a-84c8-35aac802910c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8813f747-ef29-4f7e-a85e-cadf5301820c" name="text" direction="In">
+                  <elementDefinition Id="247b4449-553f-4846-ba9a-04ffeffafc22" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="333d2c07-f224-4e83-836f-aa8f05792b74" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5d05aefb-7659-46e7-84c1-dfe88e71a164" name="enqueue" direction="In">
+                  <elementDefinition Id="40135c82-db7d-4c4e-a83a-83bc4750df1a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="3ebe3971-bd2c-4b69-a6d5-1e3e865a2a02" LastKnownName="Boolean" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="c53a79aa-d00f-4dc7-b7b6-35cb0c43b17f" name="Speak" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b59aa878-c83d-4668-89e5-8c5bf0aa6c88" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c2c49b5c-ad06-4f94-baab-3794fed7ae71" name="text" direction="In" isUnique="false">
+                  <elementDefinition Id="e164515e-6fc2-4e96-b33b-fce7dde9ae35" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8c1f73a3-e683-4175-a03b-6c6d5358c384" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="26a907ae-86ef-4314-a0ea-a590259c2f04" name="Grammar" isAbstract="false" isLeaf="false" cachedFullName="Grammar">
+        <elementDefinition Id="7314fae5-a3fd-45bf-8826-8fea78689e6b" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6cb09ea1-326e-4fbc-8170-488a6ef0c929" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="333d2c07-f224-4e83-836f-aa8f05792b74" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3ebe3971-bd2c-4b69-a6d5-1e3e865a2a02" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8c1f73a3-e683-4175-a03b-6c6d5358c384" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

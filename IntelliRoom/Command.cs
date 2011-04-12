@@ -51,6 +51,16 @@ namespace IntelliRoom
         //    return Utils.GetWeather(city);
         //}
 
+        public int GetTemperature(string city)
+        {
+            return new Weather(city).TemperatureC;
+        }
+
+        public string GetCondition(string city)
+        {
+            return new Weather(city).Condition;
+        }
+
         //LIGHTING
 
         public void SetDirectColor(String color)

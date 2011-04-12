@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Web;
 
 namespace IntelliRoom
 {
-    class Weather
+    public class Weather
     {
         private String condition;
         private int temperatureF;
@@ -46,12 +47,16 @@ namespace IntelliRoom
             private set { windSpeed = value; }
         }
 
+        public Weather(string city)
+        {
+            UpdateWeather(city);
+        }
 
         private void UpdateWeather(String city)
         {
-            XmlDocument xml = new XmlDocument();
-            xml.Load("http://www.google.com/ig/api?weather=" + city);
-
+            XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather=" + city);
+            //.Load("http://www.google.com/ig/api?weather=" + city);
+            
             XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
          
             this.condition = current.Item(0).Attributes.GetNamedItem("data").Value;

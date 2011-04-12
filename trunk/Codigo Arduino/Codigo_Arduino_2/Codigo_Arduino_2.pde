@@ -34,8 +34,9 @@ byte rEnd = 0;   //Valor rojo final
 byte gEnd = 0;   //Valor verde final
 byte bEnd = 0;   //Valor azul final
 
-unsigned int timeNow = 0;  //tiempo actual
-unsigned int timeEnd = 0;  //tiempo final
+unsigned long timeInit = 0; //tiempo inicial
+unsigned long timeNow = 0;  //tiempo actual
+unsigned long timeEnd = 0;  //tiempo final
 
 void setup()
 {
@@ -49,17 +50,18 @@ void setup()
 
 void loop()
 {
-   while ( Serial.available() )  message.process(Serial.read ());
-   
-   if(timeEnd > timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
-   {
-     rNow = CalculeValue(rInit,rEnd); //Calculamos la componente roja
-     gNow = CalculeValue(gInit,gEnd); //Calculamos la componente verde
-     bNow = CalculeValue(bInit,bEnd); //Calculamos la componente azul
-     SetColor(rNow,gNow,bNow); //la imprimimos en los LEDs
-     timeNow++; //aumentamos el tiempo
+   while (Serial.available() ){
+     message.process(Serial.read ());
+     
+     timeNow = millis();
+     if(timeEnd > timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
+     {
+       rNow = CalculeValue(rInit,rEnd); //Calculamos la componente roja
+       gNow = CalculeValue(gInit,gEnd); //Calculamos la componente verde
+       bNow = CalculeValue(bInit,bEnd); //Calculamos la componente azul
+       SetColor(rNow,gNow,bNow); //la imprimimos en los LEDs
+     }
    }
-   
 }
 
 void SetColor(byte r, byte g, byte b)
@@ -72,39 +74,25 @@ void SetColor(byte r, byte g, byte b)
   bNow = b;
 }
 
-byte CalculeValue(byte initColor, byte endColor)
-{
-  return (timeNow*(endColor-initColor)/timeEnd)+initColor; //hacemos el calculo del valor actual por medio de una formula (documentado en la documentacion)
+byte CalculeValue(byte colorInit, byte colorEnd)
+{  
+  return (((timeNow-timeInit)*(colorEnd-colorInit))/(timeEnd-timeInit))+colorInit;
 }
 
 //Metodo que contiene las funciones a ejecutar
 void messageReady()
 {
-  if ( message.available() )
+  if (message.available() )
   { 
     //METODOS DE COLOR
-    //Modo encendido
-    if(message.checkString("WHITE"))
-    {
-      SetColor(255,255,255);
-      timeNow = 0;
-      timeEnd = 0;
-    }
-    //Modo apagado
-    if(message.checkString("BLACK"))
-    {
-      SetColor(255,255,255);
-      timeNow = 0;
-      timeEnd = 0;
-    }
     //Modo directo
-    if( message.checkString("DIRECT"))
+    if (message.checkString("DIRECT"))
     {
       rInit = message.readInt();
       gInit = message.readInt();
       bInit = message.readInt();
-      timeNow = 0;
-      timeEnd = 0;
+      //timeNow = 0;
+      timeEnd = millis();
       SetColor(rInit,gInit,bInit);
     }
     //Modo degradado
@@ -113,41 +101,46 @@ void messageReady()
       rEnd = message.readInt();
       gEnd = message.readInt();
       bEnd = message.readInt();
-      timeNow = 0;
-      timeEnd = message.readInt();
+      timeInit = millis();
+      timeEnd = timeInit + message.readLong();
       SetColor(rEnd,gEnd,bEnd);
+    }
+    //Modo Aleatorio
+    if (message.checkString("RANDOM"))
+    {
+      //TODO
     }
     
     //METODOS DISPOSITIVO
     //Encender dispositivo
-    if( message.checkString("SWITCHON"))
+    if (message.checkString("SWITCHON"))
     {
      int device = message.readInt(); 
-     if(device == 0){ digitalWrite(dev0, HIGH); }
-     if(device == 1){ digitalWrite(dev1, HIGH); }
-     if(device == 2){ digitalWrite(dev2, HIGH); }
-     if(device == 3){ digitalWrite(dev3, HIGH); }
-     if(device == 4){ digitalWrite(dev4, HIGH); }
-     if(device == 5){ digitalWrite(dev5, HIGH); }
-     if(device == 6){ digitalWrite(dev6, HIGH); }
-     if(device == 7){ digitalWrite(dev7, HIGH); }
-     if(device == 8){ digitalWrite(dev8, HIGH); }
-     if(device == 9){ digitalWrite(dev9, HIGH); }
+     if (device == 0){ digitalWrite(dev0, HIGH); }
+     if (device == 1){ digitalWrite(dev1, HIGH); }
+     if (device == 2){ digitalWrite(dev2, HIGH); }
+     if (device == 3){ digitalWrite(dev3, HIGH); }
+     if (device == 4){ digitalWrite(dev4, HIGH); }
+     if (device == 5){ digitalWrite(dev5, HIGH); }
+     if (device == 6){ digitalWrite(dev6, HIGH); }
+     if (device == 7){ digitalWrite(dev7, HIGH); }
+     if (device == 8){ digitalWrite(dev8, HIGH); }
+     if (device == 9){ digitalWrite(dev9, HIGH); }
     }
     //Apagar dispositivo
-    if( message.checkString("SWITCHOFF"))
+    if (message.checkString("SWITCHOFF"))
     {
      int device = message.readInt(); 
-     if(device == 0){ digitalWrite(dev0, LOW); }
-     if(device == 1){ digitalWrite(dev1, LOW); }
-     if(device == 2){ digitalWrite(dev2, LOW); }
-     if(device == 3){ digitalWrite(dev3, LOW); }
-     if(device == 4){ digitalWrite(dev4, LOW); }
-     if(device == 5){ digitalWrite(dev5, LOW); }
-     if(device == 6){ digitalWrite(dev6, LOW); }
-     if(device == 7){ digitalWrite(dev7, LOW); }
-     if(device == 8){ digitalWrite(dev8, LOW); }
-     if(device == 9){ digitalWrite(dev9, LOW); }
+     if (device == 0){ digitalWrite(dev0, LOW); }
+     if (device == 1){ digitalWrite(dev1, LOW); }
+     if (device == 2){ digitalWrite(dev2, LOW); }
+     if (device == 3){ digitalWrite(dev3, LOW); }
+     if (device == 4){ digitalWrite(dev4, LOW); }
+     if (device == 5){ digitalWrite(dev5, LOW); }
+     if (device == 6){ digitalWrite(dev6, LOW); }
+     if (device == 7){ digitalWrite(dev7, LOW); }
+     if (device == 8){ digitalWrite(dev8, LOW); }
+     if (device == 9){ digitalWrite(dev9, LOW); }
     }
   }
 }

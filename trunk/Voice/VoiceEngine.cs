@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Speech.Recognition;
+using System.Xml;
+using Data;
 
 namespace Voice
 {
@@ -51,14 +53,65 @@ namespace Voice
             recognizer.AddGrammar(grammar);
         }
 
-        public void DictationMode()
+        public void LoadGrammar()
         {
-            recognizer.DictationMode();
+            //eliminamos toda la gramatica
+            DeleteAllGrammars();
+            //cargamos el documento XML
+            XmlDocument xml = new XmlDocument();
+            xml.Load(Directories.GetGrammarXML());
+
+            foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)
+            {
+                AddGrammar(LoadCommand(command));
+            }
+        }
+
+        private Grammar LoadCommand(XmlNode commandNode)
+        {
+            GrammarBuilder grammarBuilder = new GrammarBuilder();
+
+
+            foreach (XmlNode choice in commandNode.ChildNodes)
+            {
+                grammarBuilder.Append(LoadChoices(choice));
+            }
+
+            Grammar command = new Grammar(grammarBuilder);
+            //introduzco nombre de la gramatica
+            command.Name = commandNode.Attributes[0].Value.ToString();
+
+            return command;
+
+        }
+
+        private Choices LoadChoices(XmlNode choiceNode)
+        {
+            Choices choices = new Choices();
+
+            foreach (XmlNode element in choiceNode.ChildNodes)
+            {
+                if (element.FirstChild == null)
+                {
+                    choices.Add(" ");
+                }
+                else
+                {
+                    choices.Add(element.FirstChild.InnerText);
+                }
+            }
+
+            return choices;
         }
 
         public void DeleteAllGrammars()
         {
             recognizer.DeleteAllGrammars();
+        }
+
+        public void DictationMode()
+        {
+            recognizer.DictationMode();
         }
 
         public void ChangePrecisionRecognizer(int precision)

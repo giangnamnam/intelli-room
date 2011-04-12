@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Voice
 {
     public interface IVoiceEngine
@@ -7,6 +8,7 @@ namespace Voice
         void ChangePrecisionRecognizer(int precision);
         void DeleteAllGrammars();
         void DictationMode();
+        void LoadGrammar();
         void Speak(string text);
         void Speak(string text, bool needSynthesizer);
         event EventHandler<System.Speech.Recognition.RecognitionEventArgs> speechRecognizer;

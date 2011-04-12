@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Data;
 
 namespace IntelliRoom
 {
@@ -11,10 +12,10 @@ namespace IntelliRoom
         {
         }
 
-        //public List<Languaje> GetLanguajeList()
-        //{
-            
-        //}
+        public List<Languages> GetLanguajeList()
+        {
+            return new List<Languages>();
+        }
 
         public void Shutdown()
         {

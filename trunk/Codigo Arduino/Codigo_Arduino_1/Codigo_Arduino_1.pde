@@ -45,7 +45,7 @@ void messageReady()
     }
     
     //modo encender dispositivo
-    if( message.chetString("SWITCHON"))
+    if( message.checkString("SWITCHON"))
     {
       
     }

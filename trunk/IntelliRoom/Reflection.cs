@@ -8,21 +8,27 @@ namespace IntelliRoom
 {
     public static class Reflection
     {
-        //metodo cast
-        public static string Invoke(MethodInfo method, object[] parametres)
+        public static object Invoke(MethodInfo method, string[] parametres)
         {
+            //creamos una instancia del objeto
             var instance = Activator.CreateInstance(method.ReflectedType);
+            
+            ParameterInfo[] parametresMethod = method.GetParameters();
+            object[] parametresObj = new object[parametresMethod.Length];
 
-            var result = method.Invoke(instance, parametres);
-            if (result == null)
-                return "No devuelve nada";
-            else
-                return result.ToString();
+            for (int i = 0; i < parametresMethod.Length; i++)
+			{
+                parametresObj[i] = Cast(parametres[i], parametresMethod[i].ParameterType);
+			}            
+
+            var result = method.Invoke(instance, parametresObj);
+
+            return result;
         }
 
-        public static object Cast(string value, Type type)
+        public static object Cast(object value, Type type)
         {
-            return null;
+            return Convert.ChangeType(value, type);
         }
 
         public static MethodInfo[] SearchMethod(String command)

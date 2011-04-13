@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Arduino
 {
-    class Electric
+    public class Device : IDevice
     {
         private Serial serialPort;
         private Dictionary<int, string> disposivos;
         
-        public Electric()
+        public Device()
         {
             serialPort = new Serial();
         }

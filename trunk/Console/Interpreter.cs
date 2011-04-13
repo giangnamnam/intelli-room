@@ -61,7 +61,11 @@ namespace Console
                     if (mi.GetParameters().Length == separateCommand.Length - 1)
                     {
                         //hay un metodo con el mismo numero de parametros
-                        result = Reflection.Invoke(mi, parametres);
+                        object resultObj = Reflection.Invoke(mi, parametres);
+                        if (resultObj == null)
+                            result = "No devuelve nada";
+                        else
+                            result = resultObj.ToString();
                         break; //para no ejecutar mas de uno
                     }
                 }

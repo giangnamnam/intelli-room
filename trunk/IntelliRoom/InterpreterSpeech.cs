@@ -19,7 +19,7 @@ namespace IntelliRoom
         void speechRecognition(object sender, RecognitionEventArgs e)
         {
             String result = Command(e.Result.Grammar.Name);
-            //IntelliRoomSystem.voiceEngine.Speak(result);
+            IntelliRoomSystem.voiceEngine.Speak(result);
         }
 
         private String Command(String command)
@@ -43,7 +43,9 @@ namespace IntelliRoom
                     if (mi.GetParameters().Length == separateCommand.Length - 1)
                     {
                         //hay un metodo con el mismo numero de parametros
-                        result = Reflection.Invoke(mi, parametres);
+                        object resultObj = Reflection.Invoke(mi, parametres);
+                        if (resultObj != null)
+                            result = resultObj.ToString();
                         break; //para no ejecutar mas de uno
                     }
                 }

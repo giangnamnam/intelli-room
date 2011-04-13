@@ -46,11 +46,6 @@ namespace IntelliRoom
             return Utils.GetTime();
         }
 
-        //public string GetWeather(string city)
-        //{
-        //    return Utils.GetWeather(city);
-        //}
-
         public int GetTemperature(string city)
         {
             return new Weather(city).TemperatureC;
@@ -61,11 +56,31 @@ namespace IntelliRoom
             return new Weather(city).Condition;
         }
 
+        public int GetTemperatureFarenheit(string city)
+        {
+            return new Weather(city).TemperatureC;
+        }
+
+        
+
         //LIGHTING
 
         public void SetDirectColor(String color)
         {
             IntelliRoomSystem.lighting.SetDirectColor(color);
+        }
+
+
+        //DEVICE
+
+        public void SwitchOnDevice(int device)
+        {
+            IntelliRoomSystem.device.SwitchOn(device);
+        }
+
+        public void SwitchOffDevice(int device)
+        {
+            IntelliRoomSystem.device.SwitchOff(device);
         }
 
 

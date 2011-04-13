@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Electric.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="IDevice.cs" />
     <Compile Include="ILighting.cs" />
     <Compile Include="Lighting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

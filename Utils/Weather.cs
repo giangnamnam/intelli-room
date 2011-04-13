@@ -55,7 +55,6 @@ namespace IntelliRoom
         private void UpdateWeather(String city)
         {
             XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather=" + city);
-            //.Load("http://www.google.com/ig/api?weather=" + city);
             
             XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
          

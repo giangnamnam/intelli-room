@@ -8,9 +8,9 @@ namespace Data
 {
     public class Languages
     {
-        private static string language;
-        private static string codeRegion;
-        private static string userAgent;
+        private static string language = "Spanish";
+        private static string codeRegion = "es";
+        private static string userAgent = "Mozilla/5.0 (X11; U; Linux i686; es-ES; rv:1.9.0.2) Gecko/2008092313 Ubuntu/9.25 (jaunty) Firefox/3.8";
 
         public static string Language
         {
@@ -32,7 +32,12 @@ namespace Data
 
         public static void LoadLanguaje()
         {
-            //carga un lenguaje dado el codigo de Region
+            //carga un lenguaje dado el codigo de Region TODO
+
+            language = "Spanish";
+            codeRegion = "es";
+            userAgent = "Mozilla/5.0 (X11; U; Linux i686; es-ES; rv:1.9.0.2) Gecko/2008092313 Ubuntu/9.25 (jaunty) Firefox/3.8";
+
         }
 
         public static List<string> GetLanguages()

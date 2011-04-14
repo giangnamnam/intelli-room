@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 using System.Threading;
+using Data;
 
 namespace Arduino
 {
@@ -11,11 +12,11 @@ namespace Arduino
     {
         private SerialPort serial;
         public event EventHandler<SerialDataReceivedEventArgs> serialReceived;
-        public object WriteMonitor = new Object();
+        //public object WriteMonitor = new Object();
 
         public Serial ()
         {
-            serial = new SerialPort("COM4", 9600) { NewLine = "\r" };
+            serial = new SerialPort("COM"+Data.Config.portComArduino.ToString(), 9600) { NewLine = "\r" };
             serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
         }
 
@@ -34,11 +35,11 @@ namespace Arduino
         {
             try
             {
-                Monitor.Enter(WriteMonitor);
+                //Monitor.Enter(WriteMonitor);
                 serial.Open();
                 serial.Write(data, 0, data.Length);
                 serial.Close();
-                Monitor.Exit(WriteMonitor);
+                //Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {
@@ -50,11 +51,11 @@ namespace Arduino
         {
             try
             {
-                Monitor.Enter(WriteMonitor);
+                //Monitor.Enter(WriteMonitor);
                 serial.Open();
                 serial.WriteLine(data);
                 serial.Close();
-                Monitor.Exit(WriteMonitor);
+                //Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {

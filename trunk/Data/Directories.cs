@@ -8,6 +8,8 @@ namespace Data
 {
     public class Directories
     {
+        public static string dir = Directory.GetCurrentDirectory() + "\\Grammar\\" + Languages.CodeRegion + ".xml";
+
         public static string GetAlarmXML()
         {
             return Directory.GetCurrentDirectory() + "\\Data\\" + "Alarms.xml";
@@ -20,7 +22,7 @@ namespace Data
 
         public static string GetLanguageXML()
         {
-            return Directory.GetCurrentDirectory() + "\\Language\\" + Languages.Language + ".xml";
+            return Directory.GetCurrentDirectory() + "\\Language\\" + Languages.CodeRegion + ".xml";
         }
 
         public static string GetDirectoryGrammar()
@@ -30,7 +32,7 @@ namespace Data
 
         public static string GetGrammarXML()
         {
-            return Directory.GetCurrentDirectory() + "\\Grammar\\" + Languages.Language + ".xml";
+            return Directory.GetCurrentDirectory() + "\\Grammar\\" + Languages.CodeRegion + ".xml";
         }
     }
 }

@@ -1,0 +1,6 @@
+﻿<!DOCTYPE doc [<!ATTLIST doc xml:id ID #IMPLIED>]>
+<doc xml:id="one">
+  <para xml:id="two">
+    
+  </para>
+</doc>

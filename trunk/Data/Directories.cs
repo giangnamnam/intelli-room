@@ -8,11 +8,34 @@ namespace Data
 {
     public class Directories
     {
-        public static string dir = Directory.GetCurrentDirectory() + "\\Grammar\\" + Languages.CodeRegion + ".xml";
-
         public static string GetAlarmXML()
         {
             return Directory.GetCurrentDirectory() + "\\Data\\" + "Alarms.xml";
+        }
+
+        public static string GetMediaDirectory()
+        {
+            return Directory.GetCurrentDirectory() + "\\Data\\Media\\";
+        }
+
+        public static string GetAuthorsXML()
+        {
+            return GetMediaDirectory() + "Authors.xml";
+        }
+
+        public static string GetAlbumsXML()
+        {
+            return GetMediaDirectory() + "Albums.xml";
+        }
+
+        public static string GetGenresXML()
+        {
+            return GetMediaDirectory() + "Genres.xml";
+        }
+
+        public static string GetSongsXML()
+        {
+            return GetMediaDirectory() + "Songs.xml";
         }
 
         public static string GetDirectoryLanguage()

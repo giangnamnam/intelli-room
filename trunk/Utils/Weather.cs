@@ -55,15 +55,18 @@ namespace IntelliRoom
         private void UpdateWeather(String city)
         {
             XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather=" + city);
-            
-            XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
-         
-            this.condition = current.Item(0).Attributes.GetNamedItem("data").Value;
-            this.temperatureF = int.Parse(current.Item(1).Attributes.GetNamedItem("data").Value);
-            this.temperatureC = int.Parse(current.Item(2).Attributes.GetNamedItem("data").Value);
-            this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
-            this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
-            this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
+
+            if (xml != null)
+            {
+                XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
+
+                this.condition = current.Item(0).Attributes.GetNamedItem("data").Value;
+                this.temperatureF = int.Parse(current.Item(1).Attributes.GetNamedItem("data").Value);
+                this.temperatureC = int.Parse(current.Item(2).Attributes.GetNamedItem("data").Value);
+                this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
+                this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
+                this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
+            }
         }
 
         private int ParseHumidity(String text)

@@ -7,8 +7,8 @@ namespace Media
         int DecreaseVolume();
         void Forward();
         System.Collections.Generic.List<string> GetAllAlbum();
-        System.Collections.Generic.List<string> GetAllArtist();
-        System.Collections.Generic.List<string> GetAllGenere();
+        System.Collections.Generic.List<string> GetAllAuthors();
+        System.Collections.Generic.List<string> GetAllGenre();
         System.Collections.Generic.List<string> GetAllSong();
         string GetInfoArtist();
         string GetInfoDisc();

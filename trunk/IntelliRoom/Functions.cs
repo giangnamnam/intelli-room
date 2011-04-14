@@ -12,9 +12,9 @@ namespace IntelliRoom
         {
         }
 
-        public List<Languages> GetLanguajeList()
+        public List<string> GetLanguajeList()
         {
-            return new List<Languages>();
+            return Languages.GetLanguages();
         }
 
         public void Shutdown()

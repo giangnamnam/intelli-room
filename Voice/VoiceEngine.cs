@@ -59,6 +59,7 @@ namespace Voice
             DeleteAllGrammars();
             //cargamos el documento XML
             XmlDocument xml = new XmlDocument();
+
             xml.Load(Directories.GetGrammarXML());
 
             foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)

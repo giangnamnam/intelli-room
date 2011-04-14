@@ -13,6 +13,7 @@ namespace Arduino
         public Device()
         {
             serialPort = new Serial();
+            disposivos = new Dictionary<int, string>();
         }
 
         public void SwitchOn (int numDisp)

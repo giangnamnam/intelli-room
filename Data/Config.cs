@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data
 {
-    static class Config
+    public class Config
     {
         public static bool sleep = false;
         public static int portComArduino = 4;

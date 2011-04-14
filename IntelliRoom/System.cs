@@ -12,4 +12,6 @@ namespace IntelliRoom
         public static IMediaPlayer media = new Media.MediaPlayer();
         public static InterpreterSpeech speechInterpreter = new InterpreterSpeech();
     }
+
+
 }

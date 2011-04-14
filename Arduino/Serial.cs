@@ -12,7 +12,7 @@ namespace Arduino
     {
         private SerialPort serial;
         public event EventHandler<SerialDataReceivedEventArgs> serialReceived;
-        //public object WriteMonitor = new Object();
+        public object WriteMonitor = new Object();
 
         public Serial ()
         {
@@ -35,11 +35,11 @@ namespace Arduino
         {
             try
             {
-                //Monitor.Enter(WriteMonitor);
+                Monitor.Enter(WriteMonitor);
                 serial.Open();
                 serial.Write(data, 0, data.Length);
                 serial.Close();
-                //Monitor.Exit(WriteMonitor);
+                Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {
@@ -51,11 +51,11 @@ namespace Arduino
         {
             try
             {
-                //Monitor.Enter(WriteMonitor);
+                Monitor.Enter(WriteMonitor);
                 serial.Open();
                 serial.WriteLine(data);
                 serial.Close();
-                //Monitor.Exit(WriteMonitor);
+                Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {

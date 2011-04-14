@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading;
 using WMPLib;
+using System.Collections.Generic;
 
 namespace Media
 {
     public class MediaPlayer : Media.IMediaPlayer
     {
         private WindowsMediaPlayer player;
-        private List<String> artists;
-        private List<String> generes;
-        private List<String> albums;
-        private List<String> songs;
+        private MusicMedia media;
 
         public MediaPlayer()
         {
             player = new WindowsMediaPlayer();
-            //Thread hilo = new Thread(GetAllInfoMedia());
+            media = new MusicMedia(player);
         }
 
         public void Play()
@@ -155,68 +148,27 @@ namespace Media
             player.URL = url;
         }
 
+        //MUSICMEDIA
 
-        //INFO MEDIA COLLECTION
-        public List<String> GetAllArtist()
+        public List<String> GetAllAuthors()
         {
-            return artists;
+            return media.Authors;
         }
 
         public List<String> GetAllSong()
         {
-            return songs;
+            return media.Songs;
         }
 
-        public List<String> GetAllGenere()
+        public List<String> GetAllGenre()
         {
-            return generes;
+            return media.Genres;
         }
 
         public List<String> GetAllAlbum()
         {
-            return albums;
+            return media.Albums;
         }
 
-        private void GetAllInfoMedia()
-        {
-
-            //cargar la lista
-            IWMPPlaylist media = player.mediaCollection.getAll();
-            List<string> authors = new List<string>();
-            List<string> genres = new List<string>();
-            List<string> albums = new List<string>();
-            List<string> songs = new List<string>();
-            //TODO: mirar si esos son los atributos
-            for (int i = 0; i < media.count; i++)
-            {
-                if (!authors.Contains(media.Item[i].getItemInfo("Author").ToString()))
-                {
-                    authors.Add(media.Item[i].getItemInfo("Author").ToString());
-                }
-
-                if (!genres.Contains(media.Item[i].getItemInfo("Genere").ToString()))
-                {
-                    genres.Add(media.Item[i].getItemInfo("Genere").ToString());
-                }
-
-                if (!albums.Contains(media.Item[i].getItemInfo("Album").ToString()))
-                {
-                    albums.Add(media.Item[i].getItemInfo("Album").ToString());
-                }
-
-                if (!songs.Contains(media.Item[i].getItemInfo("Song").ToString()))
-                {
-                    songs.Add(media.Item[i].getItemInfo("Song").ToString());
-                }
-            }
-            //serializar
-
-            //asignar a la clase
-            this.albums = albums;
-            this.artists = authors;
-            this.generes = genres;
-            this.songs = songs;
-
-        }
     }
 }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WMPLib;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Xml;
 using System.Xml.Serialization;
 using Data;
-using System.Xml;
-using System.Threading;
-using System.IO;
+using WMPLib;
 
 namespace Media
 {
@@ -16,21 +13,21 @@ namespace Media
         private List<string> authors;
         private List<string> genres;
         private List<string> albums;
-        private List<string> songs;
+        private List<string> titles;
 
         public MusicMedia(WindowsMediaPlayer player)
         {
             authors = new List<string>();
             genres = new List<string>();
             albums = new List<string>();
-            songs = new List<string>();
+            titles = new List<string>();
 
             LoadMedia(player);
         }
 
-        public List<string> Songs
+        public List<string> Titles
         {
-            get { return songs; }
+            get { return titles; }
         }
 
         public List<string> Albums
@@ -66,11 +63,11 @@ namespace Media
                     albums = (List<string>)serialize.Deserialize(xml);
                 }
 
-                serialize = new XmlSerializer(this.songs.GetType());
+                serialize = new XmlSerializer(this.titles.GetType());
                 xml = XmlReader.Create(Directories.GetSongsXML());
                 if (serialize.CanDeserialize(xml))
                 {
-                    songs = (List<string>)serialize.Deserialize(xml);
+                    titles = (List<string>)serialize.Deserialize(xml);
                 }
 
                 serialize = new XmlSerializer(this.genres.GetType());
@@ -84,24 +81,20 @@ namespace Media
             else
             {
                 //lanzar hilo
-                //Thread thread = new Thread(new ParameterizedThreadStart(UpdateAllInfoMedia(player)));
-                //thread.Start(player);
-                //thread.
-
-
-                UpdateAllInfoMedia(player);
+                Thread thread = new Thread(new ParameterizedThreadStart(UpdateAllInfoMedia));
+                thread.Start(player);
             }
         }
 
-        private void UpdateAllInfoMedia(WindowsMediaPlayer player)
+        private void UpdateAllInfoMedia(object player)
         {
-
+            
             //cargar la lista
-            IWMPPlaylist media = player.mediaCollection.getAll();
+            IWMPPlaylist media = ((WindowsMediaPlayer)player).mediaCollection.getAll();
             List<string> authors = new List<string>();
             List<string> genres = new List<string>();
             List<string> albums = new List<string>();
-            List<string> songs = new List<string>();
+            List<string> titles = new List<string>();
             //TODO: mirar si esos son los atributos
             for (int i = 0; i < media.count; i++)
             {
@@ -110,9 +103,9 @@ namespace Media
                     authors.Add(media.Item[i].getItemInfo("Author").ToString());
                 }
 
-                if (!genres.Contains(media.Item[i].getItemInfo("Genere").ToString()))
+                if (!genres.Contains(media.Item[i].getItemInfo("Genre").ToString()))
                 {
-                    genres.Add(media.Item[i].getItemInfo("Genere").ToString());
+                    genres.Add(media.Item[i].getItemInfo("Genre").ToString());
                 }
 
                 if (!albums.Contains(media.Item[i].getItemInfo("Album").ToString()))
@@ -120,9 +113,9 @@ namespace Media
                     albums.Add(media.Item[i].getItemInfo("Album").ToString());
                 }
 
-                if (!songs.Contains(media.Item[i].getItemInfo("Song").ToString()))
+                if (!titles.Contains(media.Item[i].getItemInfo("Title").ToString()))
                 {
-                    songs.Add(media.Item[i].getItemInfo("Song").ToString());
+                    titles.Add(media.Item[i].getItemInfo("Title").ToString());
                 }
             }
             //serializar
@@ -139,15 +132,15 @@ namespace Media
             xml = XmlWriter.Create(Directories.GetGenresXML());
             serializer.Serialize(xml, this.genres);
 
-            serializer = new XmlSerializer(this.songs.GetType());
+            serializer = new XmlSerializer(this.titles.GetType());
             xml = XmlWriter.Create(Directories.GetSongsXML());
-            serializer.Serialize(xml, this.songs);
+            serializer.Serialize(xml, this.titles);
 
             //asignar a la clase
             this.albums = albums;
             this.authors = authors;
             this.genres = genres;
-            this.songs = songs;
+            this.titles = titles;
 
         }
     }

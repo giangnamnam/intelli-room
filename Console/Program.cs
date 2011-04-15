@@ -35,10 +35,9 @@ namespace Console
 
         public static String Start()
         {
-            //inicializar motor completo!
-            //@PABLO: COMO LLAMO A LOS CONSTRUCTORES STATICOS??? ES CORRECTO COMO LO TEGNO HECHO???
+            //Llamo al Init de comando, solo deberia llamarse una vez
             IntelliRoom.Command.Init();
-
+            //devuelvo el texto de entrada
             return "Wellcome to IntelliRoom\n";
         }
 

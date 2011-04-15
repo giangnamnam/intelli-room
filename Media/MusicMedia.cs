@@ -98,22 +98,22 @@ namespace Media
             //TODO: mirar si esos son los atributos
             for (int i = 0; i < media.count; i++)
             {
-                if (!authors.Contains(media.Item[i].getItemInfo("Author").ToString()))
+                if (AddElementInMedia(authors,media.Item[i].getItemInfo("Author").ToString()))
                 {
                     authors.Add(media.Item[i].getItemInfo("Author").ToString());
                 }
 
-                if (!genres.Contains(media.Item[i].getItemInfo("Genre").ToString()))
+                if (AddElementInMedia(genres,media.Item[i].getItemInfo("Genre").ToString()))
                 {
                     genres.Add(media.Item[i].getItemInfo("Genre").ToString());
                 }
 
-                if (!albums.Contains(media.Item[i].getItemInfo("Album").ToString()))
+                if (AddElementInMedia(albums, media.Item[i].getItemInfo("Album").ToString()))
                 {
                     albums.Add(media.Item[i].getItemInfo("Album").ToString());
                 }
 
-                if (!titles.Contains(media.Item[i].getItemInfo("Title").ToString()))
+                if (AddElementInMedia(titles, media.Item[i].getItemInfo("Title").ToString()))
                 {
                     titles.Add(media.Item[i].getItemInfo("Title").ToString());
                 }
@@ -142,6 +142,22 @@ namespace Media
             this.genres = genres;
             this.titles = titles;
 
+        }
+
+        public bool AddElementInMedia(List<string> list, string element)
+        {
+            bool result = true;
+            if (element == "")
+            {
+                result = false;
+            }
+            if (result)
+            {
+                string elem = element.ToLower();
+                bool exist = list.Exists(x => x.ToLower() == elem);
+                result = !exist;
+            }
+            return result;
         }
     }
 }

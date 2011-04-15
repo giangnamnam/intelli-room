@@ -143,9 +143,6 @@ namespace Media
             serializer = new XmlSerializer(this.titles.GetType());
             xml = XmlWriter.Create(Directories.GetTitlesXML());
             serializer.Serialize(xml, this.titles);
-
-
-
         }
 
         public bool AddElementInMedia(List<string> list, string element)

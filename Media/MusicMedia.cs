@@ -47,7 +47,8 @@ namespace Media
 
         private void LoadMedia(WindowsMediaPlayer player)
         {
-            if (Directory.Exists(Directories.GetAuthorsXML()) && Directory.Exists(Directories.GetGenresXML()) && Directory.Exists(Directories.GetAlbumsXML()) && Directory.Exists(Directories.GetSongsXML()))
+
+            if (File.Exists(Directories.GetAuthorsXML()) && File.Exists(Directories.GetGenresXML()) && File.Exists(Directories.GetAlbumsXML()) && File.Exists(Directories.GetTitlesXML()))
             {
                 XmlSerializer serialize = new XmlSerializer(this.authors.GetType());
                 XmlReader xml = XmlReader.Create(Directories.GetAuthorsXML());
@@ -64,7 +65,7 @@ namespace Media
                 }
 
                 serialize = new XmlSerializer(this.titles.GetType());
-                xml = XmlReader.Create(Directories.GetSongsXML());
+                xml = XmlReader.Create(Directories.GetTitlesXML());
                 if (serialize.CanDeserialize(xml))
                 {
                     titles = (List<string>)serialize.Deserialize(xml);
@@ -118,11 +119,18 @@ namespace Media
                     titles.Add(media.Item[i].getItemInfo("Title").ToString());
                 }
             }
-            //serializar
 
+            //asignar a la clase
+            this.albums = albums;
+            this.authors = authors;
+            this.genres = genres;
+            this.titles = titles;
+
+            //serializar
             XmlSerializer serializer = new XmlSerializer(this.albums.GetType());
             XmlWriter xml = XmlWriter.Create(Directories.GetAlbumsXML());
             serializer.Serialize(xml, this.albums);
+            xml.Close();
 
             serializer = new XmlSerializer(this.authors.GetType());
             xml = XmlWriter.Create(Directories.GetAuthorsXML());
@@ -133,14 +141,10 @@ namespace Media
             serializer.Serialize(xml, this.genres);
 
             serializer = new XmlSerializer(this.titles.GetType());
-            xml = XmlWriter.Create(Directories.GetSongsXML());
+            xml = XmlWriter.Create(Directories.GetTitlesXML());
             serializer.Serialize(xml, this.titles);
 
-            //asignar a la clase
-            this.albums = albums;
-            this.authors = authors;
-            this.genres = genres;
-            this.titles = titles;
+
 
         }
 

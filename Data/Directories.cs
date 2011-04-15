@@ -8,6 +8,7 @@ namespace Data
 {
     public class Directories
     {
+        //TODO: METODO PARA CREAR DIRECTORIOS POR SI NO ESTAN CREADOS
         public static string GetAlarmXML()
         {
             return Directory.GetCurrentDirectory() + "\\Data\\" + "Alarms.xml";
@@ -33,9 +34,9 @@ namespace Data
             return GetMediaDirectory() + "Genres.xml";
         }
 
-        public static string GetSongsXML()
+        public static string GetTitlesXML()
         {
-            return GetMediaDirectory() + "Songs.xml";
+            return GetMediaDirectory() + "Titles.xml";
         }
 
         public static string GetDirectoryLanguage()

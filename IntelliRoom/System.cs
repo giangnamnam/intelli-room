@@ -6,11 +6,20 @@ namespace IntelliRoom
 {
     static class IntelliRoomSystem
     {
-        public static IVoiceEngine voiceEngine = new VoiceEngine();
-        public static ILighting lighting = new Lighting();
-        public static IDevice device = new Device();
-        public static IMediaPlayer media = new Media.MediaPlayer();
-        public static InterpreterSpeech speechInterpreter = new InterpreterSpeech();
+        public static IVoiceEngine voiceEngine;
+        public static ILighting lighting;
+        public static IDevice device;
+        public static IMediaPlayer media;
+        public static InterpreterSpeech speechInterpreter;
+
+        public static void InitSystem()
+        {
+            voiceEngine = new VoiceEngine();
+            lighting = new Lighting();
+            device = new Device();
+            media = new Media.MediaPlayer();
+            speechInterpreter = new InterpreterSpeech();
+        }
     }
 
 

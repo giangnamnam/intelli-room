@@ -157,7 +157,7 @@ namespace Media
 
         public List<String> GetAllSong()
         {
-            return media.Songs;
+            return media.Titles;
         }
 
         public List<String> GetAllGenre()

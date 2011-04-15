@@ -9,6 +9,21 @@ namespace IntelliRoom
 {
     public class Command
     {
+        //evento de informacion
+        public event EventHandler<EventArgs> informationEvent;
+
+        public void sendInformationEvent(object sender, EventArgs e)
+        {
+            this.informationEvent(sender, e);
+        }
+        //fin evento informacion
+
+        //INIT
+        public static void Init()
+        {
+            IntelliRoomSystem.InitSystem();
+        }
+
         //VOICE
         public void Speak(String speakText)
         {

@@ -86,7 +86,7 @@ namespace Console
         private String Help()
         {
             String help = "Escribe comandos con la siguiente configuracion:\n";
-            help += "<nombrecomando> <primer_argumento> <segundo_argumento> <enesimo_argumento>\n\n";
+            help += "<nombrecomando> <primer_argumento> <segundo_argumento> ... <enesimo_argumento>\n\n";
             help += "Si no conoces los comandos puedes utilizar los comandos de ayuda:\n";
             help += "<AllCommands> -> devuelve una lista con todos los comandos disponibles \n";
             help += "<SearchCommand> <cadena> -> hace una busqueda de comandos donde encaje la cadena";

@@ -192,10 +192,5 @@ namespace Console
             }
             return res;
         }
-        //TODO
-        public static void WriteLine(String text)
-        {
-
-        }
     }
 }

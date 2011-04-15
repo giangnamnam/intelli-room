@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Speech.Recognition;
 using Media;
+using System.Drawing;
+using Data;
 
 namespace IntelliRoom
 {
@@ -50,6 +52,16 @@ namespace IntelliRoom
             IntelliRoomSystem.voiceEngine.AddGrammar(grammar);
         }
 
+        public void DeleteGrammar()
+        {
+            IntelliRoomSystem.voiceEngine.DeleteAllGrammars();
+        }
+
+        public void LoadGrammar()
+        {
+            IntelliRoomSystem.voiceEngine.LoadGrammar();
+        }
+
         //UTILS
         public string GetDate()
         {
@@ -73,10 +85,23 @@ namespace IntelliRoom
 
         public int GetTemperatureFarenheit(string city)
         {
-            return new Weather(city).TemperatureC;
+            return new Weather(city).TemperatureF;
         }
 
-        
+        public int GetHumidity(string city)
+        {
+            return new Weather(city).Humidity;
+        }
+
+        public string GetWindDirection(string city)
+        {
+            return new Weather(city).WindDirection;
+        }
+
+        public int GetWindSpeed(string city)
+        {
+            return new Weather(city).WindSpeed;
+        }
 
         //LIGHTING
 
@@ -85,6 +110,40 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.SetDirectColor(color);
         }
 
+        public void SetDirectColor(byte r, byte g, byte b)
+        {
+            IntelliRoomSystem.lighting.SetDirectColor(r,g,b);
+        }
+
+        public void SetDirectColor(Color color)
+        {
+            IntelliRoomSystem.lighting.SetDirectColor(color);
+        }
+
+        public void SetDegradedColor(byte r, byte g, byte b, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.SetDegradedColor(r, g, b, timeMillis);
+        }
+
+        public void SetDegradedColor(Color color, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.SetDegradedColor(color, timeMillis);
+        }
+
+        public void SetDegradedColor(string colorName, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.SetDegradedColor(colorName,timeMillis);
+        }
+
+        public void TurnOffLight()
+        {
+            IntelliRoomSystem.lighting.TurnOffLight();
+        }
+
+        public void TurnOnLight()
+        {
+            IntelliRoomSystem.lighting.TurnOnLight();
+        }
 
         //DEVICE
 
@@ -226,6 +285,57 @@ namespace IntelliRoom
         public void Stop()
         {
             IntelliRoomSystem.media.Stop();
+        }
+
+
+        //FUNCTIONS
+        public void ChangeLanguaje()
+        {
+        }
+
+        public List<string> GetLanguajeList()
+        {
+            return Languages.GetLanguages();
+        }
+
+        public void Shutdown()
+        {
+        }
+
+        public void CloseAplication()
+        {
+        }
+
+        public void Suspend()
+        {
+        }
+
+        public void Sleep()
+        {
+        }
+
+        public void WakeUp()
+        {
+        }
+
+        public void Hibernate()
+        {
+        }
+
+        public void ActiveRecognizer()
+        {
+        }
+
+        public void DesactiveRecognizer()
+        {
+        }
+
+        public void ActiveSynthesizer()
+        {
+        }
+
+        public void DesactiveSynthesizer()
+        {
         }
     }
 }

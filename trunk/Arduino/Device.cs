@@ -12,7 +12,7 @@ namespace Arduino
         
         public Device()
         {
-            serialPort = new Serial();
+            serialPort = SerialSingleton.Serial;
             disposivos = new Dictionary<int, string>();
         }
 
@@ -20,8 +20,6 @@ namespace Arduino
         {
             serialPort.Write("SWITCHON "+numDisp.ToString());
         }
-
-
 
         public void SwitchOff (int numDisp)
         {

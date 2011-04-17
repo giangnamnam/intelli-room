@@ -8,6 +8,23 @@ using Data;
 
 namespace Arduino
 {
+    public class SerialSingleton
+    {
+        private static Serial serial;
+
+        public static Serial Serial
+        {
+            get 
+            {
+                if (serial == null)
+                {
+                    serial = new Serial();
+                }
+                return serial;
+            }
+        }
+    }
+
     public class Serial
     {
         private SerialPort serial;
@@ -16,14 +33,9 @@ namespace Arduino
 
         public Serial ()
         {
-            serial = new SerialPort("COM"+Data.Config.portComArduino.ToString(), 9600) { NewLine = "\r" };
+            serial = new SerialPort("COM" + Data.Config.portComArduino.ToString(), 9600) { NewLine = "\r" };
             serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
-        }
-
-        public Serial(int PuertoCOM)
-        {
-            serial = new SerialPort("COM"+PuertoCOM.ToString(), 9600) { NewLine = "\r" };
-            serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
+            serial.Open();
         }
 
         void  serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -31,35 +43,17 @@ namespace Arduino
  	        serialReceived(sender,e);
         }
 
-        public void Write(byte[] data)
-        {
-            try
-            {
-                Monitor.Enter(WriteMonitor);
-                serial.Open();
-                serial.Write(data, 0, data.Length);
-                serial.Close();
-                Monitor.Exit(WriteMonitor);
-            }
-            catch (Exception)
-            {
-               
-            }
-        }
-
         public void Write(string data)
         {
             try
             {
                 Monitor.Enter(WriteMonitor);
-                serial.Open();
                 serial.WriteLine(data);
-                serial.Close();
                 Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {
-                
+                //enviar un mensaje de error al sistema de errores
             }
         }
     }

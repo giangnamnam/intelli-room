@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arudino 2.0
+IntelliRoom Arudino 3.0
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
@@ -22,17 +22,17 @@ int dev8 = 0;  //Dispositivo electrico 8
 int dev9 = 0;  //Dispositivo electrico 9
 
 //Configuracion de variables: para el degradado de colores, funcion DEGRADRED
-byte rInit = 0;  //Valor rojo inicial
-byte gInit = 0;  //Valor verde inicial
-byte bInit = 0;  //Valor azul inicial
+int rInit = 0;  //Valor rojo inicial
+int gInit = 0;  //Valor verde inicial
+int bInit = 0;  //Valor azul inicial
 
-byte rNow = 0;  //Valor rojo actual
-byte gNow = 0;  //Valor verde actual
-byte bNow = 0;  //Valor azul actual
+int rNow = 0;  //Valor rojo actual
+int gNow = 0;  //Valor verde actual
+int bNow = 0;  //Valor azul actual
 
-byte rEnd = 0;   //Valor rojo final
-byte gEnd = 0;   //Valor verde final
-byte bEnd = 0;   //Valor azul final
+int rEnd = 0;   //Valor rojo final
+int gEnd = 0;   //Valor verde final
+int bEnd = 0;   //Valor azul final
 
 unsigned long timeInit = 0; //tiempo inicial
 unsigned long timeNow = 0;  //tiempo actual
@@ -47,6 +47,18 @@ void setup()
   //pongo el puerto serie a 9600 baudios
   Serial.begin(9600);
   message.attach(messageReady);
+  
+  //iniciamos los pines digitales
+  pinMode(dev0, OUTPUT);
+  pinMode(dev1, OUTPUT);
+  pinMode(dev2, OUTPUT);
+  pinMode(dev3, OUTPUT);
+  pinMode(dev4, OUTPUT);
+  pinMode(dev5, OUTPUT);
+  pinMode(dev6, OUTPUT);
+  pinMode(dev7, OUTPUT);
+  pinMode(dev8, OUTPUT);
+  pinMode(dev9, OUTPUT);
   
   //por defecto iluminamos a este color (en un futuro lo pondremos a negro)
   SetColor(1,1,1);
@@ -72,10 +84,10 @@ void loop()
      timeEnd = millis() + timeRandom;
    }
    //espero 30 milisegundo (esto no desabilita el Rx)
-   delay(30);
+   delay(10);
 }
 
-void SetColor(byte r, byte g, byte b)
+void SetColor(int r, int g, int b)
 {
   analogWrite(pinLedR, r); //metemos valor en el PWM asignado al valor r
   analogWrite(pinLedG, g); //metemos valor en el PWM asignado al valor g
@@ -85,9 +97,9 @@ void SetColor(byte r, byte g, byte b)
   bNow = b;
 }
 
-byte CalculeValue(byte colorInit, byte colorEnd)
+int CalculeValue(int colorInit, int colorEnd)
 {  
-  return (((timeNow-timeInit)*(colorEnd-colorInit))/(timeEnd-timeInit))+colorInit;
+  return ((timeNow-timeInit)*(colorEnd-colorInit)/(timeEnd-timeInit))+colorInit;
 }
 
 //Metodo que contiene las funciones a ejecutar
@@ -102,19 +114,20 @@ void messageReady()
       rInit = message.readInt();
       gInit = message.readInt();
       bInit = message.readInt();
-      //timeNow = 0;
       timeEnd = millis();
       SetColor(rInit,gInit,bInit);
     }
     //Modo degradado
     if (message.checkString("DEGRADED"))
     {
+      rInit = rNow;
+      gInit = gNow;
+      bInit = bNow;
       rEnd = message.readInt();
       gEnd = message.readInt();
       bEnd = message.readInt();
       timeInit = millis();
       timeEnd = timeInit + message.readLong();
-      SetColor(rEnd,gEnd,bEnd);
     }
     //Modo Aleatorio (RANDOM 0/1 timeRandom)
     if (message.checkString("RANDOM"))

@@ -7,7 +7,6 @@ namespace Data
 {
     public class Config
     {
-        public static bool sleep = false;
         public static int portComArduino = 4;
     }
 }

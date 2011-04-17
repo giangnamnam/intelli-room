@@ -31,6 +31,9 @@
       <SubType>Content</SubType>
       <DependentUpon>Diagrama de Analisis.classdiagram</DependentUpon>
     </Content>
+    <Content Include="ModelDefinition\Package_1218.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Voice DiagramaDiseño.classdiagram">
       <SubType>Content</SubType>
     </Content>

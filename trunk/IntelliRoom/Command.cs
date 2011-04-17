@@ -106,20 +106,20 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.SetDirectColor(r,g,b);
         }
 
-        public void SetDirectColor(Color color)
-        {
-            IntelliRoomSystem.lighting.SetDirectColor(color);
-        }
+        //public void SetDirectColor(Color color)
+        //{
+        //    IntelliRoomSystem.lighting.SetDirectColor(color);
+        //}
 
         public void SetDegradedColor(byte r, byte g, byte b, int timeMillis)
         {
             IntelliRoomSystem.lighting.SetDegradedColor(r, g, b, timeMillis);
         }
 
-        public void SetDegradedColor(Color color, int timeMillis)
-        {
-            IntelliRoomSystem.lighting.SetDegradedColor(color, timeMillis);
-        }
+        //public void SetDegradedColor(Color color, int timeMillis)
+        //{
+        //    IntelliRoomSystem.lighting.SetDegradedColor(color, timeMillis);
+        //}
 
         public void SetDegradedColor(string colorName, int timeMillis)
         {

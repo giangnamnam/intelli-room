@@ -12,7 +12,7 @@ namespace Arduino
 
         public Lighting()
         {
-            serialPort = new Serial();
+            serialPort = SerialSingleton.Serial;
         }
 
         public void TurnOffLight()

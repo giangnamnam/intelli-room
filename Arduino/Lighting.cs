@@ -58,5 +58,29 @@ namespace Arduino
             var message = string.Format("DEGRADED {0} {1} {2} {3}", r, g, b, timeMillis);
             serialPort.Write(message);
         }
+
+        //Random Methods
+        public void ActiveRandomColorMode(int timeMillis)
+        {
+            var message = string.Format("RANDOM 1 {3}",timeMillis);
+            serialPort.Write(message);
+        }
+
+        public void DesactiveRandomColorMode()
+        {
+            serialPort.Write("RANDOM 0");
+        }
+
+        public void RandomColorMode(Boolean active, int timeMillis)
+        {
+            if (active)
+            {
+                ActiveRandomColorMode(timeMillis);
+            }
+            else
+            {
+                DesactiveRandomColorMode();
+            }
+        }
     }
 }

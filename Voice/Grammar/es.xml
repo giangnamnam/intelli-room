@@ -11,9 +11,9 @@
       <element></element>
     </choice>
     <choice>
-      <element>cancion</element>
-      <element>reproduccion</element>
-      <element>musica</element>
+      <element>canción</element>
+      <element>reproducción</element>
+      <element>música</element>
       <element></element>
     </choice>
   </command>
@@ -27,9 +27,9 @@
       <element></element>
     </choice>
     <choice>
-      <element>cancion</element>
-      <element>reproduccion</element>
-      <element>musica</element>
+      <element>canción</element>
+      <element>reproducción</element>
+      <element>música</element>
       <element></element>
     </choice>
   </command>
@@ -37,14 +37,14 @@
   <command name="forward">
     <choice>
       <element>siguiente</element>
-      <element>siguiente cancion</element>
-      <element>cancion siguiente</element>
+      <element>siguiente canción</element>
+      <element>canción siguiente</element>
     </choice>
   </command>
 
   <command name="rewind">
     <choice>
-      <element>cancion anterior</element>
+      <element>canción anterior</element>
     </choice>
   </command>
 
@@ -75,7 +75,7 @@
 
   <command name="loadartist vangelis">
     <choice>
-      <element>poner vangelis</element>
+      <element>poner ványelis</element>
     </choice>
   </command>
 
@@ -91,7 +91,7 @@
     <choice>
       <element>subir volumen</element>
       <element>aumentar volumen</element>
-      <element>mas volumen</element>
+      <element>más volumen</element>
     </choice>
   </command>
 
@@ -122,6 +122,18 @@
   <command name="setdirectcolor red">
     <choice>
       <element>color rojo</element>
+    </choice>
+  </command>
+
+  <command name="setdegradedcolor white 1000">
+    <choice>
+      <element>encender la luz</element>
+    </choice>
+  </command>
+
+  <command name="setdegradedcolor black 1000">
+    <choice>
+      <element>apagar la luz</element>
     </choice>
   </command>
 

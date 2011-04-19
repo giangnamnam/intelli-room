@@ -155,17 +155,17 @@ namespace Media
             return media.Authors;
         }
 
-        public List<String> GetAllSong()
+        public List<String> GetAllTitles()
         {
             return media.Titles;
         }
 
-        public List<String> GetAllGenre()
+        public List<String> GetAllGenres()
         {
             return media.Genres;
         }
 
-        public List<String> GetAllAlbum()
+        public List<String> GetAllAlbums()
         {
             return media.Albums;
         }

@@ -278,6 +278,25 @@ namespace IntelliRoom
             IntelliRoomSystem.media.Stop();
         }
 
+        public List<string> GetAllAuthors()
+        {
+            return IntelliRoomSystem.media.GetAllAuthors();
+        }
+
+        public List<string> GetAllSongs()
+        {
+            return IntelliRoomSystem.media.GetAllTitles();
+        }
+
+        public List<string> GetAllGenres()
+        {
+            return IntelliRoomSystem.media.GetAllGenres();
+        }
+
+        public List<string> GetAllAlbums()
+        {
+            return IntelliRoomSystem.media.GetAllAlbums();
+        }
 
         //FUNCTIONS
         public void ChangeLanguaje()

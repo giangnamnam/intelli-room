@@ -1,8 +1,11 @@
 ﻿using System;
 namespace Arduino
 {
-    public interface ILighting
+    interface ILighting
     {
+        void ActiveRandomColorMode(int timeMillis);
+        void DesactiveRandomColorMode();
+        void RandomColorMode(bool active, int timeMillis);
         void SetDegradedColor(byte r, byte g, byte b, int timeMillis);
         void SetDegradedColor(System.Drawing.Color color, int timeMillis);
         void SetDegradedColor(string colorName, int timeMillis);

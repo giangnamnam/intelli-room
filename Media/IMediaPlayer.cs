@@ -6,10 +6,10 @@ namespace Media
         void ChangeVolume(int newVolume);
         int DecreaseVolume();
         void Forward();
-        System.Collections.Generic.List<string> GetAllAlbum();
+        System.Collections.Generic.List<string> GetAllAlbums();
         System.Collections.Generic.List<string> GetAllAuthors();
-        System.Collections.Generic.List<string> GetAllGenre();
-        System.Collections.Generic.List<string> GetAllSong();
+        System.Collections.Generic.List<string> GetAllGenres();
+        System.Collections.Generic.List<string> GetAllTitles();
         string GetInfoArtist();
         string GetInfoDisc();
         string GetInfoDuration();

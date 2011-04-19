@@ -1,39 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Arduino.Device" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="3.25" Width="2.5" />
+    <Position X="5" Y="4.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAgAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAAAABAAA=</HashCode>
       <FileName>Device.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Arduino.Serial">
-    <Position X="6" Y="7.25" Width="4.75" />
+    <Position X="5.75" Y="10" Width="4.75" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAAQAAAAAEAAAA=</HashCode>
       <FileName>Serial.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Arduino.Lighting" BaseTypeListCollapsed="true">
-    <Position X="8.5" Y="3.25" Width="4" />
+    <Position X="8.25" Y="4.25" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAgAAAAAAAQAAAAAAAAAAAAAgAAAABAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAAgAEAIAAAQAAAAAAAAAAAAAgAAAABAAAQ=</HashCode>
       <FileName>Lighting.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Arduino.SerialSingleton">
+    <Position X="6.25" Y="8.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="Arduino.IDevice">
-    <Position X="5.25" Y="1.5" Width="2.25" />
+    <Position X="5" Y="2.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>IDevice.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Arduino.ILighting">
-    <Position X="8.5" Y="0.5" Width="4" />
+    <Position X="8.25" Y="0.75" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAAgAEAIAAAQAAAAAAAAAAAAAAAAAABAAAQ=</HashCode>
       <FileName>ILighting.cs</FileName>
     </TypeIdentifier>
   </Interface>

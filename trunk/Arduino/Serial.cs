@@ -49,11 +49,14 @@ namespace Arduino
             {
                 Monitor.Enter(WriteMonitor);
                 serial.WriteLine(data);
-                Monitor.Exit(WriteMonitor);
             }
             catch (Exception)
             {
                 //enviar un mensaje de error al sistema de errores
+            }
+            finally
+            {
+                Monitor.Exit(WriteMonitor);
             }
         }
     }

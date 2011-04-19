@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arudino 3.0
+IntelliRoom Arduino 3.2
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
@@ -79,12 +79,14 @@ void loop()
      SetColor(rNow,gNow,bNow); //la imprimimos en los LEDs
    }
    
-   if(randomMode && (timeEnd <= timeNow))
+   if(randomMode && (timeEnd < timeNow))
    {
+     timeInit = millis();
      timeEnd = millis() + timeRandom;
+     ConfigRandomColor();
    }
    //espero 30 milisegundo (esto no desabilita el Rx)
-   delay(10);
+   //delay(50);
 }
 
 void SetColor(int r, int g, int b)
@@ -97,9 +99,22 @@ void SetColor(int r, int g, int b)
   bNow = b;
 }
 
+void ConfigRandomColor()
+{
+     rInit = rEnd;
+     gInit = gEnd;
+     bInit = bEnd;
+     
+     rEnd = random(256);
+     delay(10);
+     gEnd = random(256);
+     delay(10);
+     bEnd = random(256);
+}
+
 int CalculeValue(int colorInit, int colorEnd)
 {  
-  return ((timeNow-timeInit)*(colorEnd-colorInit)/(timeEnd-timeInit))+colorInit;
+  return abs((timeNow-timeInit)*(colorEnd-colorInit)/(timeEnd-timeInit))+colorInit;
 }
 
 //Metodo que contiene las funciones a ejecutar
@@ -115,6 +130,7 @@ void messageReady()
       gInit = message.readInt();
       bInit = message.readInt();
       timeEnd = millis();
+      randomMode = false;
       SetColor(rInit,gInit,bInit);
     }
     //Modo degradado
@@ -127,6 +143,7 @@ void messageReady()
       gEnd = message.readInt();
       bEnd = message.readInt();
       timeInit = millis();
+      randomMode = false;
       timeEnd = timeInit + message.readLong();
     }
     //Modo Aleatorio (RANDOM 0/1 timeRandom)
@@ -137,7 +154,8 @@ void messageReady()
       if (randValue == 1)
         { 
           randomMode = true;
-          timeRandom = message.readLong(); 
+          timeRandom = message.readLong();
+          ConfigRandomColor();
         }
       //Desactivar modo RANDOM (no importa el valor del tiempo)
       if (randValue == 0)

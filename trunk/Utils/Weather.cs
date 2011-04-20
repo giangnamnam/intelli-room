@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Web;
+using Data;
 
 namespace IntelliRoom
 {
@@ -54,7 +55,7 @@ namespace IntelliRoom
 
         private void UpdateWeather(String city)
         {
-            XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather=" + city);
+            XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather="+city+"&hl="+ Languages.CodeRegion);
 
             if (xml != null)
             {

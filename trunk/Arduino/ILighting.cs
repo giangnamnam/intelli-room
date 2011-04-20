@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Arduino
 {
-    interface ILighting
+    public interface ILighting
     {
         void ActiveRandomColorMode(int timeMillis);
         void DesactiveRandomColorMode();

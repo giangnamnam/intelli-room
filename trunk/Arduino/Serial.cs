@@ -35,7 +35,7 @@ namespace Arduino
         {
             serial = new SerialPort("COM" + Data.Config.portComArduino.ToString(), 9600) { NewLine = "\r" };
             serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
-            if(!serial.IsOpen) serial.Open();
+            //if(!serial.IsOpen) serial.Open();
         }
 
         void  serial_DataReceived(object sender, SerialDataReceivedEventArgs e)

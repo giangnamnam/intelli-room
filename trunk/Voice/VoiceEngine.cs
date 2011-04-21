@@ -11,7 +11,7 @@ namespace Voice
     /// <summary>
     /// Gestiona tareas automaticamente y tiene una "interface" para mejorar la abstraccion del proyecto
     /// </summary>
-    public class VoiceEngine : Voice.IVoiceEngine
+    public class VoiceEngine : IVoiceEngine
     {
         #region Fields
         private Synthesizer speech;

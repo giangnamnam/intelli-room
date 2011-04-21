@@ -56,12 +56,12 @@ namespace IntelliRoom
         //UTILS
         public string GetDate()
         {
-            return Utils.GetDate();
+            return Time.GetDate();
         }
 
         public string GetTime()
         {
-            return Utils.GetTime();
+            return Time.GetTime();
         }
 
         public int GetTemperature(string city)

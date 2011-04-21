@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace IntelliRoom
 {
-    public class Utils
+    public class Time
     {
         public static String GetTime()
         {

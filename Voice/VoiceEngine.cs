@@ -31,17 +31,11 @@ namespace Voice
             recognizer.speechRecognized += new EventHandler<SpeechRecognizedEventArgs>(recognizer_speechRecognized);
             speech.finishSpeechEvent += new EventHandler<System.Speech.Synthesis.SpeakCompletedEventArgs>(speech_finishSpeech);
         }
+
         public VoiceEngine(int precisionRecognizer)
         {
             speech = new Synthesizer();
             recognizer = new Recognizer(precisionRecognizer);
-            recognizer.speechRecognized += new EventHandler<SpeechRecognizedEventArgs>(recognizer_speechRecognized);
-            speech.finishSpeechEvent += new EventHandler<System.Speech.Synthesis.SpeakCompletedEventArgs>(speech_finishSpeech);
-        }
-        public VoiceEngine(Grammar grammar, int precisionRecognizer)
-        {
-            speech = new Synthesizer();
-            recognizer = new Recognizer(grammar,precisionRecognizer);
             recognizer.speechRecognized += new EventHandler<SpeechRecognizedEventArgs>(recognizer_speechRecognized);
             speech.finishSpeechEvent += new EventHandler<System.Speech.Synthesis.SpeakCompletedEventArgs>(speech_finishSpeech);
         }

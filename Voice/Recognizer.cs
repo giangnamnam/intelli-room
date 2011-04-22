@@ -53,22 +53,6 @@ namespace Voice
             this.precision = precision;
         }
 
-        internal Recognizer(Grammar grammar)
-        {
-            speechRecognition = new SpeechRecognitionEngine();
-            AddGrammar(grammar);
-            InitRecognizer();
-            this.precision = 70;
-        }
-
-        internal Recognizer(Grammar grammar, int precision)
-        {
-            speechRecognition = new SpeechRecognitionEngine();
-            AddGrammar(grammar);
-            InitRecognizer();
-            this.precision = precision;
-        }
-
         private void InitRecognizer()
         {
             speechRecognition.SetInputToDefaultAudioDevice();

@@ -33,7 +33,7 @@
         <layer Id="22afc8cf-8386-46a8-8755-7cda6804a5d0" name="HTTP Request" />
         <layer Id="1b40d92e-d900-4cee-a4f9-443e5d8d66d7" name="Config" />
         <layer Id="3db8a1ee-912f-4430-b248-8816e0c8e18b" name="XML" />
-        <layer Id="a3e8c7d8-bd15-44d5-a093-bb6b71795871" name="..." />
+        <layer Id="a3e8c7d8-bd15-44d5-a093-bb6b71795871" name="Directories" />
       </childLayers>
     </layer>
   </layers>

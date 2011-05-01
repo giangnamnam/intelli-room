@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
-namespace Image
+namespace Camera
 {
-    class Config
+    static class Config
     {
         public static Camera camera = new Camera();
 
-        public static int captureFPS = 4;
+        public static int processMilliseconds = 1000; //numero de milisegundos que deben de pasar para procesar una nueva imagen
 
         public static int isMovement = 10;
         public static int iluminanceEvent = 10;
@@ -28,5 +30,6 @@ namespace Image
         public static FaceResult faces;
         public static double iluminance;
         public static int numberOfFaces;
+        public static Image<Bgr, Byte> image;
     }
 }

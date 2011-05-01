@@ -2,7 +2,7 @@
 using Emgu.CV;
 using Emgu.CV.Structure;
 
-namespace Image
+namespace Camera
 {
     public class Camera
     {

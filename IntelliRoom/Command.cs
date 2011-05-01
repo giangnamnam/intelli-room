@@ -298,6 +298,10 @@ namespace IntelliRoom
             return IntelliRoomSystem.media.GetAllAlbums();
         }
 
+        //CAMERA
+
+
+
         //FUNCTIONS
         public void ChangeLanguaje()
         {

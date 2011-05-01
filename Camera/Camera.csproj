@@ -8,7 +8,7 @@
     <ProjectGuid>{732FDF8A-2189-4A8D-A634-0B0BF5C53EC6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Image</RootNamespace>
+    <RootNamespace>Camera</RootNamespace>
     <AssemblyName>Image</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -52,15 +52,16 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="IImageEngine.cs" />
     <Compile Include="ImageUtils.cs" />
     <Compile Include="ImageEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HaarCascade\haarcascade_frontalface_alt_tree.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PictureSave\" />
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{4278B7A4-C407-4ED5-8F62-88CC2E8DF227}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -3,9 +3,10 @@ using System.Drawing;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Collections.Generic;
+using Data;
 
 
-namespace Image
+namespace Camera
 {
     class ImageUtils
     {
@@ -47,7 +48,7 @@ namespace Image
             gray._EqualizeHist();
 
             //leemos el XML de entrenamiento de caras (en nuestros caso usamos uno de caras frontales)
-            HaarCascade face = new HaarCascade("HaarCascade\\haarcascade_frontalface_alt_tree.xml");
+            HaarCascade face = new HaarCascade("HaarCascade\\haarcascade_frontalface.xml");
 
             //Detectamos las caras de la imagen en blanco y negro
             //El primer dimensional contiene el canal (solo nos centraremos en el canal 0, porque estamos trabajando en blanco y negro)
@@ -63,17 +64,17 @@ namespace Image
             return result;
         }
 
-        public static void SaveImage(Image<Bgr, Byte> image)
+        public static void SavePicture(Image<Bgr, Byte> image)
         {
-            Random r = new Random();
-            image.Save("PictureSave\\" + r.Next().ToString());
+            int picName = Directories.GetNextNamePicture();
+            image.Save(Directories.GetPicturesDirectory() + picName.ToString()+".jpg");
         }
 
-        public static void SaveImage(Image<Bgr, Byte> image, Rectangle rectangle)
+        public static void SaveFace(Image<Bgr, Byte> image, Rectangle rectangle)
         {
-            image.GrabCut(rectangle, 1);
-            Random r = new Random();
-            image.Save("PictureSave\\" + r.Next().ToString());
+            Image<Bgr, Byte> imageCopy = image.Copy(rectangle);
+            int picFace = Directories.GetNextNameFace();
+            imageCopy.Save(Directories.GetFacesDirectory() + picFace.ToString() + ".jpg");
         }
     }
 
@@ -86,7 +87,7 @@ namespace Image
             faces = new List<Rectangle>();
         }
 
-        private List<Rectangle> Faces
+        public List<Rectangle> Faces
         {
             get { return faces; }
         }

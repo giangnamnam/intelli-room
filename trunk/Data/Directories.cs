@@ -14,42 +14,74 @@ namespace Data
             return Directory.GetCurrentDirectory() + "\\Data\\" + "Alarms.xml";
         }
 
-        public static string GetMediaDirectory()
+        public static string GetHaarCascade()
         {
-            return Directory.GetCurrentDirectory() + "\\Data\\Media\\";
+            return GetDataDirectory() + "\\HaarCascade\\haarcascade_frontalface.xml";
+        }
+
+        public static string GetImagesDirectory()
+        {
+            return Directory.GetCurrentDirectory() + "\\Images\\";
+        }
+
+        public static string GetPicturesDirectory()
+        {
+            return GetImagesDirectory() + "\\Pictures\\";
+        }
+
+        public static string GetFacesDirectory()
+        {
+            return GetImagesDirectory() + "\\Faces\\";
+        }
+        //TO MEJORAR (para evitar fallos con borrado)
+        public static int GetNextNameFace()
+        {
+            FileInfo[] files = new DirectoryInfo(GetFacesDirectory()).GetFiles();
+            return files.Length;
+        }
+
+        public static int GetNextNamePicture()
+        {
+            FileInfo[] files = new DirectoryInfo(GetPicturesDirectory()).GetFiles();
+            return files.Length;
+        }
+
+        public static string GetDataDirectory()
+        {
+            return Directory.GetCurrentDirectory() + "\\Data\\";
         }
 
         public static string GetAuthorsXML()
         {
-            return GetMediaDirectory() + "Authors.xml";
+            return GetDataDirectory() + "Authors.xml";
         }
 
         public static string GetAlbumsXML()
         {
-            return GetMediaDirectory() + "Albums.xml";
+            return GetDataDirectory() + "Albums.xml";
         }
 
         public static string GetGenresXML()
         {
-            return GetMediaDirectory() + "Genres.xml";
+            return GetDataDirectory() + "Genres.xml";
         }
 
         public static string GetTitlesXML()
         {
-            return GetMediaDirectory() + "Titles.xml";
+            return GetDataDirectory() + "Titles.xml";
         }
 
-        public static string GetDirectoryLanguage()
+        public static string GetLanguageDirectory()
         {
-            return Directory.GetCurrentDirectory() + "\\Language";
+            return Directory.GetCurrentDirectory() + "\\Language\\";
         }
 
         public static string GetLanguageXML()
         {
-            return Directory.GetCurrentDirectory() + "\\Language\\" + Languages.CodeRegion + ".xml";
+            return GetLanguageDirectory() + Languages.CodeRegion + ".xml";
         }
 
-        public static string GetDirectoryGrammar()
+        public static string GetGrammarDirectory()
         {
             return Directory.GetCurrentDirectory() + "\\Grammar";
         }

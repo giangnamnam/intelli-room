@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using System.Diagnostics;
+using System.Drawing;
+using System.Threading;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
-namespace Image
+namespace Camera
 {
-    class ImageEngine
+    public class ImageEngine : IImageEngine
     {
         public event EventHandler movementDetected;
         public event EventHandler facesDetected;
@@ -17,11 +16,44 @@ namespace Image
         public Image<Bgr, Byte> image;
         public Image<Bgr, Byte> lastImage;
 
-        public ImageEngine() { }
+        private Stopwatch time;
+        private Thread thread;
 
-        public void ProcessImage()
+        public ImageEngine() 
+        {
+            time = new Stopwatch();
+            thread = new Thread(new ThreadStart(StartEngine));
+        }
+
+        public void StartEngine()
+        {
+            time.Start();
+            thread.Start();
+            while (true)
+            {
+                if (time.ElapsedMilliseconds >= Config.processMilliseconds)
+                {
+                    time.Reset();
+                    time.Start();
+                    ProcessImage();
+                }
+                System.Threading.Thread.Sleep(20);
+            }
+        }
+
+        public void StopEngine()
+        {
+            if (thread.IsAlive)
+            {
+                thread.Abort();
+            }
+        }
+
+        private void ProcessImage()
         {
             GetImage();
+
+            LastResults.image = image.Copy();
 
             if (Config.calculeIluminance)
             {
@@ -40,6 +72,11 @@ namespace Image
                 if (movement >= Config.isMovement)
                 {
 
+
+                    if (Config.saveMovement)
+                    {
+                        ImageUtils.SavePicture(image);
+                    }
                 }
             }
 
@@ -50,16 +87,26 @@ namespace Image
                 LastResults.numberOfFaces = faceResult.GetNumberOfFaces();
                 if (faceResult.FaceDetect())
                 {
-
+                    if (Config.saveFaces)
+                    {
+                        foreach (Rectangle rect in faceResult.Faces)
+                        {
+                            ImageUtils.SaveFace(image,rect);
+                        }
+                    }
                 }
             }
-
         }
+
         private void GetImage()
         {
             if (lastImage == null)
             {
                 lastImage = Config.camera.GetImage();
+            }
+            else
+            {
+                lastImage = image.Copy();
             }
 
             image = Config.camera.GetImage();

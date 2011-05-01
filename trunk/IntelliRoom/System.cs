@@ -1,6 +1,7 @@
 ﻿using Arduino;
 using Media;
 using Voice;
+using Camera;
 
 namespace IntelliRoom
 {
@@ -11,6 +12,7 @@ namespace IntelliRoom
         public static IDevice device;
         public static IMediaPlayer media;
         public static InterpreterSpeech speechInterpreter;
+        public static IImageEngine camera;
 
         public static void InitSystem()
         {
@@ -19,8 +21,7 @@ namespace IntelliRoom
             device = new Device();
             media = new Media.MediaPlayer();
             speechInterpreter = new InterpreterSpeech();
+            camera = new ImageEngine();
         }
     }
-
-
 }

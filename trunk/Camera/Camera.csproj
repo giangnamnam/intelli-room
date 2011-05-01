@@ -52,7 +52,8 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="ImageUtils.cs" />
+    <Compile Include="ImageEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

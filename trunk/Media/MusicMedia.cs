@@ -35,7 +35,7 @@ namespace Media
             }
             else
             {
-                
+                LoadPlayListCollection(playList);
             }
             
         }
@@ -62,7 +62,6 @@ namespace Media
 
         private void LoadMediaCollection(object playList)
         {
-
             if (IsPosibleDeserialize())
             {
                 MediaDeserialize();
@@ -70,10 +69,9 @@ namespace Media
             else
             {
                 LoadPlayListCollection((IWMPPlaylist)playList);
+                //serializar
+                MediaSerialize();
             }
-
-            //serializar
-            MediaSerialize();
         }
 
         private static bool IsPosibleDeserialize()
@@ -121,24 +119,24 @@ namespace Media
 
             for (int i = 0; i < playList.count; i++)
             {
-                if (AddElementInMedia(authors,playList.Item[i].getItemInfo("Author").ToString()))
+                if (AddElementInMedia(authors,playList.Item[i].getItemInfo("Author")))
                 {
-                    authors.Add(playList.Item[i].getItemInfo("Author").ToString());
+                    authors.Add(playList.Item[i].getItemInfo("Author"));
                 }
 
-                if (AddElementInMedia(genres,playList.Item[i].getItemInfo("Genre").ToString()))
+                if (AddElementInMedia(genres,playList.Item[i].getItemInfo("Genre")))
                 {
-                    genres.Add(playList.Item[i].getItemInfo("Genre").ToString());
+                    genres.Add(playList.Item[i].getItemInfo("Genre"));
                 }
 
-                if (AddElementInMedia(albums, playList.Item[i].getItemInfo("Album").ToString()))
+                if (AddElementInMedia(albums, playList.Item[i].getItemInfo("Album")))
                 {
-                    albums.Add(playList.Item[i].getItemInfo("Album").ToString());
+                    albums.Add(playList.Item[i].getItemInfo("Album"));
                 }
 
-                if (AddElementInMedia(titles, playList.Item[i].getItemInfo("Title").ToString()))
+                if (AddElementInMedia(titles, playList.Item[i].getItemInfo("Title")))
                 {
-                    titles.Add(playList.Item[i].getItemInfo("Title").ToString());
+                    titles.Add(playList.Item[i].getItemInfo("Title"));
                 }
             }
 
@@ -147,8 +145,6 @@ namespace Media
             this.authors = authors;
             this.genres = genres;
             this.titles = titles;
-
-            
         }
 
         private void MediaSerialize()

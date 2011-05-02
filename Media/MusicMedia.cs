@@ -8,21 +8,36 @@ using WMPLib;
 
 namespace Media
 {
-    class MusicMedia
+    public class MusicMedia
     {
         private List<string> authors;
         private List<string> genres;
         private List<string> albums;
         private List<string> titles;
 
-        public MusicMedia(WindowsMediaPlayer player)
+        /// <summary>
+        /// Contructor de MusicMedia
+        /// </summary>
+        /// <param name="playList">Le pasamos por parametros la PlayList que queremos transformar a MusicMedia</param>
+        /// <param name="isMediaCollection">Le definimos si se trata de una MediaColleccion o de una PlayList</param>
+        public MusicMedia(IWMPPlaylist playList, bool isMediaCollection)
         {
             authors = new List<string>();
             genres = new List<string>();
             albums = new List<string>();
             titles = new List<string>();
 
-            LoadMedia(player);
+            if (isMediaCollection)
+            {
+                //lanzar hilo
+                Thread thread = new Thread(new ParameterizedThreadStart(LoadMediaCollection));
+                thread.Start(playList);
+            }
+            else
+            {
+                
+            }
+            
         }
 
         public List<string> Titles
@@ -45,78 +60,85 @@ namespace Media
             get { return authors; }
         }
 
-        private void LoadMedia(WindowsMediaPlayer player)
+        private void LoadMediaCollection(object playList)
         {
 
-            if (File.Exists(Directories.GetAuthorsXML()) && File.Exists(Directories.GetGenresXML()) && File.Exists(Directories.GetAlbumsXML()) && File.Exists(Directories.GetTitlesXML()))
+            if (IsPosibleDeserialize())
             {
-                XmlSerializer serialize = new XmlSerializer(this.authors.GetType());
-                XmlReader xml = XmlReader.Create(Directories.GetAuthorsXML());
-                if (serialize.CanDeserialize(xml))
-                {
-                    authors = (List<string>)serialize.Deserialize(xml);
-                }
-
-                serialize = new XmlSerializer(this.albums.GetType());
-                xml = XmlReader.Create(Directories.GetAlbumsXML());
-                if (serialize.CanDeserialize(xml))
-                {
-                    albums = (List<string>)serialize.Deserialize(xml);
-                }
-
-                serialize = new XmlSerializer(this.titles.GetType());
-                xml = XmlReader.Create(Directories.GetTitlesXML());
-                if (serialize.CanDeserialize(xml))
-                {
-                    titles = (List<string>)serialize.Deserialize(xml);
-                }
-
-                serialize = new XmlSerializer(this.genres.GetType());
-                xml = XmlReader.Create(Directories.GetGenresXML());
-                if (serialize.CanDeserialize(xml))
-                {
-                    genres = (List<string>)serialize.Deserialize(xml);
-                }
-
+                MediaDeserialize();
             }
             else
             {
-                //lanzar hilo
-                Thread thread = new Thread(new ParameterizedThreadStart(UpdateAllInfoMedia));
-                thread.Start(player);
+                LoadPlayListCollection((IWMPPlaylist)playList);
+            }
+
+            //serializar
+            MediaSerialize();
+        }
+
+        private static bool IsPosibleDeserialize()
+        {
+            return File.Exists(Directories.GetAuthorsXML()) && File.Exists(Directories.GetGenresXML()) && File.Exists(Directories.GetAlbumsXML()) && File.Exists(Directories.GetTitlesXML());
+        }
+
+        private void MediaDeserialize()
+        {
+            XmlSerializer serialize = new XmlSerializer(this.authors.GetType());
+            XmlReader xml = XmlReader.Create(Directories.GetAuthorsXML());
+            if (serialize.CanDeserialize(xml))
+            {
+                authors = (List<string>)serialize.Deserialize(xml);
+            }
+
+            serialize = new XmlSerializer(this.albums.GetType());
+            xml = XmlReader.Create(Directories.GetAlbumsXML());
+            if (serialize.CanDeserialize(xml))
+            {
+                albums = (List<string>)serialize.Deserialize(xml);
+            }
+
+            serialize = new XmlSerializer(this.titles.GetType());
+            xml = XmlReader.Create(Directories.GetTitlesXML());
+            if (serialize.CanDeserialize(xml))
+            {
+                titles = (List<string>)serialize.Deserialize(xml);
+            }
+
+            serialize = new XmlSerializer(this.genres.GetType());
+            xml = XmlReader.Create(Directories.GetGenresXML());
+            if (serialize.CanDeserialize(xml))
+            {
+                genres = (List<string>)serialize.Deserialize(xml);
             }
         }
 
-        private void UpdateAllInfoMedia(object player)
+        private void LoadPlayListCollection(IWMPPlaylist playList)
         {
-            
-            //cargar la lista
-            IWMPPlaylist media = ((WindowsMediaPlayer)player).mediaCollection.getAll();
             List<string> authors = new List<string>();
             List<string> genres = new List<string>();
             List<string> albums = new List<string>();
             List<string> titles = new List<string>();
-            //TODO: mirar si esos son los atributos
-            for (int i = 0; i < media.count; i++)
+
+            for (int i = 0; i < playList.count; i++)
             {
-                if (AddElementInMedia(authors,media.Item[i].getItemInfo("Author").ToString()))
+                if (AddElementInMedia(authors,playList.Item[i].getItemInfo("Author").ToString()))
                 {
-                    authors.Add(media.Item[i].getItemInfo("Author").ToString());
+                    authors.Add(playList.Item[i].getItemInfo("Author").ToString());
                 }
 
-                if (AddElementInMedia(genres,media.Item[i].getItemInfo("Genre").ToString()))
+                if (AddElementInMedia(genres,playList.Item[i].getItemInfo("Genre").ToString()))
                 {
-                    genres.Add(media.Item[i].getItemInfo("Genre").ToString());
+                    genres.Add(playList.Item[i].getItemInfo("Genre").ToString());
                 }
 
-                if (AddElementInMedia(albums, media.Item[i].getItemInfo("Album").ToString()))
+                if (AddElementInMedia(albums, playList.Item[i].getItemInfo("Album").ToString()))
                 {
-                    albums.Add(media.Item[i].getItemInfo("Album").ToString());
+                    albums.Add(playList.Item[i].getItemInfo("Album").ToString());
                 }
 
-                if (AddElementInMedia(titles, media.Item[i].getItemInfo("Title").ToString()))
+                if (AddElementInMedia(titles, playList.Item[i].getItemInfo("Title").ToString()))
                 {
-                    titles.Add(media.Item[i].getItemInfo("Title").ToString());
+                    titles.Add(playList.Item[i].getItemInfo("Title").ToString());
                 }
             }
 
@@ -126,7 +148,11 @@ namespace Media
             this.genres = genres;
             this.titles = titles;
 
-            //serializar
+            
+        }
+
+        private void MediaSerialize()
+        {
             XmlSerializer serializer = new XmlSerializer(this.albums.GetType());
             XmlWriter xml = XmlWriter.Create(Directories.GetAlbumsXML());
             serializer.Serialize(xml, this.albums);
@@ -145,7 +171,7 @@ namespace Media
             serializer.Serialize(xml, this.titles);
         }
 
-        public bool AddElementInMedia(List<string> list, string element)
+        private bool AddElementInMedia(List<string> list, string element)
         {
             bool result = true;
             if (element == "")
@@ -159,6 +185,36 @@ namespace Media
                 result = !exist;
             }
             return result;
+        }
+
+        public override string ToString()
+        {
+            string result = "----MEDIA----\n";
+            result += "---------" + authors.Count + " Authors---------\n";
+            foreach (string element in authors)
+	        {
+                result += element + "\n";
+	        }
+            result += "\n";
+            result += "---------" + genres.Count + " Genres---------\n";
+            foreach (string element in genres)
+            {
+                result += element + "\n";
+            }
+            result += "\n";
+            result += "---------" + albums.Count + " Albums---------\n";
+            foreach (string element in albums)
+            {
+                result += element + "\n";
+            }
+            result += "\n";
+            result += "---------" + titles.Count + " Titles---------\n";
+            foreach (string element in titles)
+            {
+                result += element + "\n";
+            }
+
+            return result;            
         }
     }
 }

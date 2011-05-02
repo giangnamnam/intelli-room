@@ -27,17 +27,20 @@ namespace Camera
 
         public void StartEngine()
         {
-            time.Start();
-            thread.Start();
-            while (true)
+            if (!thread.IsAlive)
             {
-                if (time.ElapsedMilliseconds >= Config.processMilliseconds)
+                time.Start();
+                thread.Start();
+                while (thread.IsAlive)
                 {
-                    time.Reset();
-                    time.Start();
-                    ProcessImage();
+                    if (time.ElapsedMilliseconds >= Config.processMilliseconds)
+                    {
+                        time.Reset();
+                        time.Start();
+                        ProcessImage();
+                    }
+                    System.Threading.Thread.Sleep(20);
                 }
-                System.Threading.Thread.Sleep(20);
             }
         }
 
@@ -61,7 +64,7 @@ namespace Camera
                 LastResults.iluminance = iluminance;
                 if (iluminance >= Config.iluminanceEvent)
                 {
-                    
+                    //lanzar evento
                 }
             }
 
@@ -71,7 +74,7 @@ namespace Camera
                 LastResults.movement = movement;
                 if (movement >= Config.isMovement)
                 {
-
+                    //lanzar evento
 
                     if (Config.saveMovement)
                     {
@@ -87,6 +90,7 @@ namespace Camera
                 LastResults.numberOfFaces = faceResult.GetNumberOfFaces();
                 if (faceResult.FaceDetect())
                 {
+                    //lanzar evento
                     if (Config.saveFaces)
                     {
                         foreach (Rectangle rect in faceResult.Faces)

@@ -177,12 +177,12 @@ namespace IntelliRoom
 
         public string GetInfoArtist()
         {
-            return IntelliRoomSystem.media.GetInfoArtist();
+            return IntelliRoomSystem.media.GetInfoAuthor();
         }
 
         public string GetInfoDisc()
         {
-            return IntelliRoomSystem.media.GetInfoDisc();
+            return IntelliRoomSystem.media.GetInfoAlbum();
         }
 
         public string GetInfoDuration()
@@ -190,7 +190,7 @@ namespace IntelliRoom
             return IntelliRoomSystem.media.GetInfoDuration();
         }
 
-        public string GetInfoPlayList()
+        public MusicMedia GetInfoPlayList()
         {
             return IntelliRoomSystem.media.GetInfoPlayList();
         }
@@ -203,6 +203,11 @@ namespace IntelliRoom
         public int IncreaseVolume()
         {
             return IntelliRoomSystem.media.IncreaseVolume();
+        }
+
+        public int GetVolume()
+        {
+            return IntelliRoomSystem.media.GetVolume();
         }
 
         public void MinimumVolume()
@@ -225,19 +230,19 @@ namespace IntelliRoom
             IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
         }
 
-        public void LoadArtist(string nameArtist)
+        public void LoadAuthor(string nameArtist)
         {
-            IntelliRoomSystem.media.LoadMediaArtist(nameArtist);
+            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
         }
 
-        public void LoadGenere(string nameGenre)
+        public void LoadGenre(string nameGenre)
         {
             IntelliRoomSystem.media.LoadMediaGenre(nameGenre);
         }
 
-        public void LoadSong(string nameSong)
+        public void LoadTitle(string nameSong)
         {
-            IntelliRoomSystem.media.LoadMediaSong(nameSong);
+            IntelliRoomSystem.media.LoadMediaTitle(nameSong);
         }
 
         public void LoadUrl(string url)
@@ -249,28 +254,9 @@ namespace IntelliRoom
             IntelliRoomSystem.media.Mute();
         }
 
-        public void NotRepeat()
-        {
-            IntelliRoomSystem.media.NotRepeat();
-        }
-
-        public void RepeatAll()
-        {
-            IntelliRoomSystem.media.RepeatAll();
-        }
-
-        public void RepeatOne()
-        {
-            IntelliRoomSystem.media.RepeatOne();
-        }
-
         public void Rewind()
         {
             IntelliRoomSystem.media.Rewind();
-        }
-        public void Shuffle()
-        {
-            IntelliRoomSystem.media.Shuffle();
         }
 
         public void Stop()
@@ -300,7 +286,15 @@ namespace IntelliRoom
 
         //CAMERA
 
+        public void StartProcessImage()
+        {
+            IntelliRoomSystem.camera.StartEngine();
+        }
 
+        public void StopProcessImage()
+        {
+            IntelliRoomSystem.camera.StopEngine();
+        }
 
         //FUNCTIONS
         public void ChangeLanguaje()

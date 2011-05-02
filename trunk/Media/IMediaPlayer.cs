@@ -10,26 +10,24 @@ namespace Media
         System.Collections.Generic.List<string> GetAllAuthors();
         System.Collections.Generic.List<string> GetAllGenres();
         System.Collections.Generic.List<string> GetAllTitles();
-        string GetInfoArtist();
-        string GetInfoDisc();
+        string GetInfoAlbum();
+        string GetInfoAuthor();
         string GetInfoDuration();
-        string GetInfoPlayList();
+        string GetInfoGenre();
+        MusicMedia GetInfoPlayList();
         string GetInfoTitle();
+        int GetVolume();
         int IncreaseVolume();
         void LoadAllMedia();
         void LoadMediaAlbum(string nameAlbum);
-        void LoadMediaArtist(string nameArtist);
+        void LoadMediaAuthor(string nameAuthor);
         void LoadMediaGenre(string nameGenre);
-        void LoadMediaSong(string nameSong);
+        void LoadMediaTitle(string nameTitle);
         void LoadUrl(string url);
         void Mute();
-        void NotRepeat();
         void Pause();
         void Play();
-        void RepeatAll();
-        void RepeatOne();
         void Rewind();
-        void Shuffle();
         void Stop();
     }
 }

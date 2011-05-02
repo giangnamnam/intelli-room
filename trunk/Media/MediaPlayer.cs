@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Media
 {
-    public class MediaPlayer : Media.IMediaPlayer
+    public class MediaPlayer : IMediaPlayer
     {
         private WindowsMediaPlayer player;
         private MusicMedia media;
@@ -12,7 +12,7 @@ namespace Media
         public MediaPlayer()
         {
             player = new WindowsMediaPlayer();
-            media = new MusicMedia(player);
+            media = new MusicMedia(player.mediaCollection.getAll(),true);
         }
 
         public void Play()
@@ -43,13 +43,13 @@ namespace Media
         public int IncreaseVolume()
         {
             player.settings.volume = player.settings.volume + 20;
-            return player.settings.volume;
+            return GetVolume();
         }
 
         public int DecreaseVolume()
         {
             player.settings.volume = player.settings.volume - 20;
-            return player.settings.volume;
+            return GetVolume();
         }
 
         public void ChangeVolume(int newVolume)
@@ -57,36 +57,26 @@ namespace Media
             player.settings.volume = newVolume;
         }
 
+        public int GetVolume()
+        {
+            return player.settings.volume;
+        }
+
         public void Mute()
         {
             player.settings.volume = 0;
         }
 
-        public void Shuffle()
+        //INFO
+
+        public string GetInfoAuthor()
         {
-            throw new NotImplementedException();
+            return player.controls.currentItem.getItemInfo("Author");
         }
 
-        public void RepeatAll()
+        public string GetInfoGenre()
         {
-            throw new NotImplementedException();
-        }
-
-        public void RepeatOne()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NotRepeat()
-        {
-            throw new NotImplementedException();
-        }
-
-        //STRING
-
-        public string GetInfoArtist()
-        {
-            throw new NotImplementedException();
+            return player.controls.currentItem.getItemInfo("Genre");
         }
 
         public string GetInfoDuration()
@@ -94,9 +84,9 @@ namespace Media
             return player.controls.currentItem.durationString;
         }
 
-        public string GetInfoDisc()
+        public string GetInfoAlbum()
         {
-            throw new NotImplementedException();
+            return player.controls.currentItem.getItemInfo("Album");
         }
 
         public string GetInfoTitle()
@@ -104,28 +94,22 @@ namespace Media
             return player.controls.currentItem.name;
         }
 
-        public string GetInfoPlayList()
+        //TODO
+        public MusicMedia GetInfoPlayList()
         {
-            string result = "";
-            
-            for (int i = 0; i < player.currentPlaylist.count; i++)
-            {
-                result += player.currentPlaylist.Item[i].name + "\n";
-            }
-
-            return result;
+            return new MusicMedia(player.currentPlaylist,false);
         }
     
         //MEDIA COLLECTION
 
-        public void LoadMediaArtist(string nameArtist)
+        public void LoadMediaAuthor(string nameAuthor)
         {
-            player.currentPlaylist = player.mediaCollection.getByAuthor(nameArtist);
+            player.currentPlaylist = player.mediaCollection.getByAuthor(nameAuthor);
         }
 
-        public void LoadMediaSong(string nameSong)
+        public void LoadMediaTitle(string nameTitle)
         {
-            player.currentPlaylist = player.mediaCollection.getByName(nameSong);
+            player.currentPlaylist = player.mediaCollection.getByName(nameTitle);
         }
 
         public void LoadMediaGenre(string nameGenre)

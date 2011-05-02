@@ -10,7 +10,7 @@ namespace Camera
 
         public Camera()
         {
-            capture = new Capture(0);
+            capture = new Capture();
             
         }
 

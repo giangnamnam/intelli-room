@@ -170,9 +170,9 @@ namespace IntelliRoom
             IntelliRoomSystem.media.ChangeVolume(i);
         }
 
-        public int DecreaseVolume()
+        public void DecreaseVolume()
         {
-            return IntelliRoomSystem.media.DecreaseVolume();
+            IntelliRoomSystem.media.DecreaseVolume();
         }
 
         public string GetInfoArtist()
@@ -195,14 +195,19 @@ namespace IntelliRoom
             return IntelliRoomSystem.media.GetInfoPlayList();
         }
 
+        public MusicMedia GetInfoMedia()
+        {
+            return IntelliRoomSystem.media.GetInfoMedia();
+        }
+
         public string GetInfoTitle()
         {
             return IntelliRoomSystem.media.GetInfoTitle();
         }
 
-        public int IncreaseVolume()
+        public void IncreaseVolume()
         {
-            return IntelliRoomSystem.media.IncreaseVolume();
+            IntelliRoomSystem.media.IncreaseVolume();
         }
 
         public int GetVolume()

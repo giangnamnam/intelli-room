@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Media
 {
-    public class MediaPlayer : IMediaPlayer
+    public class MediaPlayer: IMediaPlayer
     {
         private WindowsMediaPlayer player;
         private MusicMedia media;
@@ -14,6 +14,13 @@ namespace Media
             player = new WindowsMediaPlayer();
             media = new MusicMedia(player.mediaCollection.getAll(),true);
         }
+
+        public MusicMedia Media
+        {
+            get { return media; }
+        }
+
+        //CONTROL
 
         public void Play()
         {
@@ -40,16 +47,14 @@ namespace Media
             player.controls.previous();
         }
 
-        public int IncreaseVolume()
+        public void IncreaseVolume()
         {
             player.settings.volume = player.settings.volume + 20;
-            return GetVolume();
         }
 
-        public int DecreaseVolume()
+        public void DecreaseVolume()
         {
             player.settings.volume = player.settings.volume - 20;
-            return GetVolume();
         }
 
         public void ChangeVolume(int newVolume)
@@ -79,26 +84,31 @@ namespace Media
             return player.controls.currentItem.getItemInfo("Genre");
         }
 
+        public string GetInfoAlbum()
+        {
+            return player.controls.currentItem.getItemInfo("Album");
+        }
+        
+        public string GetInfoTitle()
+        {
+            return player.controls.currentItem.getItemInfo("Title");
+        }
+
         public string GetInfoDuration()
         {
             return player.controls.currentItem.durationString;
         }
 
-        public string GetInfoAlbum()
-        {
-            return player.controls.currentItem.getItemInfo("Album");
-        }
-
-        public string GetInfoTitle()
-        {
-            return player.controls.currentItem.name;
-        }
-
-        //TODO
         public MusicMedia GetInfoPlayList()
         {
             return new MusicMedia(player.currentPlaylist,false);
         }
+
+        public MusicMedia GetInfoMedia()
+        {
+            return Media;
+        }
+
     
         //MEDIA COLLECTION
 
@@ -136,22 +146,22 @@ namespace Media
 
         public List<String> GetAllAuthors()
         {
-            return media.Authors;
+            return Media.Authors;
         }
 
         public List<String> GetAllTitles()
         {
-            return media.Titles;
+            return Media.Titles;
         }
 
         public List<String> GetAllGenres()
         {
-            return media.Genres;
+            return Media.Genres;
         }
 
         public List<String> GetAllAlbums()
         {
-            return media.Albums;
+            return Media.Albums;
         }
 
     }

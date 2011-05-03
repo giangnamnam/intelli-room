@@ -4,7 +4,7 @@ namespace Media
     public interface IMediaPlayer
     {
         void ChangeVolume(int newVolume);
-        int DecreaseVolume();
+        void DecreaseVolume();
         void Forward();
         System.Collections.Generic.List<string> GetAllAlbums();
         System.Collections.Generic.List<string> GetAllAuthors();
@@ -14,16 +14,18 @@ namespace Media
         string GetInfoAuthor();
         string GetInfoDuration();
         string GetInfoGenre();
+        MusicMedia GetInfoMedia();
         MusicMedia GetInfoPlayList();
         string GetInfoTitle();
         int GetVolume();
-        int IncreaseVolume();
+        void IncreaseVolume();
         void LoadAllMedia();
         void LoadMediaAlbum(string nameAlbum);
         void LoadMediaAuthor(string nameAuthor);
         void LoadMediaGenre(string nameGenre);
         void LoadMediaTitle(string nameTitle);
         void LoadUrl(string url);
+        MusicMedia Media { get; }
         void Mute();
         void Pause();
         void Play();

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Media.MusicMedia">
+    <Position X="7.5" Y="9.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAAAEIEAEIAAAAKAADCAAAIQAAACAAAAAA=</HashCode>
+      <FileName>MusicMedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Media.MediaPlayer" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAoABAABAKAAAAACMEJCQAAAxkUCAABoAAABAAAAEY=</HashCode>
+      <FileName>MediaPlayer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Media.IMediaPlayer">
+    <Position X="11.75" Y="2.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAoABAABAKAAAAACMEJCQAAAxkUCAAAoAAAAAAAAEY=</HashCode>
+      <FileName>IMediaPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

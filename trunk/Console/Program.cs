@@ -24,14 +24,7 @@ namespace Console
             }
 
         }
-
-        public static void PrintInformation(String information)
-        {
-            System.Console.BackgroundColor = ConsoleColor.Yellow;
-            System.Console.WriteLine("Info: " + information);
-            System.Console.BackgroundColor = ConsoleColor.White;
-        }
-        
+                
 
         public static String Start()
         {

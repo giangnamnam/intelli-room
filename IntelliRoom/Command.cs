@@ -106,24 +106,24 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.SetDirectColor(r,g,b);
         }
 
-        //public void SetDirectColor(Color color)
-        //{
-        //    IntelliRoomSystem.lighting.SetDirectColor(color);
-        //}
-
-        public void SetDegradedColor(byte r, byte g, byte b, int timeMillis)
+        public void SetDirectColor(Color color)
         {
-            IntelliRoomSystem.lighting.SetDegradedColor(r, g, b, timeMillis);
+            IntelliRoomSystem.lighting.SetDirectColor(color);
         }
 
-        //public void SetDegradedColor(Color color, int timeMillis)
-        //{
-        //    IntelliRoomSystem.lighting.SetDegradedColor(color, timeMillis);
-        //}
-
-        public void SetDegradedColor(string colorName, int timeMillis)
+        public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
         {
-            IntelliRoomSystem.lighting.SetDegradedColor(colorName,timeMillis);
+            IntelliRoomSystem.lighting.SetGradientColor(r, g, b, timeMillis);
+        }
+
+        public void SetGradientColor(Color color, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.SetDGradientColor(color, timeMillis);
+        }
+
+        public void SetGradientColor(string colorName, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.SetGradientColor(colorName,timeMillis);
         }
 
         public void TurnOffLight()
@@ -134,6 +134,21 @@ namespace IntelliRoom
         public void TurnOnLight()
         {
             IntelliRoomSystem.lighting.TurnOnLight();
+        }
+
+        public void ActiveRandomColorMode(int timeMillis)
+        {
+            IntelliRoomSystem.lighting.ActiveRandomColorMode(timeMillis);
+        }
+
+        public void DesactiveRandomColorMode()
+        {
+            IntelliRoomSystem.lighting.DesactiveRandomColorMode();
+        }
+
+        public void RandomColorMode(bool active, int timeMillis)
+        {
+            IntelliRoomSystem.lighting.RandomColorMode(active, timeMillis);
         }
 
         //DEVICE
@@ -315,8 +330,9 @@ namespace IntelliRoom
         {
         }
 
-        public void CloseAplication()
+        public void Exit()
         {
+            System.Environment.Exit(0);
         }
 
         public void Suspend()

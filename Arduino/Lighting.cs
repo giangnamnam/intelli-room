@@ -43,17 +43,17 @@ namespace Arduino
         }
 
         //Degraded Methods
-        public void SetDegradedColor(Color color, int timeMillis)
+        public void SetDGradientColor(Color color, int timeMillis)
         {
-            SetDegradedColor(color.R, color.G, color.B,timeMillis);
+            SetGradientColor(color.R, color.G, color.B,timeMillis);
         }
 
-        public void SetDegradedColor(string colorName, int timeMillis)
+        public void SetGradientColor(string colorName, int timeMillis)
         {
-            SetDegradedColor(Color.FromName(colorName),timeMillis);
+            SetDGradientColor(Color.FromName(colorName),timeMillis);
         }
 
-        public void SetDegradedColor(byte r, byte g, byte b, int timeMillis)
+        public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
         {
             var message = string.Format("DEGRADED {0} {1} {2} {3}", r, g, b, timeMillis);
             serialPort.Write(message);

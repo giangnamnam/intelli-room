@@ -13,8 +13,8 @@ int pinLedB = 11; //Blue LED
 int dev0 = 2;  //Dispositivo electrico 0
 int dev1 = 4;  //Dispositivo electrico 1
 int dev2 = 7;  //Dispositivo electrico 2
-int dev3 = 0;  //Dispositivo electrico 3
-int dev4 = 0;  //Dispositivo electrico 4
+int dev3 = 12; //Dispositivo electrico 3
+int dev4 = 13; //Dispositivo electrico 4
 int dev5 = 0;  //Dispositivo electrico 5
 int dev6 = 0;  //Dispositivo electrico 6
 int dev7 = 0;  //Dispositivo electrico 7
@@ -198,7 +198,7 @@ void messageReady()
     
     if(message.checkString("CHECK"))
     {
-        Serial.write("ACK");
+        Serial.write("ACK\r\n");
     }
     
     //vaciamos lo que tengamos en el puerto serie

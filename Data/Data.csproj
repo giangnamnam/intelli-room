@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
     <Compile Include="Directories.cs" />
     <Compile Include="HTTPRequest.cs" />
     <Compile Include="Language.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -33,52 +33,63 @@ namespace Arduino
 
         public Serial ()
         {
-            string PortCom = searchArduino();
-            if (PortCom != "NULL")
+            GetSerialArduino();
+            if (serial != null)
             {
-                serial = new SerialPort(PortCom, 9600) { NewLine = "\r\n" };
+                serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
+            }
+        }
+
+        private void GetSerialArduino()
+        {
+            SerialPort arduino = null;
+
+            string[] serialPortsName = SerialPort.GetPortNames();
+            foreach (var PortCom in serialPortsName)
+            {
+                SerialPort serialPort = new SerialPort(PortCom, 9600) { NewLine = "\r\n" };
+                serialPort.ReadTimeout = 500;
+                bool found = false;
+                if (!serialPort.IsOpen)
+                {
+                    //a veces detecta COM que no existen.
+                    try
+                    {
+                        serialPort.Open();
+                        found = IsArduino(serialPort);
+                        serialPort.Close();
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+                else //puerto está abierto
+                {
+                    found = IsArduino(serialPort);
+                }
+                if (found)
+                {
+                    arduino = serialPort;
+                    break;
+                }
+            }
+
+            if (arduino != null) //hemos encontrado arduino
+            {
+                //abrimos si es posible
+                if (!arduino.IsOpen)
+                    arduino.Open();
+
+                serial = arduino;
                 serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
 
-                if (!serial.IsOpen)
-                    serial.Open();
+                Message.InformationMessage("Arduino encontrado en puerto " + arduino.PortName);
             }
             else
             {
                 Message.ErrorMessage("Arduino no encontrado");
             }
-        }
-
-        /// <summary>
-        /// Devuelve el nombre del puerto donde esta conectado arduino
-        /// </summary>
-        /// <returns>En caso de no existir devuelve "NULL"</returns>
-        private string searchArduino()
-        {
-            string[] serialPortsName = SerialPort.GetPortNames();
-            string portCom = "NULL";
-
-            foreach (var elem in serialPortsName)
-            {
-                SerialPort serialPort = new SerialPort(elem, 9600) { NewLine = "\r\n" };
-                serialPort.ReadTimeout = 500;
-                bool res = false;
-                if (!serialPort.IsOpen)
-                {
-                    serialPort.Open();
-                    res = IsArduino(serialPort);
-                    serialPort.Close();
-                }
-                else
-                {
-                    res = IsArduino(serialPort);
-                }
-                if (res)
-                {
-                    portCom = elem;
-                    break;
-                }
-            }
-            return portCom;
         }
 
         private bool IsArduino(SerialPort serialPort)
@@ -101,14 +112,27 @@ namespace Arduino
 
         public void Write(string data)
         {
+            Monitor.Enter(WriteMonitor);
+            if (serial == null)
+            {
+                Message.InformationMessage("Arduino no esta conectado, escaneamos si se encuentra activo");
+                GetSerialArduino();
+            }
             try
             {
-                Monitor.Enter(WriteMonitor);
-                serial.WriteLine(data);
+                if (serial != null)
+                {
+                    serial.WriteLine(data);
+                }
+                else
+                {
+                    Message.ErrorMessage("No se ha podido enviar la orden a Arduino, por no estar este conectado");
+                }
             }
             catch (Exception)
             {
-                //enviar un mensaje de error al sistema de errores
+                Message.ErrorMessage("Error en el envio de datos");
+                GetSerialArduino();
             }
             finally
             {

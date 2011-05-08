@@ -43,14 +43,14 @@ namespace Arduino
         }
 
         //Degraded Methods
-        public void SetDGradientColor(Color color, int timeMillis)
+        public void SetGradientColor(Color color, int timeMillis)
         {
             SetGradientColor(color.R, color.G, color.B,timeMillis);
         }
 
         public void SetGradientColor(string colorName, int timeMillis)
         {
-            SetDGradientColor(Color.FromName(colorName),timeMillis);
+            SetGradientColor(Color.FromName(colorName),timeMillis);
         }
 
         public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
@@ -62,7 +62,7 @@ namespace Arduino
         //Random Methods
         public void ActiveRandomColorMode(int timeMillis)
         {
-            var message = string.Format("RANDOM 1 {3}",timeMillis);
+            var message = string.Format("RANDOM 1 {0}",timeMillis);
             serialPort.Write(message);
         }
 

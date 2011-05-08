@@ -118,7 +118,7 @@ namespace IntelliRoom
 
         public void SetGradientColor(Color color, int timeMillis)
         {
-            IntelliRoomSystem.lighting.SetDGradientColor(color, timeMillis);
+            IntelliRoomSystem.lighting.SetGradientColor(color, timeMillis);
         }
 
         public void SetGradientColor(string colorName, int timeMillis)

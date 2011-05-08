@@ -9,38 +9,38 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Arduino.Serial">
-    <Position X="5.75" Y="10" Width="4.75" />
+    <Position X="5.75" Y="9.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAAQAAAAAEAAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAAQAAAQAEAACA=</HashCode>
       <FileName>Serial.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Arduino.Lighting" BaseTypeListCollapsed="true">
     <Position X="8.25" Y="4.25" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAgAEAIAAAQAAAAAAAAAAAAAgAAAABAAAQ=</HashCode>
+      <HashCode>IAAAAAAAAAAgAEAIAAAgAAAAAAAAAAAAAgAAAABAAAQ=</HashCode>
       <FileName>Lighting.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Arduino.SerialSingleton">
-    <Position X="6.25" Y="8.25" Width="4" />
+    <Position X="6.25" Y="8" Width="4" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Serial.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Arduino.IDevice">
-    <Position X="5" Y="2.5" Width="2.25" />
+    <Position X="5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>IDevice.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Arduino.ILighting">
-    <Position X="8.25" Y="0.75" Width="4" />
+    <Position X="8.25" Y="1" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAgAEAIAAAQAAAAAAAAAAAAAAAAAABAAAQ=</HashCode>
+      <HashCode>IAAAAAAAAAAgAEAIAAAgAAAAAAAAAAAAAAAAAABAAAQ=</HashCode>
       <FileName>ILighting.cs</FileName>
     </TypeIdentifier>
   </Interface>

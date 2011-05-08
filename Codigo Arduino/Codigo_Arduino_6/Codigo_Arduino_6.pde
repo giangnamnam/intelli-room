@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arduino 0.69
+IntelliRoom Arduino 0.70
 */
 
 #include <Messenger.h> //importamos una librería para hacer más fácil el soporte de mensajes
@@ -31,7 +31,6 @@ unsigned long timeNow = 0;  //tiempo actual
 unsigned long timeEnd = 0;  //tiempo final
 
 //Variables para el uso de la función RANDOM
-boolean randomMode = false;
 unsigned long timeRandom = 0;
 
 //Iniciamos mensajes
@@ -63,7 +62,7 @@ void loop()
   }
   else
   {
-    if(randomMode)
+    if(timeRandom!=0)
     {
       timeInit = millis();
       timeEnd = timeInit + timeRandom;
@@ -124,12 +123,12 @@ void messageReady()
       gEnd = message.readInt();
       bEnd = message.readInt();
       timeEnd = millis();
-      randomMode = false;
+      timeRandom = 0;
       SetColor(rEnd,gEnd,bEnd);
     }
 
     //Modo degradado
-    else if (message.checkString("GRANDIENT"))
+    else if (message.checkString("GRADIENT"))
     {
       rInit = rNow;
       gInit = gNow;
@@ -138,25 +137,21 @@ void messageReady()
       gEnd = message.readInt();
       bEnd = message.readInt();
       timeInit = millis();
-      randomMode = false;
+      timeRandom = 0;
       timeEnd = timeInit + message.readLong();
     }
 
     //Modo Aleatorio (RANDOM 0/1 timeRandom)
     else if (message.checkString("RANDOM"))
     {
-      int randValue = message.readInt(); 
+      timeRandom = message.readLong();
       //Activar funcion RANDOM
-      if (randValue == 1)
+      if (timeRandom != 0)
       { 
-        randomMode = true;
-        timeRandom = message.readLong();
+        rEnd=rNow;
+        gEnd=gNow;
+        bEnd=bNow;
         ConfigRandomColor();
-      }
-      //Desactivar modo RANDOM (no importa el valor del tiempo)
-      if (randValue == 0)
-      {
-        randomMode = false;
       }
     }
 

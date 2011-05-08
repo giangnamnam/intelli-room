@@ -17,69 +17,69 @@ namespace Arduino
 
         public void TurnOffLight()
         {
-            SetDirectColor(Color.Black);
+            DirectColor(Color.Black);
         }
 
         public void TurnOnLight()
         {
-            SetDirectColor(Color.White);
+            DirectColor(Color.White);
         }
 
         //Directs Methods
-        public void SetDirectColor(Color color)
+        public void DirectColor(Color color)
         {
-            SetDirectColor(color.R, color.G, color.B);
+            DirectColor(color.R, color.G, color.B);
         }
 
-        public void SetDirectColor(string colorName)
+        public void DirectColor(string colorName)
         {
-            SetDirectColor(Color.FromName(colorName));
+            DirectColor(Color.FromName(colorName));
         }
 
-        public void SetDirectColor(byte r, byte g, byte b)
+        public void DirectColor(byte r, byte g, byte b)
         {
             var message = string.Format("DIRECT {0} {1} {2}", r, g, b);
             serialPort.Write(message);
         }
 
         //Degraded Methods
-        public void SetGradientColor(Color color, int timeMillis)
+        public void GradientColor(Color color, int timeMillis)
         {
-            SetGradientColor(color.R, color.G, color.B,timeMillis);
+            GradientColor(color.R, color.G, color.B,timeMillis);
         }
 
-        public void SetGradientColor(string colorName, int timeMillis)
+        public void GradientColor(string colorName, int timeMillis)
         {
-            SetGradientColor(Color.FromName(colorName),timeMillis);
+            GradientColor(Color.FromName(colorName),timeMillis);
         }
 
-        public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
+        public void GradientColor(byte r, byte g, byte b, int timeMillis)
         {
             var message = string.Format("GRADIENT {0} {1} {2} {3}", r, g, b, timeMillis);
             serialPort.Write(message);
         }
 
         //Random Methods
-        public void ActiveRandomColorMode(int timeMillis)
+        public void RandomColor(int timeMillis)
         {
-            var message = string.Format("RANDOM 1 {0}",timeMillis);
+            var message = string.Format("RANDOM {0}",timeMillis);
             serialPort.Write(message);
         }
 
-        public void DesactiveRandomColorMode()
+        public void DesactiveRandomColor()
         {
             serialPort.Write("RANDOM 0");
         }
 
-        public void RandomColorMode(Boolean active, int timeMillis)
+        public void RandomColor(Boolean active, int timeMillis)
         {
             if (active)
             {
-                ActiveRandomColorMode(timeMillis);
+                RandomColor(timeMillis);
             }
             else
             {
-                DesactiveRandomColorMode();
+                DesactiveRandomColor();
             }
         }
     }

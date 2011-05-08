@@ -1,6 +1,7 @@
 /*
 IntelliRoom Arduino 0.6
 */
+
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
 //Configuracion de pines
@@ -90,9 +91,6 @@ void loop()
         SetColor(rEnd,gEnd,bEnd);
      }  
    }
-   //espero 30 milisegundo (esto no desabilita el Rx)
-   
-   //delay(50);
 }
 
 void SetColor(int r, int g, int b)
@@ -147,7 +145,7 @@ void messageReady()
       SetColor(rEnd,gEnd,bEnd);
     }
     //Modo degradado
-    else if (message.checkString("DEGRADED"))
+    else if (message.checkString("GRANDIENT"))
     {
       rInit = rNow;
       gInit = gNow;

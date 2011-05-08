@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arudino 2.0
+IntelliRoom Arudino 0.2
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 

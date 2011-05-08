@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arduino 0.32
+IntelliRoom Arduino 0.5
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
@@ -13,8 +13,8 @@ int pinLedB = 11; //Blue LED
 int dev0 = 2;  //Dispositivo electrico 0
 int dev1 = 4;  //Dispositivo electrico 1
 int dev2 = 7;  //Dispositivo electrico 2
-int dev3 = 0;  //Dispositivo electrico 3
-int dev4 = 0;  //Dispositivo electrico 4
+int dev3 = 12; //Dispositivo electrico 3
+int dev4 = 13; //Dispositivo electrico 4
 int dev5 = 0;  //Dispositivo electrico 5
 int dev6 = 0;  //Dispositivo electrico 6
 int dev7 = 0;  //Dispositivo electrico 7
@@ -22,17 +22,17 @@ int dev8 = 0;  //Dispositivo electrico 8
 int dev9 = 0;  //Dispositivo electrico 9
 
 //Configuracion de variables: para el degradado de colores, funcion DEGRADRED
-int rInit = 0;  //Valor rojo inicial
-int gInit = 0;  //Valor verde inicial
-int bInit = 0;  //Valor azul inicial
+uint8_t rInit = 0;  //Valor rojo inicial
+uint8_t gInit = 0;  //Valor verde inicial
+uint8_t bInit = 0;  //Valor azul inicial
 
-int rNow = 0;  //Valor rojo actual
-int gNow = 0;  //Valor verde actual
-int bNow = 0;  //Valor azul actual
+uint8_t rNow = 0;  //Valor rojo actual
+uint8_t gNow = 0;  //Valor verde actual
+uint8_t bNow = 0;  //Valor azul actual
 
-int rEnd = 0;   //Valor rojo final
-int gEnd = 0;   //Valor verde final
-int bEnd = 0;   //Valor azul final
+uint8_t rEnd = 0;   //Valor rojo final
+uint8_t gEnd = 0;   //Valor verde final
+uint8_t bEnd = 0;   //Valor azul final
 
 unsigned long timeInit = 0; //tiempo inicial
 unsigned long timeNow = 0;  //tiempo actual
@@ -66,26 +66,33 @@ void setup()
 
 void loop()
 {
-   if (Serial.available()){
+   // while, a ver que pasa
+   while(Serial.available()){
      message.process(Serial.read());
    }
      
    timeNow = millis();
-   if(timeEnd > timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
+   
+   if(timeEnd>timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
    {
-     rNow = CalculeValue(rInit,rEnd); //Calculamos la componente roja
-     gNow = CalculeValue(gInit,gEnd); //Calculamos la componente verde
-     bNow = CalculeValue(bInit,bEnd); //Calculamos la componente azul
+     UpdateValues(); //Calculamos las componentes
      SetColor(rNow,gNow,bNow); //la imprimimos en los LEDs
    }
-   
-   if(randomMode && (timeEnd < timeNow))
+   else
    {
-     timeInit = millis();
-     timeEnd = millis() + timeRandom;
-     ConfigRandomColor();
+     if(randomMode)
+     {
+       timeInit = millis();
+       timeEnd = millis() + timeRandom;
+       ConfigRandomColor();
+     }
+     else
+     {
+        SetColor(rEnd,gEnd,bEnd);
+     }  
    }
    //espero 30 milisegundo (esto no desabilita el Rx)
+   
    //delay(50);
 }
 
@@ -112,9 +119,16 @@ void ConfigRandomColor()
      bEnd = random(256);
 }
 
-int CalculeValue(int colorInit, int colorEnd)
+void UpdateValues()
 {  
-  return abs((timeNow-timeInit)*(colorEnd-colorInit)/(timeEnd-timeInit))+colorInit;
+  int time1 = timeNow-timeInit;
+  int time2 = timeEnd-timeInit;
+  
+  float time3 = ((float) time1)/time2;
+  
+  rNow = time3*(rEnd-rInit)+rInit;
+  gNow = time3*(gEnd-gInit)+gInit;
+  bNow = time3*(bEnd-bInit)+bInit;
 }
 
 //Metodo que contiene las funciones a ejecutar
@@ -126,12 +140,12 @@ void messageReady()
     //Modo directo
     if (message.checkString("DIRECT"))
     {
-      rInit = message.readInt();
-      gInit = message.readInt();
-      bInit = message.readInt();
+      rEnd = message.readInt();
+      gEnd = message.readInt();
+      bEnd = message.readInt();
       timeEnd = millis();
       randomMode = false;
-      SetColor(rInit,gInit,bInit);
+      SetColor(rEnd,gEnd,bEnd);
     }
     //Modo degradado
     if (message.checkString("DEGRADED"))
@@ -195,9 +209,20 @@ void messageReady()
      if (device == 8){ digitalWrite(dev8, LOW); }
      if (device == 9){ digitalWrite(dev9, LOW); }
     }
-    
+    // METODOS AWESOMES
+    if(message.checkString("CHECK"))
+    {
+        Serial.write("ACK\r\n");
+    }
+    // No me suscribo al flush, a ver si me explicas mejor por que lo pusiste
+    // No me suscribo porque borra cualquier cosa nueva que este llegando y deja mierda en el message de la libreria
+    // A ver si podemos encontrar el problema
+    // Also: hay que descartar el resto de mierda que venga del mensaje, por ejemplo si el usuario pone RANDOM 0 10920 2309203 20
+    // Eso lo filtras en C#? Seria lo suyo de todas formas borrar el buffer de message cuando termine el callback
+    // O incluso dentro de la propia libreria...
+		
     //vaciamos lo que tengamos en el puerto serie
-    Serial.flush();
+    //Serial.flush();
   }
 }
 

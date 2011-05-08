@@ -55,7 +55,7 @@ namespace Arduino
 
         public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
         {
-            var message = string.Format("DEGRADED {0} {1} {2} {3}", r, g, b, timeMillis);
+            var message = string.Format("GRADIENT {0} {1} {2} {3}", r, g, b, timeMillis);
             serialPort.Write(message);
         }
 

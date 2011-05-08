@@ -1,5 +1,5 @@
 /*
-IntelliRoom Arduino 3.2
+IntelliRoom Arduino 0.4
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 

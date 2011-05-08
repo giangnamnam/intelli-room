@@ -1,5 +1,5 @@
 /*
-IntelliRoom
+IntelliRoom 0.1
 Lampara con PWM
 */
 #include <Messenger.h> //importamos una libreria para hacer mas facil el soporte de mensajes

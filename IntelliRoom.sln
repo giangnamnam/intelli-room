@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voice", "Voice\Voice.csproj", "{AA9A4836-5E4F-4D0F-9863-D6FA3A57369E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliRoom", "IntelliRoom\IntelliRoom.csproj", "{3A042B67-FDB1-4460-B80B-1DF070FA057D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camera", "Camera\Camera.csproj", "{732FDF8A-2189-4A8D-A634-0B0BF5C53EC6}"
@@ -18,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4278B7A4-C407-4ED5-8F62-88CC2E8DF227}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arduino", "Arduino\Arduino.csproj", "{33AC1B04-A0E5-443C-810C-7AF4D766A37D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,16 +39,6 @@ Global
 		{AA9A4836-5E4F-4D0F-9863-D6FA3A57369E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AA9A4836-5E4F-4D0F-9863-D6FA3A57369E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AA9A4836-5E4F-4D0F-9863-D6FA3A57369E}.Release|x86.ActiveCfg = Release|Any CPU
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Debug|x86.ActiveCfg = Debug|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Debug|x86.Build.0 = Debug|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Release|Any CPU.ActiveCfg = Release|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Release|Mixed Platforms.Build.0 = Release|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Release|x86.ActiveCfg = Release|x86
-		{3CA662AE-4BD3-41B0-9B7D-7DAC688881C8}.Release|x86.Build.0 = Release|x86
 		{3A042B67-FDB1-4460-B80B-1DF070FA057D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A042B67-FDB1-4460-B80B-1DF070FA057D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A042B67-FDB1-4460-B80B-1DF070FA057D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -119,6 +109,16 @@ Global
 		{33AC1B04-A0E5-443C-810C-7AF4D766A37D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{33AC1B04-A0E5-443C-810C-7AF4D766A37D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{33AC1B04-A0E5-443C-810C-7AF4D766A37D}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Debug|x86.ActiveCfg = Debug|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Debug|x86.Build.0 = Debug|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Release|Any CPU.ActiveCfg = Release|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Release|x86.ActiveCfg = Release|x86
+		{7FCB83B0-EC39-44BF-AF71-67FAD2A534BF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

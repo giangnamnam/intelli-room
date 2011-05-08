@@ -1,20 +1,19 @@
 /*
-IntelliRoom Arduino 0.32
+IntelliRoom Arduino 0.6
 */
 #include <Messenger.h> //importamos una libreria para hacer más fácil el soporte de mensajes
 
-Messenger message = Messenger(); //iniciamos los mensajes
-
 //Configuracion de pines
-int pinLedR = 9;  //Red LED
-int pinLedG = 10; //Green LED
-int pinLedB = 11; //Blue LED
+#define PINLEDR 9   //Red LED
+#define PINLEDG 10  //Green LED
+#define PINLEDB 11  //Blue LED
 
+//Configuramos los dispositivos
 int dev0 = 2;  //Dispositivo electrico 0
 int dev1 = 4;  //Dispositivo electrico 1
 int dev2 = 7;  //Dispositivo electrico 2
-int dev3 = 0;  //Dispositivo electrico 3
-int dev4 = 0;  //Dispositivo electrico 4
+int dev3 = 12; //Dispositivo electrico 3
+int dev4 = 13; //Dispositivo electrico 4
 int dev5 = 0;  //Dispositivo electrico 5
 int dev6 = 0;  //Dispositivo electrico 6
 int dev7 = 0;  //Dispositivo electrico 7
@@ -22,17 +21,17 @@ int dev8 = 0;  //Dispositivo electrico 8
 int dev9 = 0;  //Dispositivo electrico 9
 
 //Configuracion de variables: para el degradado de colores, funcion DEGRADRED
-int rInit = 0;  //Valor rojo inicial
-int gInit = 0;  //Valor verde inicial
-int bInit = 0;  //Valor azul inicial
+uint8_t rInit = 0;  //Valor rojo inicial
+uint8_t gInit = 0;  //Valor verde inicial
+uint8_t bInit = 0;  //Valor azul inicial
 
-int rNow = 0;  //Valor rojo actual
-int gNow = 0;  //Valor verde actual
-int bNow = 0;  //Valor azul actual
+uint8_t rNow = 0;  //Valor rojo actual
+uint8_t gNow = 0;  //Valor verde actual
+uint8_t bNow = 0;  //Valor azul actual
 
-int rEnd = 0;   //Valor rojo final
-int gEnd = 0;   //Valor verde final
-int bEnd = 0;   //Valor azul final
+uint8_t rEnd = 0;   //Valor rojo final
+uint8_t gEnd = 0;   //Valor verde final
+uint8_t bEnd = 0;   //Valor azul final
 
 unsigned long timeInit = 0; //tiempo inicial
 unsigned long timeNow = 0;  //tiempo actual
@@ -42,11 +41,14 @@ unsigned long timeEnd = 0;  //tiempo final
 boolean randomMode = false;
 unsigned long timeRandom = 0;
 
+//Iniciamos mensajes
+Messenger message = Messenger();
+
 void setup()
 {
-  //pongo el puerto serie a 9600 baudios
-  Serial.begin(9600);
-  message.attach(messageReady);
+  Serial.begin(9600);//configuro el puerto serie a 9600 baudios
+  
+  message.attach(messageReady);//pongo la funcion callback de message
   
   //iniciamos los pines digitales
   pinMode(dev0, OUTPUT);
@@ -59,41 +61,45 @@ void setup()
   pinMode(dev7, OUTPUT);
   pinMode(dev8, OUTPUT);
   pinMode(dev9, OUTPUT);
-  
-  //por defecto iluminamos a este color (en un futuro lo pondremos a negro)
-  SetColor(1,1,1);
 }
 
 void loop()
 {
-   if (Serial.available()){
+   // while, a ver que pasa
+   while(Serial.available()){
      message.process(Serial.read());
    }
      
    timeNow = millis();
-   if(timeEnd > timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
+   
+   if(timeEnd>timeNow) //si tiempo actual es menor que tiempo final entonces encontramos en una situacion de degradado
    {
-     rNow = CalculeValue(rInit,rEnd); //Calculamos la componente roja
-     gNow = CalculeValue(gInit,gEnd); //Calculamos la componente verde
-     bNow = CalculeValue(bInit,bEnd); //Calculamos la componente azul
+     UpdateValues(); //Calculamos las componentes
      SetColor(rNow,gNow,bNow); //la imprimimos en los LEDs
    }
-   
-   if(randomMode && (timeEnd < timeNow))
+   else
    {
-     timeInit = millis();
-     timeEnd = millis() + timeRandom;
-     ConfigRandomColor();
+     if(randomMode)
+     {
+       timeInit = millis();
+       timeEnd = millis() + timeRandom;
+       ConfigRandomColor();
+     }
+     else
+     {
+        SetColor(rEnd,gEnd,bEnd);
+     }  
    }
    //espero 30 milisegundo (esto no desabilita el Rx)
+   
    //delay(50);
 }
 
 void SetColor(int r, int g, int b)
 {
-  analogWrite(pinLedR, r); //metemos valor en el PWM asignado al valor r
-  analogWrite(pinLedG, g); //metemos valor en el PWM asignado al valor g
-  analogWrite(pinLedB, b); //metemos valor en el PWM asignado al valor b
+  analogWrite(PINLEDR, r); //metemos valor en el PWM asignado al valor r
+  analogWrite(PINLEDG, g); //metemos valor en el PWM asignado al valor g
+  analogWrite(PINLEDB, b); //metemos valor en el PWM asignado al valor b
   rNow = r;
   gNow = g;
   bNow = b;
@@ -112,9 +118,16 @@ void ConfigRandomColor()
      bEnd = random(256);
 }
 
-int CalculeValue(int colorInit, int colorEnd)
+void UpdateValues()
 {  
-  return abs((timeNow-timeInit)*(colorEnd-colorInit)/(timeEnd-timeInit))+colorInit;
+  int time1 = timeNow-timeInit;
+  int time2 = timeEnd-timeInit;
+  
+  float time3 = ((float) time1)/time2;
+  
+  rNow = time3*(rEnd-rInit)+rInit;
+  gNow = time3*(gEnd-gInit)+gInit;
+  bNow = time3*(bEnd-bInit)+bInit;
 }
 
 //Metodo que contiene las funciones a ejecutar
@@ -126,15 +139,15 @@ void messageReady()
     //Modo directo
     if (message.checkString("DIRECT"))
     {
-      rInit = message.readInt();
-      gInit = message.readInt();
-      bInit = message.readInt();
+      rEnd = message.readInt();
+      gEnd = message.readInt();
+      bEnd = message.readInt();
       timeEnd = millis();
       randomMode = false;
-      SetColor(rInit,gInit,bInit);
+      SetColor(rEnd,gEnd,bEnd);
     }
     //Modo degradado
-    if (message.checkString("DEGRADED"))
+    else if (message.checkString("DEGRADED"))
     {
       rInit = rNow;
       gInit = gNow;
@@ -147,7 +160,7 @@ void messageReady()
       timeEnd = timeInit + message.readLong();
     }
     //Modo Aleatorio (RANDOM 0/1 timeRandom)
-    if (message.checkString("RANDOM"))
+    else if (message.checkString("RANDOM"))
     {
       int randValue = message.readInt(); 
       //Activar funcion RANDOM
@@ -166,7 +179,7 @@ void messageReady()
     
     //METODOS DISPOSITIVO
     //Encender dispositivo
-    if (message.checkString("SWITCHON"))
+    else if (message.checkString("SWITCHON"))
     {
      int device = message.readInt(); 
      if (device == 0){ digitalWrite(dev0, HIGH); }
@@ -181,7 +194,7 @@ void messageReady()
      if (device == 9){ digitalWrite(dev9, HIGH); }
     }
     //Apagar dispositivo
-    if (message.checkString("SWITCHOFF"))
+    else if (message.checkString("SWITCHOFF"))
     {
      int device = message.readInt(); 
      if (device == 0){ digitalWrite(dev0, LOW); }
@@ -196,8 +209,11 @@ void messageReady()
      if (device == 9){ digitalWrite(dev9, LOW); }
     }
     
-    //vaciamos lo que tengamos en el puerto serie
-    Serial.flush();
+    // METODO DETECCION
+    else if (message.checkString("CHECK"))
+    {
+        Serial.write("ACK\r\n");
+    }
   }
 }
 

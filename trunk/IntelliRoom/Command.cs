@@ -96,34 +96,34 @@ namespace IntelliRoom
 
         //LIGHTING
 
-        public void SetDirectColor(String color)
+        public void DirectColor(String color)
         {
-            IntelliRoomSystem.lighting.SetDirectColor(color);
+            IntelliRoomSystem.lighting.DirectColor(color);
         }
 
-        public void SetDirectColor(byte r, byte g, byte b)
+        public void DirectColor(byte r, byte g, byte b)
         {
-            IntelliRoomSystem.lighting.SetDirectColor(r,g,b);
+            IntelliRoomSystem.lighting.DirectColor(r,g,b);
         }
 
-        public void SetDirectColor(Color color)
+        public void DirectColor(Color color)
         {
-            IntelliRoomSystem.lighting.SetDirectColor(color);
+            IntelliRoomSystem.lighting.DirectColor(color);
         }
 
-        public void SetGradientColor(byte r, byte g, byte b, int timeMillis)
+        public void GradientColor(byte r, byte g, byte b, int timeMillis)
         {
-            IntelliRoomSystem.lighting.SetGradientColor(r, g, b, timeMillis);
+            IntelliRoomSystem.lighting.GradientColor(r, g, b, timeMillis);
         }
 
-        public void SetGradientColor(Color color, int timeMillis)
+        public void GradientColor(string colorName, int timeMillis)
         {
-            IntelliRoomSystem.lighting.SetGradientColor(color, timeMillis);
+            IntelliRoomSystem.lighting.GradientColor(colorName, timeMillis);
         }
 
-        public void SetGradientColor(string colorName, int timeMillis)
+        public void GradientColor(Color color, int timeMillis)
         {
-            IntelliRoomSystem.lighting.SetGradientColor(colorName,timeMillis);
+            IntelliRoomSystem.lighting.GradientColor(color, timeMillis);
         }
 
         public void TurnOffLight()
@@ -136,19 +136,19 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.TurnOnLight();
         }
 
-        public void ActiveRandomColorMode(int timeMillis)
+        public void RandomColor(int timeMillis)
         {
-            IntelliRoomSystem.lighting.ActiveRandomColorMode(timeMillis);
+            IntelliRoomSystem.lighting.RandomColor(timeMillis);
         }
 
-        public void DesactiveRandomColorMode()
+        public void DesactiveRandomColor()
         {
-            IntelliRoomSystem.lighting.DesactiveRandomColorMode();
+            IntelliRoomSystem.lighting.DesactiveRandomColor();
         }
 
-        public void RandomColorMode(bool active, int timeMillis)
+        public void RandomColor(bool active, int timeMillis)
         {
-            IntelliRoomSystem.lighting.RandomColorMode(active, timeMillis);
+            IntelliRoomSystem.lighting.RandomColor(active, timeMillis);
         }
 
         //DEVICE

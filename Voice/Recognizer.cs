@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Speech.Recognition;
+using Data;
 
 namespace Voice
 {
@@ -120,6 +121,7 @@ namespace Voice
 
         void speechRecognition_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
+            Message.InformationMessage("Text: "+e.Result.Text +"\nConfidence: "+e.Result.Confidence);
             if (e.Result.Confidence * 100 >= precision)
             {
                 speechRecognized(sender, e);

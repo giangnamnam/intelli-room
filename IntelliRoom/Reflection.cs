@@ -46,12 +46,11 @@ namespace IntelliRoom
 
         public static MethodInfo[] GetAllMethods()
         {
-            //modulo que carga metodos y tal (nueva clase??)
             List<MethodInfo> methods = new List<MethodInfo>();
 
             methods.AddRange(new Command().GetType().GetMethods());
 
-            methods.RemoveAll(x => x.Name == "GetType" || x.Name == "GetHashCode" || x.Name == "Equals" || x.Name == "ToString");
+            methods.RemoveAll(x => x.Name == "GetType" || x.Name == "GetHashCode" || x.Name == "Equals" || x.Name == "ToString" || x.Name == "Init");
 
             return methods.ToArray<MethodInfo>();
         }

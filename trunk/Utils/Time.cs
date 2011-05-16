@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace IntelliRoom
+namespace Utils
 {
     public class Time
     {

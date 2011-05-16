@@ -6,7 +6,7 @@ using System.Xml;
 using System.Web;
 using Data;
 
-namespace IntelliRoom
+namespace Utils
 {
     public class Weather
     {
@@ -59,14 +59,21 @@ namespace IntelliRoom
 
             if (xml != null)
             {
-                XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
+                try 
+	            {	        
+		            XmlNodeList current = xml.ChildNodes.Item(1).ChildNodes.Item(0).ChildNodes.Item(1).ChildNodes;
 
-                this.condition = current.Item(0).Attributes.GetNamedItem("data").Value;
-                this.temperatureF = int.Parse(current.Item(1).Attributes.GetNamedItem("data").Value);
-                this.temperatureC = int.Parse(current.Item(2).Attributes.GetNamedItem("data").Value);
-                this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
-                this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
-                this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
+                    this.condition = current.Item(0).Attributes.GetNamedItem("data").Value;
+                    this.temperatureF = int.Parse(current.Item(1).Attributes.GetNamedItem("data").Value);
+                    this.temperatureC = int.Parse(current.Item(2).Attributes.GetNamedItem("data").Value);
+                    this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
+                    this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
+                    this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
+	            }
+	            catch (Exception)
+	            {
+                    Message.ErrorMessage("No existe ninguna ciudad con ese nombre");
+	            }
             }
         }
 

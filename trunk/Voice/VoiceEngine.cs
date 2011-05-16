@@ -53,13 +53,20 @@ namespace Voice
             DeleteAllGrammars();
             //cargamos el documento XML
             XmlDocument xml = new XmlDocument();
-
-            xml.Load(Directories.GetGrammarXML());
-
-            foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)
+            try
             {
-                AddGrammar(LoadCommand(command));
+                xml.Load(Directories.GetGrammarXML());
+
+                foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)
+                {
+                    AddGrammar(LoadCommand(command));
+                }
             }
+            catch (Exception)
+            {
+                Message.ErrorMessage("No se ha encontrado el archivo de gramática: "+Directories.GetGrammarXML()+", no se cargará la gramática de voz");
+            }
+            
         }
 
         private Grammar LoadCommand(XmlNode commandNode)

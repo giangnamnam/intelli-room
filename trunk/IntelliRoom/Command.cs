@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Speech.Recognition;
-using Media;
 using System.Drawing;
+using System.Speech.Recognition;
 using Data;
+using Media;
 
 namespace IntelliRoom
 {
@@ -54,44 +52,44 @@ namespace IntelliRoom
         }
 
         //UTILS
-        public string GetDate()
+        public string Date()
         {
-            return Time.GetDate();
+            return Utils.Time.GetDate();
         }
 
-        public string GetTime()
+        public string Time()
         {
-            return Time.GetTime();
+            return Utils.Time.GetTime();
         }
 
-        public int GetTemperature(string city)
+        public int Temperature(string city)
         {
-            return new Weather(city).TemperatureC;
+            return new Utils.Weather(city).TemperatureC;
         }
 
-        public string GetCondition(string city)
+        public string Condition(string city)
         {
-            return new Weather(city).Condition;
+            return new Utils.Weather(city).Condition;
         }
 
-        public int GetTemperatureFarenheit(string city)
+        public int TemperatureFarenheit(string city)
         {
-            return new Weather(city).TemperatureF;
+            return new Utils.Weather(city).TemperatureF;
         }
 
-        public int GetHumidity(string city)
+        public int Humidity(string city)
         {
-            return new Weather(city).Humidity;
+            return new Utils.Weather(city).Humidity;
         }
 
-        public string GetWindDirection(string city)
+        public string WindDirection(string city)
         {
-            return new Weather(city).WindDirection;
+            return new Utils.Weather(city).WindDirection;
         }
 
-        public int GetWindSpeed(string city)
+        public int WindSpeed(string city)
         {
-            return new Weather(city).WindSpeed;
+            return new Utils.Weather(city).WindSpeed;
         }
 
         //LIGHTING
@@ -180,6 +178,46 @@ namespace IntelliRoom
             IntelliRoomSystem.media.Forward();
         }
 
+        public void Rewind()
+        {
+            IntelliRoomSystem.media.Rewind();
+        }
+
+        public void Stop()
+        {
+            IntelliRoomSystem.media.Stop();
+        }
+
+        public string InfoAuthor()
+        {
+            return IntelliRoomSystem.media.GetInfoAuthor();
+        }
+
+        public string InfoAlbum()
+        {
+            return IntelliRoomSystem.media.GetInfoAlbum();
+        }
+
+        public string InfoDuration()
+        {
+            return IntelliRoomSystem.media.GetInfoDuration();
+        }
+
+        public MusicMedia InfoPlayList()
+        {
+            return IntelliRoomSystem.media.GetInfoPlayList();
+        }
+
+        public MusicMedia InfoMedia()
+        {
+            return IntelliRoomSystem.media.GetInfoMedia();
+        }
+
+        public string InfoTitle()
+        {
+            return IntelliRoomSystem.media.GetInfoTitle();
+        }
+
         public void ChangeVolume(int i)
         {
             IntelliRoomSystem.media.ChangeVolume(i);
@@ -188,36 +226,6 @@ namespace IntelliRoom
         public void DecreaseVolume()
         {
             IntelliRoomSystem.media.DecreaseVolume();
-        }
-
-        public string GetInfoArtist()
-        {
-            return IntelliRoomSystem.media.GetInfoAuthor();
-        }
-
-        public string GetInfoDisc()
-        {
-            return IntelliRoomSystem.media.GetInfoAlbum();
-        }
-
-        public string GetInfoDuration()
-        {
-            return IntelliRoomSystem.media.GetInfoDuration();
-        }
-
-        public MusicMedia GetInfoPlayList()
-        {
-            return IntelliRoomSystem.media.GetInfoPlayList();
-        }
-
-        public MusicMedia GetInfoMedia()
-        {
-            return IntelliRoomSystem.media.GetInfoMedia();
-        }
-
-        public string GetInfoTitle()
-        {
-            return IntelliRoomSystem.media.GetInfoTitle();
         }
 
         public void IncreaseVolume()
@@ -238,6 +246,11 @@ namespace IntelliRoom
         public void MaximumVolume()
         {
             ChangeVolume(100);
+        }
+
+        public void Mute()
+        {
+            IntelliRoomSystem.media.Mute();
         }
 
         public void LoadAllMedia()
@@ -268,20 +281,6 @@ namespace IntelliRoom
         public void LoadUrl(string url)
         {
             IntelliRoomSystem.media.LoadUrl(url);
-        }
-        public void Mute()
-        {
-            IntelliRoomSystem.media.Mute();
-        }
-
-        public void Rewind()
-        {
-            IntelliRoomSystem.media.Rewind();
-        }
-
-        public void Stop()
-        {
-            IntelliRoomSystem.media.Stop();
         }
 
         public List<string> GetAllAuthors()
@@ -326,45 +325,9 @@ namespace IntelliRoom
             return Languages.GetLanguages();
         }
 
-        public void Shutdown()
-        {
-        }
-
         public void Exit()
         {
             System.Environment.Exit(0);
-        }
-
-        public void Suspend()
-        {
-        }
-
-        public void Sleep()
-        {
-        }
-
-        public void WakeUp()
-        {
-        }
-
-        public void Hibernate()
-        {
-        }
-
-        public void ActiveRecognizer()
-        {
-        }
-
-        public void DesactiveRecognizer()
-        {
-        }
-
-        public void ActiveSynthesizer()
-        {
-        }
-
-        public void DesactiveSynthesizer()
-        {
-        }
+        }        
     }
 }

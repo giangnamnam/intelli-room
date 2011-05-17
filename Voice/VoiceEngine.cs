@@ -47,10 +47,20 @@ namespace Voice
             recognizer.AddGrammar(grammar);
         }
 
+        public void LoadGrammar(List<string> list, string context)
+        {
+            Choices choices = new Choices();
+            foreach (string element in list)
+            {
+                choices.Add(element);
+            }
+            Grammar grammar = new Grammar(new GrammarBuilder(choices));
+            grammar.Name = context;
+            AddGrammar(grammar);
+        }
+
         public void LoadGrammar()
         {
-            //eliminamos toda la gramatica
-            DeleteAllGrammars();
             //cargamos el documento XML
             XmlDocument xml = new XmlDocument();
             try

@@ -30,7 +30,14 @@ namespace Console
             }
             else if (toInterpreter != null && toInterpreter != "" && SeparateString(toInterpreter)[0] == "searchcommand")
             {
-                result = SearchCommand(SeparateString(toInterpreter)[1]);
+                if (SeparateString(toInterpreter).Length != 1)
+                {
+                    result = SearchCommand(SeparateString(toInterpreter)[1]);
+                }
+                else
+                {
+                    result = "Siga la estructura siguiente para la busqueda: SearchComand textoABuscar";
+                }
             }
             else
             {

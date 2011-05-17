@@ -27,9 +27,9 @@ namespace Camera
             Image<Bgr, byte> imageSub1 = imageA.Sub(imageL);
             Image<Bgr, byte> imageSub2 = imageL.Sub(imageA);
             
-            //LOQUITO ME TIENE ESTO
             IImage imageOr = imageSub1.Or(imageSub2);
 
+            //Ahora a ver pixel por pixel
             DenseHistogram histogram = new DenseHistogram(256, new RangeF());
 
             //histogram.Calculate(imageOr[], false, null);

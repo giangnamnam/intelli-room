@@ -18,13 +18,20 @@ namespace IntelliRoom
 
         void speechRecognition(object sender, RecognitionEventArgs e)
         {
-            String result = Command(e.Result.Grammar.Name);
+            String result = "";
+            
+            string[] commands = SeparateCommands(e.Result.Grammar.Name);
+            foreach (string command in commands)
+            {
+                result += Command(e.Result.Grammar.Name) +", ";
+            }
+
             IntelliRoomSystem.voiceEngine.Speak(result);
         }
 
         private String Command(String command)
         {
-            String[] separateCommand = SeparateString(command);
+            String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
             String result = "";
             //sacamos los parametros
@@ -53,13 +60,19 @@ namespace IntelliRoom
             return result;
         }
 
-        private String[] SeparateString(String str)
+        private String[] SeparateArguments(String command)
         {
-            String[] result = str.Split(new char[] { ' ' });
+            String[] result = command.Split(new char[] { ' ' });
             for (int i = 0; i < result.Length; i++)
             {
                 result[i] = result[i].Replace("_", " ");
             }
+            return result;
+        }
+
+        private String[] SeparateCommands(String str)
+        {
+            String[] result = str.Split(new char[] { '|' });
             return result;
         }
     }

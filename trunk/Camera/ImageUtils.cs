@@ -41,20 +41,22 @@ namespace Camera
 
         public static FaceResult FaceDetect(Image<Bgr, Byte> image)
         {
-            FaceResult result = new FaceResult();
-            Image<Gray, Byte> gray = image.Convert<Gray, Byte>(); //convierto a escala de grises
+            FaceResult result = new FaceResult(image);
+
+            //convierto a escala de grises
+            Image<Gray, Byte> gray = image.Convert<Gray, Byte>();
 
             //normalizamos el brillo y mejoramos el contraste
             gray._EqualizeHist();
 
-            //leemos el XML de entrenamiento de caras (en nuestros caso usamos uno de caras frontales)
+            //leemos el XML con el entrenamiento (en nuestros caso usamos uno de caras frontales)
             HaarCascade face = new HaarCascade("HaarCascade\\haarcascade_frontalface.xml");
 
             //Detectamos las caras de la imagen en blanco y negro
             //El primer dimensional contiene el canal (solo nos centraremos en el canal 0, porque estamos trabajando en blanco y negro)
             //El segundo dimensional es el indice del rectangulo
             MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(face, 1.1, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
-
+            
             //Por cada rectangulo detectado, lo incluimos en el resultado
             foreach (MCvAvgComp f in facesDetected[0])
             {
@@ -80,11 +82,20 @@ namespace Camera
 
     class FaceResult
     {
+        Image<Bgr, Byte> image;
         List<Rectangle> faces;
 
-        public FaceResult()
+        public FaceResult(Image<Bgr, Byte> image)
         {
             faces = new List<Rectangle>();
+            image.ROI = Rectangle.Empty;
+            image = image.Copy();
+        }
+
+        public Image<Bgr, Byte> Image
+        {
+            get { return image; }
+            set { image = value; }
         }
 
         public List<Rectangle> Faces
@@ -105,6 +116,14 @@ namespace Camera
         public bool FaceDetect()
         {
             return GetNumberOfFaces() != 0;
+        }
+
+        public void SaveAllFaces()
+        {
+            foreach(Rectangle rect in faces)
+            {
+                ImageUtils.SaveFace(image, rect);
+            }
         }
     }
 }

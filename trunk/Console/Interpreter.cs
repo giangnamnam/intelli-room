@@ -28,11 +28,11 @@ namespace Console
             {
                 result = Help();
             }
-            else if (toInterpreter != null && toInterpreter != "" && SeparateString(toInterpreter)[0] == "searchcommand")
+            else if (toInterpreter != null && toInterpreter != "" && SeparateArguments(toInterpreter)[0] == "searchcommand")
             {
-                if (SeparateString(toInterpreter).Length != 1)
+                if (SeparateArguments(toInterpreter).Length != 1)
                 {
-                    result = SearchCommand(SeparateString(toInterpreter)[1]);
+                    result = SearchCommand(SeparateArguments(toInterpreter)[1]);
                 }
                 else
                 {
@@ -41,7 +41,11 @@ namespace Console
             }
             else
             {
-                result = Command(toInterpreter);
+                string[] commands = SeparateCommands(toInterpreter);
+                foreach (string command in commands)
+                {
+                    result += Command(command) + "\n";
+                }
             }
 
             return result;
@@ -49,7 +53,7 @@ namespace Console
 
         private String Command(String command)
         {
-            String[] separateCommand = SeparateString(command);
+            String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
             String result = "";
             //sacamos los parametros
@@ -103,7 +107,7 @@ namespace Console
 
         private String CommandHelp(String command)
         {
-            String[] separateCommand = SeparateString(command);
+            String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
             String result = "";
             //sacamos los parametros
@@ -126,13 +130,19 @@ namespace Console
             return result;
         }
 
-        private String[] SeparateString(String str)
+        private String[] SeparateArguments(String command)
         {
-            String[] result = str.Split(new char[] { ' ' });
+            String[] result = command.Split(new char[] { ' ' });
             for (int i = 0; i < result.Length; i++)
             {
                 result[i] = result[i].Replace("_", " ");
             }
+            return result;
+        }
+
+        private String[] SeparateCommands(String str)
+        {
+            String[] result = str.Split(new char[] { '|' });
             return result;
         }
 

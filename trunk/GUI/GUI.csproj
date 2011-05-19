@@ -46,16 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntelliRoom.cs">
+    <Compile Include="GUIIntelliRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntelliRoom.Designer.cs">
-      <DependentUpon>IntelliRoom.cs</DependentUpon>
+    <Compile Include="GUIIntelliRoom.Designer.cs">
+      <DependentUpon>GUIIntelliRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interpreter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IntelliRoom.resx">
-      <DependentUpon>IntelliRoom.cs</DependentUpon>
+    <EmbeddedResource Include="GUIIntelliRoom.resx">
+      <DependentUpon>GUIIntelliRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +76,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IntelliRoom\IntelliRoom.csproj">
+      <Project>{3A042B67-FDB1-4460-B80B-1DF070FA057D}</Project>
+      <Name>IntelliRoom</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

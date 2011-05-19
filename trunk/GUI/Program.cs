@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using IntelliRoom;
 
 namespace GUI
 {
@@ -15,7 +16,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IntelliRoom());
+            Application.Run(new GUIIntelliRoom());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Console
             //Llamo al Init de comando, solo deberia llamarse una vez
             IntelliRoom.Command.Init();
             //devuelvo el texto de entrada
-            return "Wellcome to IntelliRoom\n";
+            return "Bienvenido a IntelliRoom\n";
         }
     }
 }

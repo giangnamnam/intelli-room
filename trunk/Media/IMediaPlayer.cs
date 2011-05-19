@@ -31,5 +31,6 @@ namespace Media
         void Play();
         void Rewind();
         void Stop();
+        void UpdateMusicMedia();
     }
 }

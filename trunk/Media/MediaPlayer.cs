@@ -164,5 +164,12 @@ namespace Media
             return Media.Albums;
         }
 
+        public void UpdateMusicMedia()
+        {
+            //eliminamos los archivos serializados del directorio
+            Data.Directories.DeleteMusicMediaXMLs();
+            media = new MusicMedia(player.mediaCollection.getAll(), true);
+        }
+
     }
 }

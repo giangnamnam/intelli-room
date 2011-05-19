@@ -84,11 +84,11 @@ namespace Arduino
                 serial = arduino;
                 serial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(serial_DataReceived);
 
-                Message.InformationMessage("Arduino encontrado en puerto " + arduino.PortName);
+                InfoMessages.InformationMessage("Arduino encontrado en puerto " + arduino.PortName);
             }
             else
             {
-                Message.ErrorMessage("Arduino no encontrado");
+                InfoMessages.ErrorMessage("Arduino no encontrado");
             }
         }
 
@@ -115,7 +115,7 @@ namespace Arduino
             Monitor.Enter(WriteMonitor);
             if (serial == null)
             {
-                Message.InformationMessage("Arduino no esta conectado, escaneamos si se encuentra activo");
+                InfoMessages.InformationMessage("Arduino no esta conectado, escaneamos si se encuentra activo");
                 GetSerialArduino();
             }
             try
@@ -126,12 +126,12 @@ namespace Arduino
                 }
                 else
                 {
-                    Message.ErrorMessage("No se ha podido enviar la orden a Arduino, por no estar este conectado");
+                    InfoMessages.ErrorMessage("No se ha podido enviar la orden a Arduino, por no estar este conectado");
                 }
             }
             catch (Exception)
             {
-                Message.ErrorMessage("Error en el envio de datos");
+                InfoMessages.ErrorMessage("Error en el envio de datos");
                 GetSerialArduino();
             }
             finally

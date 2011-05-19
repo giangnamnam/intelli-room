@@ -35,11 +35,33 @@ namespace GUI
 
         private void UpdateHelp(object sender, EventArgs e)
         {
-            String command = commandBox.Text;
-            List<string> result = commInter.SearchHelp(command);
+            String commands = commandBox.Text;
+            string[] command = commands.Split(new char[] { '|' });
+            List<string> result = commInter.SearchHelp(command[command.Length-1]);
 
             helpList.Items.Clear();
             helpList.Items.AddRange(result.ToArray());
+        }
+
+        private void GetHelpCommand(object sender, EventArgs e)
+        {
+            commandBox.Text = helpList.SelectedItem.ToString();
+        }
+
+        private void UpdateInfoList(object sender, EventArgs e)
+        {
+            errorList.Items.Clear();
+            errorList.Items.AddRange(IntelliRoom.Command.GetMessages().ToArray());
+        }
+
+        private void KeyPressCommand(object sender, KeyPressEventArgs e)
+        {
+            Char key = e.KeyChar;
+
+            if (key.Equals('\r'))
+            {
+                execute_Click(null, null);
+            }
         }
     }
 }

@@ -166,25 +166,6 @@ namespace GUI
             return result;
         }
 
-        public List<string> SearchHelp(string command)
-        {
-            MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(command.ToLower())).ToArray<MethodInfo>();
-            List<string> result = new List<string>();
-            if (methods.Length == 0)
-            {
-                result.Add("no hemos encontrado ningun metodo con texto de ese tipo");
-            }
-            else
-            {
-                foreach (MethodInfo method in methods)
-                {
-                    result.Add(method.Name);
-                }
-            }
-            
-            return result;
-        }
-
         public static String PrintInfoMethods(MethodInfo[] methods)
         {
             methods.OrderBy(x => x.Name);
@@ -227,6 +208,45 @@ namespace GUI
                 res += "Sin parametros de entrada";
             }
             return res;
+        }
+
+
+        //METHODS GUI
+
+        public List<string> SearchHelp(string command)
+        {
+            MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(command.ToLower())).ToArray<MethodInfo>();
+            List<string> result = new List<string>();
+            if (methods.Length == 0)
+            {
+                result.Add("no hemos encontrado ningun metodo con texto de ese tipo");
+            }
+            else
+            {
+                foreach (MethodInfo method in methods)
+                {
+                    result.Add(InfoMethod(method));
+                }
+            }
+
+            return result;
+        }
+
+        private string InfoMethod(MethodInfo method)
+        {
+            string result = method.Name;
+            foreach (ParameterInfo parameter in method.GetParameters())
+            {
+                result += " "+ClassParameter(parameter);
+            }
+
+            return result;
+        }
+
+        private string ClassParameter(ParameterInfo parameter)
+        {
+            string[] types = parameter.ParameterType.ToString().Split(new char[] { '.' });
+            return types[types.Length-1];
         }
     }
 }

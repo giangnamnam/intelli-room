@@ -328,6 +328,13 @@ namespace IntelliRoom
         public void Exit()
         {
             System.Environment.Exit(0);
-        }        
+        }
+
+        //DATA
+        public static List<string> GetMessages()
+        {
+            return Data.InfoMessages.GetAllTextMessages();
+        }
+
     }
 }

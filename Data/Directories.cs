@@ -70,6 +70,14 @@ namespace Data
             return GetDataDirectory() + "Titles.xml";
         }
 
+        public static void DeleteMusicMediaXMLs()
+        {
+            File.Delete(GetTitlesXML());
+            File.Delete(GetGenresXML());
+            File.Delete(GetAlbumsXML());
+            File.Delete(GetAuthorsXML());
+        }
+
         public static string GetLanguageDirectory()
         {
             return Directory.GetCurrentDirectory() + "\\Language\\";

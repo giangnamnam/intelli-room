@@ -74,7 +74,7 @@ namespace Voice
             }
             catch (Exception)
             {
-                Message.ErrorMessage("No se ha encontrado el archivo de gramática: "+Directories.GetGrammarXML()+", no se cargará la gramática de voz");
+                InfoMessages.ErrorMessage("No se ha encontrado el archivo de gramática: "+Directories.GetGrammarXML()+", no se cargará la gramática de voz");
             }
             
         }

@@ -31,7 +31,7 @@ namespace Data
 
             catch (Exception)
             {
-                Message.ErrorMessage("No se puede hacer la peticion HTTP a: " + url);
+                InfoMessages.ErrorMessage("No se puede hacer la peticion HTTP a: " + url);
                 return null;
             }
         }

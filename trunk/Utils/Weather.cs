@@ -72,7 +72,7 @@ namespace Utils
 	            }
 	            catch (Exception)
 	            {
-                    Message.ErrorMessage("No existe ninguna ciudad con ese nombre");
+                    InfoMessages.ErrorMessage("No existe ninguna ciudad con ese nombre");
 	            }
             }
         }

@@ -76,22 +76,51 @@ namespace Media
 
         public string GetInfoAuthor()
         {
-            return player.controls.currentItem.getItemInfo("Author");
+            try
+            {
+                return player.controls.currentItem.getItemInfo("Author");
+            }
+            catch (Exception)
+            {
+                return "Ningún autor en reproducción";
+            }
+            
         }
 
         public string GetInfoGenre()
         {
-            return player.controls.currentItem.getItemInfo("Genre");
+            try
+            {
+                return player.controls.currentItem.getItemInfo("Genre");
+            }
+            catch (Exception)
+            {
+                return "Ningún género en reproducción";
+            }
         }
 
         public string GetInfoAlbum()
         {
-            return player.controls.currentItem.getItemInfo("Album");
+            try
+            {
+                return player.controls.currentItem.getItemInfo("Album");
+            }
+            catch (Exception)
+            {
+                return "Ningún álbum en reproducción";
+            }
         }
         
         public string GetInfoTitle()
         {
-            return player.controls.currentItem.getItemInfo("Title");
+            try
+            {
+                return player.controls.currentItem.getItemInfo("Title");
+            }
+            catch (Exception)
+            {
+                return "Ningún título en reproducción";
+            }
         }
 
         public string GetInfoDuration()

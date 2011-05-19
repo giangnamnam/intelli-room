@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIIntelliRoom));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -40,6 +42,7 @@
             this.execute = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorList = new System.Windows.Forms.ListBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +114,7 @@
             this.helpList.Name = "helpList";
             this.helpList.Size = new System.Drawing.Size(364, 69);
             this.helpList.TabIndex = 1;
+            this.helpList.DoubleClick += new System.EventHandler(this.GetHelpCommand);
             // 
             // groupBox3
             // 
@@ -171,13 +175,13 @@
             this.commandBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.commandBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commandBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.commandBox.Location = new System.Drawing.Point(3, 3);
-            this.commandBox.Multiline = true;
             this.commandBox.Name = "commandBox";
-            this.commandBox.Size = new System.Drawing.Size(250, 29);
+            this.commandBox.Size = new System.Drawing.Size(250, 27);
             this.commandBox.TabIndex = 0;
             this.commandBox.TextChanged += new System.EventHandler(this.UpdateHelp);
+            this.commandBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressCommand);
             // 
             // execute
             // 
@@ -216,12 +220,19 @@
             this.errorList.Size = new System.Drawing.Size(306, 381);
             this.errorList.TabIndex = 0;
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.UpdateInfoList);
+            // 
             // GUIIntelliRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 416);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUIIntelliRoom";
             this.Text = "IntelliRoom";
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -253,6 +264,7 @@
         private System.Windows.Forms.ListBox errorList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ListBox helpList;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

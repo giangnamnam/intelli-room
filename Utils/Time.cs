@@ -8,16 +8,21 @@ namespace Utils
 {
     public class Time
     {
-        public static String GetTime()
+        public static String GetStringTime()
         {
             DateTime date = DateTime.Now;
-            return "son las " + date.Hour + " horas y " + date.Minute + " minutos";
+            return "Son las " + date.Hour + " horas y " + date.Minute + " minutos";
         }
 
-        public static String GetDate()
+        public static String GetStringDate()
         {
             DateTime date = DateTime.Now;
-            return "hoy estamos a " + date.Day + " del " + date.Month + " de " + date.Year;
+            return "Estamos a " + date.Day + " del mes" + date.Month + " del año " + date.Year;
+        }
+
+        public static DateTime GetDate()
+        {
+            return DateTime.Now;
         }
     }
 }

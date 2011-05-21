@@ -11,13 +11,13 @@ namespace GUI
 {
     public partial class GUIIntelliRoom : Form
     {
-        CommandInterpreter commInter;
+        CommandInterpreter commandInterpreter;
 
         public GUIIntelliRoom()
         {
             InitializeComponent();
             //Ejecuto el comando inicial
-            commInter = new CommandInterpreter();
+            commandInterpreter = new CommandInterpreter();
             IntelliRoom.Command.Init();
         }
 
@@ -26,26 +26,38 @@ namespace GUI
             String command = commandBox.Text;
             commandBox.Text = "";
             //añadimos el comando insertado
-            historyList.Items.Add("Execute: "+command);
+            historyList.Items.Insert(0, "<- " + command);
             //ejecutamos el comando
-            String resCommand = commInter.Interpreter(command);
+            String resCommand = commandInterpreter.CommandsInterpreter(command);
             //pintamos el resultad
-            historyList.Items.Add("Response: " + resCommand);
+            historyList.Items.Insert(0, "-> " + resCommand);
         }
 
         private void UpdateHelp(object sender, EventArgs e)
         {
             String commands = commandBox.Text;
             string[] command = commands.Split(new char[] { '|' });
-            List<string> result = commInter.SearchHelp(command[command.Length-1]);
+            List<string> result = commandInterpreter.SearchCommands(command[command.Length-1]);
 
             helpList.Items.Clear();
             helpList.Items.AddRange(result.ToArray());
+
+            if (commandInterpreter.ExitsCommand(command[0]))
+            {
+                execute.Enabled = true;
+            }
+            else
+            {
+                execute.Enabled = false;
+            }
         }
 
         private void GetHelpCommand(object sender, EventArgs e)
         {
-            commandBox.Text = helpList.SelectedItem.ToString();
+            if (helpList.SelectedItem != null)
+            {
+                commandBox.Text = helpList.SelectedItem.ToString();
+            }
         }
 
         private void UpdateInfoList(object sender, EventArgs e)
@@ -58,7 +70,7 @@ namespace GUI
         {
             Char key = e.KeyChar;
 
-            if (key.Equals('\r'))
+            if (execute.Enabled==true && key.Equals('\r'))
             {
                 execute_Click(null, null);
             }

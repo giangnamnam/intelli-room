@@ -10,48 +10,28 @@ namespace GUI
 {
     public class CommandInterpreter
     {
-        //TODO -> colores        
-        public String Interpreter(String toInterpreter)
+        public String CommandsInterpreter(String toInterpreter)
         {
             toInterpreter = toInterpreter.ToLower();
             String result = "";
-            if (toInterpreter != null && toInterpreter!="" && toInterpreter[0] == '?')
+
+            string[] commands = SeparateCommands(toInterpreter);
+            foreach (string command in commands)
             {
-                toInterpreter = toInterpreter.TrimStart(new char[]{'?'});
-                result = CommandHelp(toInterpreter);
-            }
-            else if (toInterpreter != null && toInterpreter != "" && toInterpreter == "allcommands")
-            {
-                result = AllCommands();
-            }
-            else if (toInterpreter != null && toInterpreter != "" && toInterpreter == "help")
-            {
-                result = Help();
-            }
-            else if (toInterpreter != null && toInterpreter != "" && SeparateArguments(toInterpreter)[0] == "searchcommand")
-            {
-                if (SeparateArguments(toInterpreter).Length != 1)
+                if (ExitsCommand(command))
                 {
-                    result = SearchCommand(SeparateArguments(toInterpreter)[1]);
+                    result += ExecuteCommand(command) + "\n";
                 }
                 else
                 {
-                    result = "Siga la estructura siguiente para la busqueda: SearchComand textoABuscar";
-                }
-            }
-            else
-            {
-                string[] commands = SeparateCommands(toInterpreter);
-                foreach (string command in commands)
-                {
-                    result += Command(command) + "\n";
+                    result += "No existe comando: "+command;
                 }
             }
 
             return result;
         }
 
-        private String Command(String command)
+        private String ExecuteCommand(String command)
         {
             String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
@@ -63,71 +43,42 @@ namespace GUI
 			{
 			    parametres[i-1] = separateCommand[i];
 			}
-
-            if (methods != null)
+            
+            foreach (MethodInfo mi in methods)
             {
-                //hay al menos un metodo con ese nombre
-                foreach (MethodInfo mi in methods)
+                //hay un metodo con el mismo numero de parametros
+                if (mi.GetParameters().Length == separateCommand.Length - 1)
                 {
-                    if (mi.GetParameters().Length == separateCommand.Length - 1)
-                    {
-                        //hay un metodo con el mismo numero de parametros
-                        object resultObj = Reflection.Invoke(mi, parametres);
-                        if (resultObj == null)
-                            result = "No devuelve nada";
-                        else
-                            result = resultObj.ToString();
-                        break; //para no ejecutar mas de uno
-                    }
-                }
-
-                if (result == "")
-                {
-                    //hasta el momento no se ha encontrado ningun metodo
-                    result = PrintInfoMethods(methods);
+                    object resultObj = Reflection.Invoke(mi, parametres);
+                    if (resultObj == null)
+                        result = "No devuelve nada";
+                    else
+                        result = resultObj.ToString();
+                    break; //para no ejecutar mas de uno
                 }
             }
-            else
+
+            if (result == "")
             {
-                result = "no existe ningun comando con ese nombre, si no sabes utilizar el programa, pueba a utilizar el comando <Help>";
+                //hasta el momento no se ha encontrado ningun metodo
+                result = "No se ha podido ejecutar ninguna función";
             }
+            
             return result;
         }
 
-        private String Help()
-        {
-            String help = "Escribe comandos con la siguiente configuracion:\n";
-            help += "<nombrecomando> <primer_argumento> <segundo_argumento> ... <enesimo_argumento>\n\n";
-            help += "Si no conoces los comandos puedes utilizar los comandos de ayuda:\n";
-            help += "<AllCommands> -> devuelve una lista con todos los comandos disponibles \n";
-            help += "<SearchCommand> <cadena> -> hace una busqueda de comandos donde encaje la cadena";
-
-            return help;
-        }
-
-        private String CommandHelp(String command)
+        public bool ExitsCommand(string command)
         {
             String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
-            String result = "";
-            //sacamos los parametros
-            string[] parametres = new string[separateCommand.Length - 1];
-
-            for (int i = 1; i < separateCommand.Length; i++)
+            if (methods == null)
             {
-                parametres[i - 1] = separateCommand[i];
-            }
-
-            if (methods != null)
-            {
-                //hasta el momento no se ha encontrado ningun metodo
-                result = PrintInfoMethods(methods);
+                return false;
             }
             else
             {
-                result = "no existe ningun comando con ese nombre";
+                return true;
             }
-            return result;
         }
 
         private String[] SeparateArguments(String command)
@@ -146,74 +97,8 @@ namespace GUI
             return result;
         }
 
-        public String AllCommands()
-        {
-            return PrintInfoMethods(Reflection.GetAllMethods());
-        }
-
-        public String SearchCommand(string name)
-        {
-            MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(name.ToLower())).ToArray<MethodInfo>();
-            string result = "";
-            if (methods.Length == 0)
-            {
-                result = "no hemos encontrado ningun metodo con texto de ese tipo";
-            }
-            else
-            {
-                result = PrintInfoMethods(methods);
-            }
-            return result;
-        }
-
-        public static String PrintInfoMethods(MethodInfo[] methods)
-        {
-            methods.OrderBy(x => x.Name);
-            List<string> nameMethods = new List<string>();
-            string result = "";
-            int i = 1;
-            foreach (MethodInfo method in methods)
-            {
-                if (!nameMethods.Contains(method.Name))
-                {
-                    nameMethods.Add(method.Name);
-                    i = 1;
-                    result += "Metodo " + method.Name + ": \n";
-                    result += i.ToString() + " - " + PrintInfoOverride(method) + "\n";
-                }
-                else
-                {
-                    result += i.ToString() + " - " + PrintInfoOverride(method) + "\n";
-                }
-                i++;
-            }
-
-            return result;
-        }
-
-        private static String PrintInfoOverride(MethodInfo method)
-        {
-            ParameterInfo[] paramenters = method.GetParameters();
-            String res = "";
-            if (paramenters.Length != 0)
-            {
-                res += "Con " + paramenters.Length + " parametros, del tipo: ";
-                foreach (ParameterInfo pi in paramenters)
-                {
-                    res += pi.ParameterType.ToString() + ", ";
-                }
-            }
-            else
-            {
-                res += "Sin parametros de entrada";
-            }
-            return res;
-        }
-
-
         //METHODS GUI
-
-        public List<string> SearchHelp(string command)
+        public List<string> SearchCommands(string command)
         {
             MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(command.ToLower())).ToArray<MethodInfo>();
             List<string> result = new List<string>();
@@ -246,7 +131,8 @@ namespace GUI
         private string ClassParameter(ParameterInfo parameter)
         {
             string[] types = parameter.ParameterType.ToString().Split(new char[] { '.' });
-            return types[types.Length-1];
+
+            return "(" + types[types.Length - 1] + ")" + parameter.Name;
         }
     }
 }

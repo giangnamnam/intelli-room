@@ -54,12 +54,17 @@ namespace IntelliRoom
         //UTILS
         public string Date()
         {
-            return Utils.Time.GetDate();
+            return Utils.Time.GetStringDate();
         }
 
         public string Time()
         {
-            return Utils.Time.GetTime();
+            return Utils.Time.GetStringTime();
+        }
+
+        public DateTime DateAndTime()
+        {
+            return Utils.Time.GetDate();
         }
 
         public int Temperature(string city)
@@ -218,9 +223,9 @@ namespace IntelliRoom
             return IntelliRoomSystem.media.GetInfoTitle();
         }
 
-        public void ChangeVolume(int i)
+        public void ChangeVolume(int volume)
         {
-            IntelliRoomSystem.media.ChangeVolume(i);
+            IntelliRoomSystem.media.ChangeVolume(volume);
         }
 
         public void DecreaseVolume()

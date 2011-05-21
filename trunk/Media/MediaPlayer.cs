@@ -125,7 +125,14 @@ namespace Media
 
         public string GetInfoDuration()
         {
-            return player.controls.currentItem.durationString;
+            try
+            {
+                return player.controls.currentItem.durationString;
+            }
+            catch (Exception)
+            {
+                return "Ninguna reproducción en curso";
+            }
         }
 
         public MusicMedia GetInfoPlayList()

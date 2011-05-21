@@ -188,6 +188,7 @@
             this.execute.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.execute.Enabled = false;
             this.execute.Location = new System.Drawing.Point(259, 3);
             this.execute.Name = "execute";
             this.execute.Size = new System.Drawing.Size(102, 29);
@@ -223,7 +224,7 @@
             // timer
             // 
             this.timer.Enabled = true;
-            this.timer.Interval = 1000;
+            this.timer.Interval = 3000;
             this.timer.Tick += new System.EventHandler(this.UpdateInfoList);
             // 
             // GUIIntelliRoom

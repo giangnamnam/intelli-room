@@ -84,7 +84,7 @@ namespace Data
 
             public Message(string type, string text)
             {
-                date = new DateTime();
+                date = DateTime.Now;
                 this.text = text;
                 this.type = type;
             }

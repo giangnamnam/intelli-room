@@ -95,9 +95,27 @@
     </choice>
   </command>
 
-  <command name="setdirectcolor red">
+  <command name="setgradientcolor red 500">
     <choice>
       <element>color rojo</element>
+    </choice>
+  </command>
+
+  <command name="setgradientcolor blue 500">
+    <choice>
+      <element>color azul</element>
+    </choice>
+  </command>
+
+  <command name="setgradientcolor green 500">
+    <choice>
+      <element>color verde</element>
+    </choice>
+  </command>
+
+  <command name="setgradientcolor orange 500">
+    <choice>
+      <element>color naranja</element>
     </choice>
   </command>
 
@@ -113,9 +131,15 @@
     </choice>
   </command>
 
-  <command name="gradientcolor red 1000">
+  <command name="RandomColor 6000">
     <choice>
-      <element>color rojo</element>
+      <element>Colores relajantes</element>
+    </choice>
+  </command>
+
+  <command name="RandomColor 200">
+    <choice>
+      <element>modo discoteca</element>
     </choice>
   </command>
 

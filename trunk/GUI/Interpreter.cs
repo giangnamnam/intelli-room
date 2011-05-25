@@ -35,7 +35,7 @@ namespace GUI
         {
             String[] separateCommand = SeparateArguments(command);
             MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
-            String result = "";
+            String result = "null";
             //sacamos los parametros
             string[] parametres = new string[separateCommand.Length-1];
 
@@ -58,7 +58,7 @@ namespace GUI
                 }
             }
 
-            if (result == "")
+            if (result == "null")
             {
                 //hasta el momento no se ha encontrado ningun metodo
                 result = "No se ha podido ejecutar ninguna función";

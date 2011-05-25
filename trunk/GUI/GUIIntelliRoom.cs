@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GUI
 {
@@ -25,11 +27,10 @@ namespace GUI
         {
             String command = commandBox.Text;
             commandBox.Text = "";
-            //añadimos el comando insertado
-            historyList.Items.Insert(0, "<- " + command);
             //ejecutamos el comando
             String resCommand = commandInterpreter.CommandsInterpreter(command);
             //pintamos el resultad
+            historyList.Items.Insert(0, "<- " + command);
             historyList.Items.Insert(0, "-> " + resCommand);
         }
 

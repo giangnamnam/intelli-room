@@ -115,7 +115,7 @@ namespace Arduino
             Monitor.Enter(WriteMonitor);
             if (serial == null)
             {
-                InfoMessages.InformationMessage("Arduino no esta conectado, escaneamos si se encuentra activo");
+                InfoMessages.InformationMessage("Arduino no está conectado, escaneamos los puertos...");
                 GetSerialArduino();
             }
             try
@@ -131,7 +131,7 @@ namespace Arduino
             }
             catch (Exception)
             {
-                InfoMessages.ErrorMessage("Error en el envio de datos");
+                InfoMessages.ErrorMessage("Error en el envío de datos");
                 GetSerialArduino();
             }
             finally

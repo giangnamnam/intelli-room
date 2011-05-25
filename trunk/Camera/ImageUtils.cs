@@ -80,7 +80,7 @@ namespace Camera
         }
     }
 
-    class FaceResult
+    public class FaceResult
     {
         Image<Bgr, Byte> image;
         List<Rectangle> faces;
@@ -124,6 +124,11 @@ namespace Camera
             {
                 ImageUtils.SaveFace(image, rect);
             }
+        }
+
+        public override string ToString()
+        {
+            return "En la captura encontramos " + GetNumberOfFaces() + " caras";
         }
     }
 }

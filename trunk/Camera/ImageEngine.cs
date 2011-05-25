@@ -52,6 +52,20 @@ namespace Camera
             }
         }
 
+        public static double GetIluminance()
+        {
+            Image<Bgr, Byte> image = Config.camera.GetImage();
+
+            return ImageUtils.GetIluminance(image);
+        }
+
+        public static FaceResult FaceDetect()
+        {
+            Image<Bgr, Byte> image = Config.camera.GetImage();
+
+            return ImageUtils.FaceDetect(image);
+        }
+
         private void ProcessImage()
         {
             GetImage();

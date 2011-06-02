@@ -32,7 +32,7 @@ namespace IntelliRoom
         private String Command(String command)
         {
             String[] separateCommand = SeparateArguments(command);
-            MethodInfo[] methods = Reflection.SearchMethod(separateCommand[0]);
+            MethodInfo[] methods = Reflection.SearchSpeakMethod(separateCommand[0]);
             String result = "";
             //sacamos los parametros
             string[] parametres = new string[separateCommand.Length - 1];

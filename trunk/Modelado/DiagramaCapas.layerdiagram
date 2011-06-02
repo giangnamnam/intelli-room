@@ -9,6 +9,7 @@
       </dependencyToLayers>
       <childLayers>
         <layer Id="55932b52-e4f2-436f-af5d-7d71e20af258" name="Console" />
+        <layer Id="7ccfbba1-50f0-473b-97ae-2a5820e7bdfe" name="GUI" />
       </childLayers>
     </layer>
     <layer Id="8b87a4ac-a49f-4d92-b87d-a7a0d93117ae" name="Lógica de negocio">
@@ -20,19 +21,38 @@
       <childLayers>
         <layer Id="a0ae9403-21fd-4a4c-8e0b-6ce9e6e0d7ac" name="Arduino" />
         <layer Id="29efd88f-742d-49c0-802c-2737ff96cee5" name="Camera&#xD;&#xA;" />
-        <layer Id="1dd88442-82d6-48bd-bfac-a9df081359f7" name="EmguCV" />
+        <layer Id="1dd88442-82d6-48bd-bfac-a9df081359f7" name="EmguCV">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="e1674558-ee72-43c5-b60c-2c5d8aba2300" direction="Bidirectional">
+              <layerMoniker Id="29efd88f-742d-49c0-802c-2737ff96cee5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
         <layer Id="ba777185-c8f4-44a9-b03e-ab1c3309b056" name="Media" />
-        <layer Id="9080d2bb-a6b1-41b3-8df5-50aec86c3ba1" name="Voice" />
-        <layer Id="90ba9454-8408-4c01-b1e4-f8c8adeb6edc" name="WMPLib" />
+        <layer Id="9080d2bb-a6b1-41b3-8df5-50aec86c3ba1" name="Voice">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="a63955a0-9e94-4481-bdff-b1e7443e3eec" direction="Bidirectional">
+              <layerMoniker Id="eb844942-7351-48f6-9ed3-cbdbc21e4f60" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="90ba9454-8408-4c01-b1e4-f8c8adeb6edc" name="WMPLib">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="306043ab-4629-4de4-b020-35bc19091b8b" direction="Bidirectional">
+              <layerMoniker Id="ba777185-c8f4-44a9-b03e-ab1c3309b056" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
         <layer Id="eb844942-7351-48f6-9ed3-cbdbc21e4f60" name="SAPI&#xD;&#xA;" />
         <layer Id="9fe3d40b-a716-4914-b18a-7c5f65ae5541" name="IntelliRoom" />
+        <layer Id="00c0f74e-5773-4f4a-b136-437f70132989" name="Utils" />
       </childLayers>
     </layer>
     <layer Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" name="Datos">
       <childLayers>
         <layer Id="22afc8cf-8386-46a8-8755-7cda6804a5d0" name="HTTP Request" />
-        <layer Id="1b40d92e-d900-4cee-a4f9-443e5d8d66d7" name="Config" />
-        <layer Id="3db8a1ee-912f-4430-b248-8816e0c8e18b" name="XML" />
+        <layer Id="1b40d92e-d900-4cee-a4f9-443e5d8d66d7" name="Language" />
+        <layer Id="3db8a1ee-912f-4430-b248-8816e0c8e18b" name="Message" />
         <layer Id="a3e8c7d8-bd15-44d5-a093-bb6b71795871" name="Directories" />
       </childLayers>
     </layer>

@@ -10,7 +10,8 @@ namespace Voice
         void DeleteAllGrammars();
         void DictationMode();
         void LoadGrammar();
-        void LoadGrammar(List<string> list, string context);
+        void LoadListGrammar(List<string> list, string context);
+        void AddListGrammar(List<string> list, string context);
         void Speak(string text);
         void Speak(string text, bool needSynthesizer);
         event EventHandler<System.Speech.Recognition.RecognitionEventArgs> speechRecognizer;

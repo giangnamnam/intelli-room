@@ -47,7 +47,7 @@ namespace Voice
             recognizer.AddGrammar(grammar);
         }
 
-        public void LoadGrammar(List<string> list, string context)
+        public void AddListGrammar(List<string> list, string context)
         {
             Choices choices = new Choices();
             foreach (string element in list)
@@ -59,8 +59,15 @@ namespace Voice
             AddGrammar(grammar);
         }
 
+        public void LoadListGrammar(List<string> list, string context)
+        {
+            DeleteAllGrammars();
+            AddListGrammar(list, context);
+        }
+
         public void LoadGrammar()
         {
+            DeleteAllGrammars();
             //cargamos el documento XML
             XmlDocument xml = new XmlDocument();
             try

@@ -28,10 +28,18 @@ namespace GUI
             String command = commandBox.Text;
             commandBox.Text = "";
             //ejecutamos el comando
-            String resCommand = commandInterpreter.CommandsInterpreter(command);
-            //pintamos el resultad
-            historyList.Items.Insert(0, "<- " + command);
-            historyList.Items.Insert(0, "-> " + resCommand);
+
+            var taskCommand = Task.Factory.StartNew(() =>
+            {
+                return commandInterpreter.CommandsInterpreter(command);
+            }).ContinueWith((res) =>
+                {
+                    string resCommand = res.Result;
+                    //pintamos el resultad
+                    historyList.Items.Insert(0, "<- " + command);
+                    historyList.Items.Insert(0, "-> " + resCommand);
+                } , TaskScheduler.FromCurrentSynchronizationContext());
+                       
         }
 
         private void UpdateHelp(object sender, EventArgs e)

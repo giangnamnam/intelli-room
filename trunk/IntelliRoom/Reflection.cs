@@ -54,5 +54,29 @@ namespace IntelliRoom
 
             return methods.ToArray<MethodInfo>();
         }
+
+        public static MethodInfo[] SearchSpeakMethod(String command)
+        {
+            MethodInfo[] res = GetAllSpeakMethods().Where(x => x.Name.ToLower() == command.ToLower()).ToArray<MethodInfo>();
+            if (res.Length == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return res;
+            }
+        }
+
+        public static MethodInfo[] GetAllSpeakMethods()
+        {
+            List<MethodInfo> methods = new List<MethodInfo>();
+
+            methods.AddRange(new SpeakCommand().GetType().GetMethods());
+
+            methods.RemoveAll(x => x.Name == "GetType" || x.Name == "GetHashCode" || x.Name == "Equals" || x.Name == "ToString" || x.Name == "Init");
+
+            return methods.ToArray<MethodInfo>();
+        }
     }
 }

@@ -61,6 +61,13 @@
     </choice>
   </command>
 
+  <command name="loadAlbum">
+    <choice>
+      <element>poner álbum musical</element>
+      <element>poner disco de música</element>
+    </choice>
+  </command>
+
   <command name="decreasevolume">
     <choice>
       <element>bajar volumen</element>

@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Speech.Recognition;
 using Data;
 using Media;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace IntelliRoom
 {
@@ -19,11 +21,6 @@ namespace IntelliRoom
         public void Speak(String speakText)
         {
             IntelliRoomSystem.voiceEngine.Speak(speakText);
-        }
-
-        public void DeleteAllGrammars()
-        {
-            IntelliRoomSystem.voiceEngine.DeleteAllGrammars();
         }
 
         public void DictationMode()
@@ -262,32 +259,7 @@ namespace IntelliRoom
         {
             IntelliRoomSystem.media.LoadAllMedia();
         }
-
-        public void LoadAlbum(string nameAlbum)
-        {
-            IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
-        }
-
-        public void LoadAuthor(string nameArtist)
-        {
-            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
-        }
-
-        public void LoadGenre(string nameGenre)
-        {
-            IntelliRoomSystem.media.LoadMediaGenre(nameGenre);
-        }
-
-        public void LoadTitle(string nameSong)
-        {
-            IntelliRoomSystem.media.LoadMediaTitle(nameSong);
-        }
-
-        public void LoadUrl(string url)
-        {
-            IntelliRoomSystem.media.LoadUrl(url);
-        }
-
+        
         public List<string> GetAllAuthors()
         {
             return IntelliRoomSystem.media.GetAllAuthors();
@@ -341,5 +313,90 @@ namespace IntelliRoom
             return Data.InfoMessages.GetAllTextMessages();
         }
 
+    }
+
+    public class TextCommand : Command
+    {
+
+        public void LoadAlbum(string nameAlbum)
+        {
+            IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
+        }
+
+        public void LoadAuthor(string nameArtist)
+        {
+            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
+        }
+
+        public void LoadGenre(string nameGenre)
+        {
+            IntelliRoomSystem.media.LoadMediaGenre(nameGenre);
+        }
+
+        public void LoadTitle(string nameSong)
+        {
+            IntelliRoomSystem.media.LoadMediaTitle(nameSong);
+        }
+
+        public void LoadUrl(string url)
+        {
+            IntelliRoomSystem.media.LoadUrl(url);
+        }
+    }
+
+    public class SpeakCommand : Command
+    {
+        public bool esperaActiva;
+        public string result;
+        public string context;
+        
+        public void LoadAlbum()
+        {
+            IntelliRoomSystem.voiceEngine.LoadListGrammar(IntelliRoomSystem.media.GetAllAlbums(),"LoadAlbum");
+
+            var cancelToken = new CancellationTokenSource();
+            var task = Task.Factory.StartNew(() =>
+            {
+                IntelliRoomSystem.voiceEngine.speechRecognizer += new EventHandler<RecognitionEventArgs>(speechCommandRecognizer);
+
+                esperaActiva = true;
+                result = "";
+                while (esperaActiva) ;
+            }, cancelToken.Token).ContinueWith(x => {
+                IntelliRoomSystem.voiceEngine.speechRecognizer -= new EventHandler<RecognitionEventArgs>(speechCommandRecognizer);
+            }, TaskContinuationOptions.AttachedToParent);
+
+            var a = task.Wait(8000);
+            cancelToken.Cancel();
+
+            if (task.IsCompleted && context == "LoadAlbum")
+            {
+                IntelliRoomSystem.media.LoadMediaAlbum(result);
+            }
+
+            IntelliRoomSystem.voiceEngine.LoadGrammar();
+        }
+
+        //public void LoadAuthor()
+        //{
+        //    IntelliRoomSystem.media.LoadMediaAuthor();
+        //}
+
+        //public void LoadGenre()
+        //{
+        //    IntelliRoomSystem.media.LoadMediaGenre();
+        //}
+
+        //public void LoadTitle()
+        //{
+        //    IntelliRoomSystem.media.LoadMediaTitle(nameSong);
+        //}
+
+        void speechCommandRecognizer(object sender, RecognitionEventArgs e)
+        {
+            result = e.Result.Text;
+            context = e.Result.Grammar.Name;
+            esperaActiva = false;
+        }
     }
 }

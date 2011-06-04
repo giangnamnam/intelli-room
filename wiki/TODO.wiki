@@ -1,0 +1,20 @@
+= TODO =
+
+==Documentación==
+*Revisar documentación
+*Arreglar revision de la documentación
+*Revisar con minolo los marcados en Rojo
+*Escribir apartado 1.1
+*Escribir apartado 2.1
+*Escribir apartado 2.2
+*Escribir comienzo capítulo 3
+*Escribir apartado 4.4 una descripción breve de alternativas
+*Escribir comienzo capítulo 4.4
+*Arreglar cabeceras del documento "I-R: nombre del capítulo"
+*Índice de imagenes
+*Título a cada una de las imágenes
+
+
+== Desarrollo ==
+*Solucionar error Invoke.CV
+*Problemas con las tareas y multihilo

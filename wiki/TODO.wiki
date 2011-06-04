@@ -8,6 +8,10 @@
  * Escribir comienzo capítulo 3
  * Escribir apartado 4.4 una descripción breve de alternativas
  * Escribir comienzo capítulo 4.4
+ * Escribir apartado 4.7 con minolo
+ * Escribir apartado 5.1
+ * Revisar capitulo 5
+ * Código Arduino
  * Arreglar cabeceras del documento "I-R: nombre del capítulo"
  * Índice de imágenes
  * Título a cada una de las imágenes

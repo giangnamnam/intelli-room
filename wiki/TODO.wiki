@@ -9,8 +9,10 @@
  * Escribir apartado 4.4 una descripción breve de alternativas
  * Escribir comienzo capítulo 4.4
  * Escribir apartado 4.7 con minolo
+ * Revisar capítulo 5
  * Escribir apartado 5.1
- * Revisar capitulo 5
+ * Revisar capítulo 7
+ * Actualizar diagrama de modulo voice
  * Código Arduino
  * Arreglar cabeceras del documento "I-R: nombre del capítulo"
  * Índice de imágenes

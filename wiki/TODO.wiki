@@ -12,13 +12,25 @@
  * Revisar capítulo 5
  * Escribir apartado 5.1
  * Revisar capítulo 7
+ * Escribir conclusiones del apartado 9.4
+ * Escribir apartado 10.1
+ * Escribir apartado 10.4.2 (explicación del haarCascade) ejemplo gráfico y código
+ * Apartado 11.4 (métodos relevantes y escribir algunos métodos)
+ * Ejemplo gráfico y código del apartado 10.4.1
  * Actualizar diagrama de modulo voice
  * Código Arduino
  * Arreglar cabeceras del documento "I-R: nombre del capítulo"
  * Índice de imágenes
  * Título a cada una de las imágenes
+ * Capitulo de referencias usadas en el documento.
+ * Actualizar diagrama de la capa de datos.
 
 
 == Desarrollo ==
- * Solucionar error Invoke.CV
- * Problemas con las tareas y multihilo
+ * Solucionar error Invoke.CV.
+ * Problemas con las tareas y multihilo.
+ * Reescribir la clase Message.
+ * Gestión de la clase Config desde la interfaz gráfica.
+ * Funcionalidad para PicassaGoogle.
+ * Código diferencia de imágenes.
+ * Gestión de sistema de alarmas.

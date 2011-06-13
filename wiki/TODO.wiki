@@ -1,6 +1,6 @@
 ==Documentación==
  * ~~Revisar documentación~~
- * Arreglar revision de la documentación
+ * ~~Arreglar revision de la documentación~~
  * Revisar con minolo los marcados en Rojo
  * Escribir apartado 1.1
  * Escribir apartado 2.1

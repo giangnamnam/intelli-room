@@ -31,6 +31,6 @@
  * Problemas con las tareas y multihilo.
  * Reescribir la clase Message.
  * Gestión de la clase Config desde la interfaz gráfica.
- * Funcionalidad para PicassaGoogle.
+ * Funcionalidad para Picassa.
  * Código diferencia de imágenes.
  * Gestión de sistema de alarmas.

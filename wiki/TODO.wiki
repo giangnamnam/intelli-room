@@ -34,3 +34,4 @@
  * Funcionalidad para la API de Picasa.
  * Código diferencia de imágenes.
  * Gestión de sistema de alarmas.
+ * Construcción del circuito de gestión de dispositivos.

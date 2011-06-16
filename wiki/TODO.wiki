@@ -31,12 +31,14 @@
  * Problemas con las tareas y multihilo.
  * Reescribir la clase Message.
  * ~~Gestión de la clase Config desde la interfaz gráfica.~~
- * Funcionalidad para la API de Picasa.
+ * (Deprecate)Funcionalidad para la API de Picasa.
  * ~~Código iluminacion imagenes.~~
  * ~~Código diferencia de imágenes.~~
  * ~~Sistema de diferencia de comandos de voz con comandos de texto~~
  * Gestión de sistema de alarmas.
  * Construcción del circuito de gestión de dispositivos.
- * Cambio de idiomas
- * Revisar eventos de camera
- * Centralizar los eventos de los modulos
+ * Cambio de idiomas.
+ * Revisar eventos de camera.
+ * Centralizar los eventos de los módulos.
+ * Reproductor de sonidos.
+ * GoogleTranslate?

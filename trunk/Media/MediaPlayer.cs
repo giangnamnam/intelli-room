@@ -207,5 +207,19 @@ namespace Media
             media = new MusicMedia(player.mediaCollection.getAll(), true);
         }
 
+        //PLAY SOUND
+
+        public void PlaySound(String urlSound)
+        {
+            PlaySounds sounds = new PlaySounds(urlSound);
+            sounds.finishSound += new EventHandler(sounds_finishSound);
+            Pause();
+        }
+
+        void sounds_finishSound(object sender, EventArgs e)
+        {
+            Play();
+        }
+
     }
 }

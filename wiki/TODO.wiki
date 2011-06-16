@@ -39,3 +39,4 @@
  * Construcción del circuito de gestión de dispositivos.
  * Cambio de idiomas
  * Revisar eventos de camera
+ * Centralizar los eventos de los modulos

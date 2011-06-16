@@ -280,6 +280,31 @@ namespace IntelliRoom
             return IntelliRoomSystem.media.GetAllAlbums();
         }
 
+        public void LoadAlbum(string nameAlbum)
+        {
+            IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
+        }
+
+        public void LoadAuthor(string nameArtist)
+        {
+            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
+        }
+
+        public void LoadGenre(string nameGenre)
+        {
+            IntelliRoomSystem.media.LoadMediaGenre(nameGenre);
+        }
+
+        public void LoadTitle(string nameSong)
+        {
+            IntelliRoomSystem.media.LoadMediaTitle(nameSong);
+        }
+
+        public void LoadMediaUrl(string url)
+        {
+            IntelliRoomSystem.media.LoadUrl(url);
+        }
+
         //CAMERA
 
         public void StartProcessImage()
@@ -313,35 +338,6 @@ namespace IntelliRoom
             return Data.InfoMessages.GetAllTextMessages();
         }
 
-    }
-
-    public class TextCommand : Command
-    {
-
-        public void LoadAlbum(string nameAlbum)
-        {
-            IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
-        }
-
-        public void LoadAuthor(string nameArtist)
-        {
-            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
-        }
-
-        public void LoadGenre(string nameGenre)
-        {
-            IntelliRoomSystem.media.LoadMediaGenre(nameGenre);
-        }
-
-        public void LoadTitle(string nameSong)
-        {
-            IntelliRoomSystem.media.LoadMediaTitle(nameSong);
-        }
-
-        public void LoadUrl(string url)
-        {
-            IntelliRoomSystem.media.LoadUrl(url);
-        }
     }
 
     public class SpeakCommand : Command

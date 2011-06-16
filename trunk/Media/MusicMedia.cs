@@ -119,22 +119,22 @@ namespace Media
 
             for (int i = 0; i < playList.count; i++)
             {
-                if (AddElementInMedia(authors,playList.Item[i].getItemInfo("Author")))
+                if (!ExistElementInMedia(authors,playList.Item[i].getItemInfo("Author")))
                 {
                     authors.Add(playList.Item[i].getItemInfo("Author"));
                 }
 
-                if (AddElementInMedia(genres,playList.Item[i].getItemInfo("Genre")))
+                if (!ExistElementInMedia(genres,playList.Item[i].getItemInfo("Genre")))
                 {
                     genres.Add(playList.Item[i].getItemInfo("Genre"));
                 }
 
-                if (AddElementInMedia(albums, playList.Item[i].getItemInfo("Album")))
+                if (!ExistElementInMedia(albums, playList.Item[i].getItemInfo("Album")))
                 {
                     albums.Add(playList.Item[i].getItemInfo("Album"));
                 }
 
-                if (AddElementInMedia(titles, playList.Item[i].getItemInfo("Title")))
+                if (!ExistElementInMedia(titles, playList.Item[i].getItemInfo("Title")))
                 {
                     titles.Add(playList.Item[i].getItemInfo("Title"));
                 }
@@ -167,18 +167,18 @@ namespace Media
             serializer.Serialize(xml, this.titles);
         }
 
-        private bool AddElementInMedia(List<string> list, string element)
+        private bool ExistElementInMedia(List<string> list, string element)
         {
-            bool result = true;
+            bool result = false;
             if (element == "")
             {
-                result = false;
+                result = true;
             }
             if (result)
             {
                 string elem = element.ToLower();
                 bool exist = list.Exists(x => x.ToLower() == elem);
-                result = !exist;
+                result = exist;
             }
             return result;
         }

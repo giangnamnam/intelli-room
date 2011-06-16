@@ -33,7 +33,7 @@ namespace IntelliRoom
 
         public static MethodInfo[] SearchMethod(String command)
         {
-            MethodInfo[] res = GetAllMethods().Where(x => x.Name.ToLower() == command.ToLower()).ToArray<MethodInfo>();
+            MethodInfo[] res = GetMethods().Where(x => x.Name.ToLower() == command.ToLower()).ToArray<MethodInfo>();
             if (res.Length == 0)
             {
                 return null;
@@ -44,7 +44,7 @@ namespace IntelliRoom
             }
         }
 
-        public static MethodInfo[] GetAllMethods()
+        public static MethodInfo[] GetMethods()
         {
             List<MethodInfo> methods = new List<MethodInfo>();
 
@@ -57,7 +57,7 @@ namespace IntelliRoom
 
         public static MethodInfo[] SearchSpeakMethod(String command)
         {
-            MethodInfo[] res = GetAllSpeakMethods().Where(x => x.Name.ToLower() == command.ToLower()).ToArray<MethodInfo>();
+            MethodInfo[] res = GetSpeakMethods().Where(x => x.Name.ToLower() == command.ToLower()).ToArray<MethodInfo>();
             if (res.Length == 0)
             {
                 return null;
@@ -68,11 +68,13 @@ namespace IntelliRoom
             }
         }
 
-        public static MethodInfo[] GetAllSpeakMethods()
+        public static MethodInfo[] GetSpeakMethods()
         {
             List<MethodInfo> methods = new List<MethodInfo>();
 
+            //los metodos de comando de voz mas los demas metodos
             methods.AddRange(new SpeakCommand().GetType().GetMethods());
+            methods.AddRange(new Command().GetType().GetMethods());
 
             methods.RemoveAll(x => x.Name == "GetType" || x.Name == "GetHashCode" || x.Name == "Equals" || x.Name == "ToString" || x.Name == "Init");
 

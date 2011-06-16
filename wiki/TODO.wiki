@@ -38,7 +38,7 @@
  * Gestión de sistema de alarmas.
  * Construcción del circuito de gestión de dispositivos.
  * Cambio de idiomas.
- * Revisar eventos de camera.
+ * ~~Revisar eventos de camera.~~
  * Centralizar los eventos de los módulos.
- * Reproductor de sonidos.
- * GoogleTranslate?
+ * Hacer tests a Reproductor de sonidos.
+ * GoogleTranslate.

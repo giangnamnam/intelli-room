@@ -95,6 +95,7 @@ namespace IntelliRoom
             return new Utils.Weather(city).WindSpeed;
         }
 
+
         //LIGHTING
 
         public void DirectColor(String color)

@@ -12,30 +12,27 @@ namespace Camera
     {
         public static double GetIluminance(Image<Bgr, Byte> image)
         {
+            //transformamos la imagen de RGB to HSV
             Image<Hsv, Byte> imageHSV = image.Convert<Hsv, Byte>();
             //calculo la media del componente "V"
-
-
-            return 0;
+            return imageHSV.GetAverage().Value;
         }
 
         public static double GetMovement(Image<Bgr, Byte> image, Image<Bgr, Byte> lastImage)
         {
+            //aplicamos una media para "solucionar" posibles errores que puedan ser cometidos por la camara
             Image<Bgr, byte> imageA = image.SmoothMedian(9);
             Image<Bgr, byte> imageL = lastImage.SmoothMedian(9);
 
+            //hacemos sus diferencias
             Image<Bgr, byte> imageSub1 = imageA.Sub(imageL);
             Image<Bgr, byte> imageSub2 = imageL.Sub(imageA);
             
-            IImage imageOr = imageSub1.Or(imageSub2);
+            //sumamos sus diferencias
+            Image<Bgr, byte> imageOr = imageSub1.Or(imageSub2);
 
-            //Ahora a ver pixel por pixel
-            DenseHistogram histogram = new DenseHistogram(256, new RangeF());
-
-            //histogram.Calculate(imageOr[], false, null);
-
-
-            return 0;
+            //vemos cuanto valor tiene esa imagen
+            return GetIluminance(imageOr);
 
         }
 

@@ -43,6 +43,7 @@
     <Compile Include="IMediaPlayer.cs" />
     <Compile Include="MusicMedia.cs" />
     <Compile Include="MediaPlayer.cs" />
+    <Compile Include="PlaySound.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

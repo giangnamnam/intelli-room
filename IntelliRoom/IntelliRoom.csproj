@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="InterpreterSpeech.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection.cs" />

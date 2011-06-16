@@ -9,10 +9,10 @@ namespace Camera
 {
     public class ImageEngine : IImageEngine
     {
-        public event EventHandler movementDetected;
-        public event EventHandler facesDetected;
-        public event EventHandler iluminanceEvent;
-        public event EventHandler imageResult;
+        public event EventHandler<double> movementDetected;
+        public event EventHandler<FaceResult> facesDetected;
+        public event EventHandler<double> iluminanceEvent;
+        public event EventHandler<LastResults> imageResult;
 
         public Image<Bgr, Byte> image;
         public Image<Bgr, Byte> lastImage;
@@ -87,7 +87,7 @@ namespace Camera
                 if (iluminance >= Config.iluminanceEvent)
                 {
                     //lanzar evento
-                    iluminanceEvent.Invoke(null, null);
+                    iluminanceEvent.Invoke(null, iluminance);
                 }
             }
 
@@ -98,7 +98,7 @@ namespace Camera
                 if (movement >= Config.isMovement)
                 {
                     //lanzar evento (con algun argumento)
-                    movementDetected.Invoke(null, null);
+                    movementDetected.Invoke(null, movement);
 
                     if (Config.saveMovement)
                     {
@@ -115,7 +115,7 @@ namespace Camera
                 if (faceResult.FaceDetect())
                 {
                     //lanzar evento
-                    facesDetected.Invoke(null, null);
+                    facesDetected.Invoke(null, faceResult);
 
                     if (Config.saveFaces)
                     {
@@ -123,6 +123,8 @@ namespace Camera
                     }
                 }
             }
+
+            imageResult.Invoke(null, lastResult);
         }
 
         public static void SetProcessMilliseconds(int millis)

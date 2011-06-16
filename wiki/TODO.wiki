@@ -32,6 +32,8 @@
  * Reescribir la clase Message.
  * Gestión de la clase Config desde la interfaz gráfica.
  * Funcionalidad para la API de Picasa.
+ * Codigo iluminacion imagenes.
  * Código diferencia de imágenes.
+ * Sistema de diferencia de comandos de voz con comandos de texto
  * Gestión de sistema de alarmas.
  * Construcción del circuito de gestión de dispositivos.

@@ -100,7 +100,7 @@ namespace GUI
         //METHODS GUI
         public List<string> SearchCommands(string command)
         {
-            MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(command.ToLower())).ToArray<MethodInfo>();
+            MethodInfo[] methods = Reflection.GetMethods().Where(x => x.Name.ToLower().Contains(command.ToLower())).ToArray<MethodInfo>();
             List<string> result = new List<string>();
             if (methods.Length == 0)
             {

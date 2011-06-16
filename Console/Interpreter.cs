@@ -148,12 +148,12 @@ namespace Console
 
         public String AllCommands()
         {
-            return PrintInfoMethods(Reflection.GetAllMethods());
+            return PrintInfoMethods(Reflection.GetMethods());
         }
 
         public String SearchCommand(string name)
         {
-            MethodInfo[] methods = Reflection.GetAllMethods().Where(x => x.Name.ToLower().Contains(name.ToLower())).ToArray<MethodInfo>();
+            MethodInfo[] methods = Reflection.GetMethods().Where(x => x.Name.ToLower().Contains(name.ToLower())).ToArray<MethodInfo>();
             string result = "";
             if (methods.Length == 0)
             {

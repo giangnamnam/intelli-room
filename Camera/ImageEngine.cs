@@ -12,17 +12,25 @@ namespace Camera
         public event EventHandler movementDetected;
         public event EventHandler facesDetected;
         public event EventHandler iluminanceEvent;
+        public event EventHandler imageResult;
 
         public Image<Bgr, Byte> image;
         public Image<Bgr, Byte> lastImage;
 
         private Stopwatch time;
         private Thread thread;
+        private LastResults lastResult;
 
         public ImageEngine() 
         {
             time = new Stopwatch();
             thread = new Thread(new ThreadStart(StartEngine));
+        }
+
+        public LastResults LastResult
+        {
+            get { return lastResult; }
+            set { lastResult = value; }
         }
 
         public void StartEngine()
@@ -70,25 +78,27 @@ namespace Camera
         {
             GetImage();
 
-            LastResults.image = image.Copy();
+            LastResult = new LastResults(image.Copy());
 
             if (Config.calculeIluminance)
             {
                 double iluminance = ImageUtils.GetIluminance(image);
-                LastResults.iluminance = iluminance;
+                LastResult.iluminance = iluminance;
                 if (iluminance >= Config.iluminanceEvent)
                 {
                     //lanzar evento
+                    iluminanceEvent.Invoke(null, null);
                 }
             }
 
             if (Config.calculeMovement)
             {
                 double movement = ImageUtils.GetMovement(image, lastImage);
-                LastResults.movement = movement;
+                LastResult.movement = movement;
                 if (movement >= Config.isMovement)
                 {
-                    //lanzar evento
+                    //lanzar evento (con algun argumento)
+                    movementDetected.Invoke(null, null);
 
                     if (Config.saveMovement)
                     {
@@ -100,20 +110,99 @@ namespace Camera
             if (Config.calculeFace)
             {
                 FaceResult faceResult = ImageUtils.FaceDetect(image);
-                LastResults.faces = faceResult;
-                LastResults.numberOfFaces = faceResult.GetNumberOfFaces();
+                LastResult.faces = faceResult;
+                LastResult.numberOfFaces = faceResult.GetNumberOfFaces();
                 if (faceResult.FaceDetect())
                 {
                     //lanzar evento
+                    facesDetected.Invoke(null, null);
+
                     if (Config.saveFaces)
                     {
-                        foreach (Rectangle rect in faceResult.Faces)
-                        {
-                            ImageUtils.SaveFace(image,rect);
-                        }
+                        faceResult.SaveAllFaces();
                     }
                 }
             }
+        }
+
+        public static void SetProcessMilliseconds(int millis)
+        {
+            Config.processMilliseconds = millis;
+        }
+
+        public static int GetProcessMilliseconds()
+        {
+            return Config.processMilliseconds;
+        }
+
+        public static void SetIsMovement(int movement)
+        {
+            Config.isMovement = movement;
+        }
+
+        public static int GetIsMovement()
+        {
+            return Config.isMovement;
+        }
+
+        public static void SetIluminanceEvent(int iluminance)
+        {
+            Config.iluminanceEvent = iluminance;
+        }
+
+        public static int GetIluminanceEvent()
+        {
+            return Config.iluminanceEvent;
+        }
+
+        public static void SetCalculeIluminance(bool calculeIluminance)
+        {
+            Config.calculeIluminance = calculeIluminance;
+        }
+
+        public static bool GetCalculeIluminance()
+        {
+            return Config.calculeIluminance;
+        }
+
+        public static void SetCalculeMovement(bool calculeMovement)
+        {
+            Config.calculeMovement = calculeMovement;
+        }
+
+        public static bool GetCalculeMovement()
+        {
+            return Config.calculeMovement;
+        }
+
+        public static void SetCalculeFace(bool calculeFaces)
+        {
+            Config.calculeFace = calculeFaces;
+        }
+
+        public static bool GetCalculeFace()
+        {
+            return Config.calculeFace;
+        }
+
+        public static void SetSaveMovement(bool saveMovement)
+        {
+            Config.saveMovement = saveMovement;
+        }
+
+        public static bool GetSaveMovement()
+        {
+            return Config.saveMovement;
+        }
+
+        public static void SetSaveFaces(bool saveFaces)
+        {
+            Config.saveFaces = saveFaces;
+        }
+
+        public static bool GetSaveFaces()
+        {
+            return Config.saveFaces;
         }
 
         private void GetImage()

@@ -6,6 +6,7 @@ using Data;
 using Media;
 using System.Threading;
 using System.Threading.Tasks;
+using Camera;
 
 namespace IntelliRoom
 {
@@ -315,6 +316,120 @@ namespace IntelliRoom
         public void StopProcessImage()
         {
             IntelliRoomSystem.camera.StopEngine();
+        }
+
+        public double GetRoomIluminance()
+        {
+            return Camera.ImageEngine.GetIluminance();
+        }
+
+        public FaceResult FaceDetect()
+        {
+            return Camera.ImageEngine.FaceDetect();
+        }
+
+        public int NumFacesDetect()
+        {
+            return Camera.ImageEngine.FaceDetect().Faces.Count;
+        }
+
+        public LastResults GetLastResults()
+        {
+            return IntelliRoomSystem.camera.LastResult;
+        }
+
+        public void ConfigCameraSetProcessMilliseconds(int millis)
+        {
+            Camera.ImageEngine.SetProcessMilliseconds(millis);
+        }
+
+        public int ConfigCameraGetProcessMilliseconds()
+        {
+            return Camera.ImageEngine.GetProcessMilliseconds();
+        }
+
+        public void ConfigCameraSetIsMovement(int movement)
+        {
+            Camera.ImageEngine.SetIsMovement(movement);
+        }
+
+        public int ConfigCameraGetIsMovement()
+        {
+            return Camera.ImageEngine.GetIsMovement();
+        }
+
+        public void ConfigCameraSetIluminanceEvent(int iluminance)
+        {
+            Camera.ImageEngine.SetIluminanceEvent(iluminance);
+        }
+
+        public int ConfigCameraGetIluminanceEvent()
+        {
+            return Camera.ImageEngine.GetIluminanceEvent();
+        }
+
+        public void ConfigCameraSetCalculeIluminance(bool calculeIluminance)
+        {
+            Camera.ImageEngine.SetCalculeIluminance(calculeIluminance);
+        }
+
+        public bool ConfigCameraGetCalculeIluminance()
+        {
+            return Camera.ImageEngine.GetCalculeIluminance();
+        }
+
+        public void ConfigCameraSetCalculeMovement(bool calculeMovement)
+        {
+            Camera.ImageEngine.SetCalculeMovement(calculeMovement);
+        }
+
+        public bool ConfigCameraGetCalculeMovement()
+        {
+            return Camera.ImageEngine.GetCalculeMovement();
+        }
+
+        public void ConfigCameraSetCalculeFace(bool calculeFaces)
+        {
+            Camera.ImageEngine.SetCalculeFace(calculeFaces);
+        }
+
+        public bool ConfigCameraGetCalculeFace()
+        {
+            return Camera.ImageEngine.GetCalculeFace();
+        }
+
+        public void ConfigCameraSetSaveMovement(bool saveMovement)
+        {
+            Camera.ImageEngine.SetSaveMovement(saveMovement);
+        }
+
+        public bool ConfigCameraGetSaveMovement()
+        {
+            return Camera.ImageEngine.GetSaveFaces();
+        }
+
+        public void ConfigCameraSetSaveFaces(bool saveFaces)
+        {
+            Camera.ImageEngine.SetSaveFaces(saveFaces);
+        }
+
+        public bool ConfigCameraGetSaveFaces()
+        {
+            return Camera.ImageEngine.GetSaveFaces();
+        }
+
+        public string GetConfigCamera()
+        {
+            string result = "";
+            result +="ProcessMilliseconds = "+Camera.ImageEngine.GetProcessMilliseconds()+"\n";
+            result += "IsMovement = " + Camera.ImageEngine.GetIsMovement() + "\n";
+            result += "IluminanceEvent = " + Camera.ImageEngine.GetIluminanceEvent() + "\n";
+            result += "CalculeIluminance? = " + Camera.ImageEngine.GetCalculeIluminance() + "\n";
+            result += "CalculeMovement? = " + Camera.ImageEngine.GetCalculeMovement() + "\n";
+            result += "CalculeFace? = " + Camera.ImageEngine.GetCalculeFace() + "\n";
+            result += "SaveMovement? = " + Camera.ImageEngine.GetSaveMovement() + "\n";
+            result += "SaveFaces? = " + Camera.ImageEngine.GetSaveFaces() + "\n";
+            return result;
         }
 
         //FUNCTIONS

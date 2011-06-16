@@ -24,12 +24,17 @@ namespace Camera
         public static bool saveFaces = true;
     }
 
-    class LastResults
+    public class LastResults
     {
-        public static double movement;
-        public static FaceResult faces;
-        public static double iluminance;
-        public static int numberOfFaces;
-        public static Image<Bgr, Byte> image;
+        public double movement;
+        public FaceResult faces;
+        public double iluminance;
+        public int numberOfFaces;
+        public Image<Bgr, Byte> image;
+
+        public LastResults(Image<Bgr, Byte> image)
+        {
+            this.image = image;
+        }
     }
 }

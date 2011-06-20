@@ -4,11 +4,22 @@ using System.Drawing;
 using System.Threading;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using System.Collections.Generic;
 
 namespace Camera
 {
     public class ImageEngine : IImageEngine
     {
+        public delegate void dlgImagen(List<System.Drawing.Rectangle> interestRegions);
+ 
+        public event dlgImagen peopleDetected;
+        public event dlgImagen dogsDetected;
+        public event dlgImagen flowersDetected;
+
+        public event Action<List<System.Drawing.Rectangle>> peopleDetected2;
+        public event Func<int, int> a=;
+
+
         public event EventHandler<double> movementDetected;
         public event EventHandler<FaceResult> facesDetected;
         public event EventHandler<double> iluminanceEvent;
@@ -25,6 +36,12 @@ namespace Camera
         {
             time = new Stopwatch();
             thread = new Thread(new ThreadStart(StartEngine));
+
+            List<System.Drawing.Rectangle> people = null;
+            //procesamiento que rellena people
+
+            if (peopleDetected2 != null)
+                peopleDetected2(people);
         }
 
         public LastResults LastResult

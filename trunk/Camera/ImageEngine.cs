@@ -10,20 +10,10 @@ namespace Camera
 {
     public class ImageEngine : IImageEngine
     {
-        public delegate void dlgImagen(List<System.Drawing.Rectangle> interestRegions);
- 
-        public event dlgImagen peopleDetected;
-        public event dlgImagen dogsDetected;
-        public event dlgImagen flowersDetected;
-
-        public event Action<List<System.Drawing.Rectangle>> peopleDetected2;
-        public event Func<int, int> a=;
-
-
-        public event EventHandler<double> movementDetected;
-        public event EventHandler<FaceResult> facesDetected;
-        public event EventHandler<double> iluminanceEvent;
-        public event EventHandler<LastResults> imageResult;
+        public event Action<FaceResult> peopleDetected;
+        public event Action<double> movementDetected;
+        public event Action<double> iluminanceEvent;
+        public event Action<LastResults> finishImageProcess;
 
         public Image<Bgr, Byte> image;
         public Image<Bgr, Byte> lastImage;
@@ -36,12 +26,6 @@ namespace Camera
         {
             time = new Stopwatch();
             thread = new Thread(new ThreadStart(StartEngine));
-
-            List<System.Drawing.Rectangle> people = null;
-            //procesamiento que rellena people
-
-            if (peopleDetected2 != null)
-                peopleDetected2(people);
         }
 
         public LastResults LastResult
@@ -104,7 +88,7 @@ namespace Camera
                 if (iluminance >= Config.iluminanceEvent)
                 {
                     //lanzar evento
-                    iluminanceEvent.Invoke(null, iluminance);
+                    iluminanceEvent(iluminance);
                 }
             }
 
@@ -114,8 +98,8 @@ namespace Camera
                 LastResult.movement = movement;
                 if (movement >= Config.isMovement)
                 {
-                    //lanzar evento (con algun argumento)
-                    movementDetected.Invoke(null, movement);
+                    //lanzar evento
+                    movementDetected(movement);
 
                     if (Config.saveMovement)
                     {
@@ -132,7 +116,7 @@ namespace Camera
                 if (faceResult.FaceDetect())
                 {
                     //lanzar evento
-                    facesDetected.Invoke(null, faceResult);
+                    peopleDetected(faceResult);
 
                     if (Config.saveFaces)
                     {
@@ -141,7 +125,7 @@ namespace Camera
                 }
             }
 
-            imageResult.Invoke(null, lastResult);
+            finishImageProcess(LastResult);
         }
 
         public static void SetProcessMilliseconds(int millis)

@@ -3,11 +3,11 @@ namespace Camera
 {
     public interface IImageEngine
     {
-        event EventHandler facesDetected;
-        event EventHandler iluminanceEvent;
-        event EventHandler imageResult;
+        event Action<LastResults> finishImageProcess;
+        event Action<double> iluminanceEvent;
         LastResults LastResult { get; set; }
-        event EventHandler movementDetected;
+        event Action<double> movementDetected;
+        event Action<FaceResult> peopleDetected;
         void StartEngine();
         void StopEngine();
     }

@@ -7,7 +7,7 @@ namespace Data
 {
     public class InfoMessages
     {
-        public static event EventHandler<Message> newMessage;
+        public static event Action<Message> newMessage;
         private static List<Message> messages = new List<Message>();
 
         public static List<Message> Messages
@@ -18,20 +18,22 @@ namespace Data
 
         public static void InformationMessage(string information)
         {
-            messages.Insert(0, new Message("Info", information));
+            Message msg = new Message("Info", information);
+            messages.Insert(0, msg);
             System.Console.ForegroundColor = ConsoleColor.Blue;
             System.Console.WriteLine("Info: " + information);
             System.Console.ForegroundColor = ConsoleColor.White;
-            newMessage.Invoke(null, new Message("Info", information));
+            newMessage(msg);
         }
 
         public static void ErrorMessage(string error)
         {
-            messages.Insert(0, new Message("Error", error));
+            Message msg = new Message("Error", error);
+            messages.Insert(0, msg);
             System.Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("Error: " + error);
             System.Console.ForegroundColor = ConsoleColor.White;
-            newMessage.Invoke(null, new Message("Error", error));
+            newMessage(msg);
         }
 
         public static void ShowInformationMessage(int numMessages)

@@ -8,9 +8,9 @@ namespace Data
 {
     public class Directories
     {
-        public static string GetAlarmXML()
+        public static string GetTasksXML()
         {
-            return Directory.GetCurrentDirectory() + "\\Data\\" + "Alarms.xml";
+            return Directory.GetCurrentDirectory() + "\\Data\\" + "Tasks.xml";
         }
 
         public static string GetHaarCascade()

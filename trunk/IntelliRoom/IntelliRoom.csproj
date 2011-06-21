@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Programmer.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="InterpreterSpeech.cs" />

@@ -13,6 +13,8 @@ namespace IntelliRoom
         public static IMediaPlayer media;
         public static InterpreterSpeech speechInterpreter;
         public static IImageEngine camera;
+        public static Events events;
+        public static Programmer progammer;
 
         public static void InitSystem()
         {
@@ -22,6 +24,8 @@ namespace IntelliRoom
             media = new Media.MediaPlayer();
             speechInterpreter = new InterpreterSpeech();
             camera = new ImageEngine();
+            events = new Events();
+            progammer = new Programmer();
         }
     }
 }

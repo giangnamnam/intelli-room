@@ -8,18 +8,19 @@ namespace Data
     public class InfoMessages
     {
         public static event Action<Message> newMessage;
-        private static List<Message> messages = new List<Message>();
+
+        private static List<Message> messageList = new List<Message>();
 
         public static List<Message> Messages
         {
-            get { return InfoMessages.messages; }
-            set { InfoMessages.messages = value; }
+            get { return InfoMessages.messageList; }
+            set { InfoMessages.messageList = value; }
         }
 
         public static void InformationMessage(string information)
         {
             Message msg = new Message("Info", information);
-            messages.Insert(0, msg);
+            messageList.Insert(0, msg);
             System.Console.ForegroundColor = ConsoleColor.Blue;
             System.Console.WriteLine("Info: " + information);
             System.Console.ForegroundColor = ConsoleColor.White;
@@ -29,7 +30,7 @@ namespace Data
         public static void ErrorMessage(string error)
         {
             Message msg = new Message("Error", error);
-            messages.Insert(0, msg);
+            messageList.Insert(0, msg);
             System.Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("Error: " + error);
             System.Console.ForegroundColor = ConsoleColor.White;
@@ -38,15 +39,15 @@ namespace Data
 
         public static void ShowInformationMessage(int numMessages)
         {
-            for (int i = numMessages; i < messages.Count; i++)
+            for (int i = numMessages; i < messageList.Count; i++)
             {
-                InformationMessage(messages[i].ToString());
+                InformationMessage(messageList[i].ToString());
             }
         }
 
         public static void ShowErrorMessage(int numMessages)
         {
-            for (int i = numMessages; i < messages.Count; i++)
+            for (int i = numMessages; i < messageList.Count; i++)
             {
                 ErrorMessage(Messages[i].ToString());
             }
@@ -56,53 +57,53 @@ namespace Data
         {
             List<string> result = new List<string>();
             
-            foreach (Message msg in messages)
+            foreach (Message msg in messageList)
             {
                 result.Add(msg.ToString());
             }
             return result;
         }
+    }
 
-        public class Message : IComparable<Message>
+    public class Message : IComparable<Message>
+    {
+        private DateTime date;
+        private string text;
+        private string type;
+
+        public string Type
         {
-            private DateTime date;
-            private string text;
-            private string type;
+            get { return type; }
+            set { type = value; }
+        }
 
-            public string Type
-            {
-                get { return type; }
-                set { type = value; }
-            }
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
 
-            public string Text
-            {
-                get { return text; }
-                set { text = value; }
-            }
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
 
-            public DateTime Date
-            {
-                get { return date; }
-                set { date = value; }
-            }
+        public Message(string type, string text)
+        {
+            date = DateTime.Now;
+            this.text = text;
+            this.type = type;
+        }
 
-            public Message(string type, string text)
-            {
-                date = DateTime.Now;
-                this.text = text;
-                this.type = type;
-            }
+        public int CompareTo(Message other)
+        {
+            return DateTime.Compare(this.date, other.date);
+        }
 
-            public int CompareTo(Message other)
-            {
-                return DateTime.Compare(this.date, other.date);
-            }
-
-            public override string ToString()
-            {
-                return type + " - " + date.ToString() + ": " + text;
-            }
+        public override string ToString()
+        {
+            return type + " - " + date.ToString() + ": " + text;
         }
     }
 }

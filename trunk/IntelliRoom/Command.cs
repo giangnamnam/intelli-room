@@ -433,16 +433,29 @@ namespace IntelliRoom
             return result;
         }
 
+        //PROGRAMMER
+        public void AddTask(string command, DateTime date)
+        {
+            IntelliRoomSystem.progammer.AddTask(command, date);
+        }
+
+        public void AddTask(string command, int day, int month, int year, int hour, int minute)
+        {
+            IntelliRoomSystem.progammer.AddTask(command, day, month, year, hour, minute);
+        }
+
+        public void AddTask(string command, int hour, int minute)
+        {
+            IntelliRoomSystem.progammer.AddTask(command, hour, minute);
+        }
+
+        //EVENTS
+        public void AddAction(string nameEvent, string command)
+        {
+            IntelliRoomSystem.events.AddAction(nameEvent, command);
+        }
+
         //FUNCTIONS
-        public void ChangeLanguaje()
-        {
-        }
-
-        public List<string> GetLanguajeList()
-        {
-            return Languages.GetLanguages();
-        }
-
         public void Exit()
         {
             System.Environment.Exit(0);

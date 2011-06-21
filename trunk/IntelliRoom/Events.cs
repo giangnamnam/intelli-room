@@ -18,7 +18,7 @@ namespace IntelliRoom
             IntelliRoomSystem.camera.iluminanceEvent += new Action<double>(camera_iluminanceEvent);
             IntelliRoomSystem.camera.movementDetected += new Action<double>(camera_movementDetected);
             IntelliRoomSystem.camera.peopleDetected += new Action<Camera.FaceResult>(camera_peopleDetected);
-            InfoMessages.newMessage += new Action<InfoMessages.Message>(InfoMessages_newMessage);
+            InfoMessages.newMessage += new Action<Message>(InfoMessages_newMessage);
             IntelliRoomSystem.voiceEngine.speechRecognizer += new EventHandler<System.Speech.Recognition.RecognitionEventArgs>(voiceEngine_speechRecognizer);
             actions = new List<Action>();
         }
@@ -28,7 +28,7 @@ namespace IntelliRoom
             CheckEvent("speechRecognizer");
         }
 
-        void InfoMessages_newMessage(InfoMessages.Message obj)
+        void InfoMessages_newMessage(Message obj)
         {
             CheckEvent("newMessage");
         }
@@ -68,80 +68,80 @@ namespace IntelliRoom
                 act.ExecuteAction();
             }
         }
-    }
 
-    public class Action
-    {
-        private string eventName;
-        private string command;
-
-        public string EventName
+        class Action
         {
-            get { return eventName; }
-            set { eventName = value; }
-        }
+            private string eventName;
+            private string command;
 
-        public string Command
-        {
-            get { return command; }
-            set { command = value; }
-        }
-
-        public Action(string eventName, string action)
-        {
-            this.eventName = eventName;
-            this.command = action;
-        }
-
-        public void ExecuteAction()
-        {
-            string[] commands = command.Split(new char[] { '|' });
-            foreach (string cmd in commands)
+            public string EventName
             {
-                 Execute(cmd);
-            }
-        }
-
-        private void Execute(string command)
-        {
-            String[] separateCommand = SeparateArguments(command);
-            MethodInfo[] methods = Reflection.SearchSpeakMethod(separateCommand[0]);
-            String result = "";
-            //sacamos los parametros
-            string[] parametres = new string[separateCommand.Length - 1];
-
-            for (int i = 1; i < separateCommand.Length; i++)
-            {
-                parametres[i - 1] = separateCommand[i];
+                get { return eventName; }
+                set { eventName = value; }
             }
 
-            if (methods != null)
+            public string Command
             {
-                //hay al menos un metodo con ese nombre
-                foreach (MethodInfo mi in methods)
+                get { return command; }
+                set { command = value; }
+            }
+
+            public Action(string eventName, string action)
+            {
+                this.eventName = eventName;
+                this.command = action;
+            }
+
+            public void ExecuteAction()
+            {
+                string[] commands = command.Split(new char[] { '|' });
+                foreach (string cmd in commands)
                 {
-                    if (mi.GetParameters().Length == separateCommand.Length - 1)
-                    {
-                        //hay un metodo con el mismo numero de parametros
-                        object resultObj = Reflection.Invoke(mi, parametres);
-                        if (resultObj != null)
-                            result = resultObj.ToString();
-                        break; //para no ejecutar mas de uno
-                    }
+                    Execute(cmd);
                 }
             }
-            //return result;
-        }
 
-        private String[] SeparateArguments(String command)
-        {
-            String[] result = command.Split(new char[] { ' ' });
-            for (int i = 0; i < result.Length; i++)
+            private void Execute(string command)
             {
-                result[i] = result[i].Replace("_", " ");
+                String[] separateCommand = SeparateArguments(command);
+                MethodInfo[] methods = Reflection.SearchSpeakMethod(separateCommand[0]);
+                String result = "";
+                //sacamos los parametros
+                string[] parametres = new string[separateCommand.Length - 1];
+
+                for (int i = 1; i < separateCommand.Length; i++)
+                {
+                    parametres[i - 1] = separateCommand[i];
+                }
+
+                if (methods != null)
+                {
+                    //hay al menos un metodo con ese nombre
+                    foreach (MethodInfo mi in methods)
+                    {
+                        if (mi.GetParameters().Length == separateCommand.Length - 1)
+                        {
+                            //hay un metodo con el mismo numero de parametros
+                            object resultObj = Reflection.Invoke(mi, parametres);
+                            if (resultObj != null)
+                                result = resultObj.ToString();
+                            Data.InfoMessages.InformationMessage("Se ejecuto el comando " + command + " desde el gestor de eventos");
+                            break; //para no ejecutar mas de uno
+                        }
+                    }
+                }
+                //return result;
             }
-            return result;
+
+            private String[] SeparateArguments(String command)
+            {
+                String[] result = command.Split(new char[] { ' ' });
+                for (int i = 0; i < result.Length; i++)
+                {
+                    result[i] = result[i].Replace("_", " ");
+                }
+                return result;
+            }
         }
     }
-
 }

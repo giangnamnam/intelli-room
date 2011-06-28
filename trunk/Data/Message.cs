@@ -24,7 +24,10 @@ namespace Data
             System.Console.ForegroundColor = ConsoleColor.Blue;
             System.Console.WriteLine("Info: " + information);
             System.Console.ForegroundColor = ConsoleColor.White;
-            newMessage(msg);
+            if (newMessage != null)
+            {
+                newMessage(msg);
+            }
         }
 
         public static void ErrorMessage(string error)
@@ -34,7 +37,10 @@ namespace Data
             System.Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("Error: " + error);
             System.Console.ForegroundColor = ConsoleColor.White;
-            newMessage(msg);
+            if (newMessage != null)
+            {
+                newMessage(msg);
+            }
         }
 
         public static void ShowInformationMessage(int numMessages)

@@ -85,9 +85,8 @@ namespace Camera
             {
                 double iluminance = ImageUtils.GetIluminance(image);
                 LastResult.iluminance = iluminance;
-                if (iluminance >= Config.iluminanceEvent)
+                if (iluminance >= Config.iluminanceEvent && iluminanceEvent != null)
                 {
-                    //lanzar evento
                     iluminanceEvent(iluminance);
                 }
             }
@@ -99,7 +98,10 @@ namespace Camera
                 if (movement >= Config.isMovement)
                 {
                     //lanzar evento
-                    movementDetected(movement);
+                    if (movementDetected != null)
+                    {
+                        movementDetected(movement);
+                    }
 
                     if (Config.saveMovement)
                     {
@@ -116,7 +118,10 @@ namespace Camera
                 if (faceResult.FaceDetect())
                 {
                     //lanzar evento
-                    peopleDetected(faceResult);
+                    if(peopleDetected != null)
+                    {
+                        peopleDetected(faceResult);
+                    }
 
                     if (Config.saveFaces)
                     {
@@ -124,8 +129,11 @@ namespace Camera
                     }
                 }
             }
-
-            finishImageProcess(LastResult);
+            if (finishImageProcess != null)
+            {
+                finishImageProcess(LastResult);
+            }
+           
         }
 
         public static void SetProcessMilliseconds(int millis)

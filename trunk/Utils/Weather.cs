@@ -5,17 +5,84 @@ using System.Text;
 using System.Xml;
 using System.Web;
 using Data;
+using System.Timers;
 
 namespace Utils
 {
     public class Weather
     {
+        public event Action<int> temperatureEvent;
+        private int maxTemperatureEvent;
+        private int minTemperatureEvent;
         private String condition;
         private int temperatureF;
         private int temperatureC;
         private int humidity;
         private String windDirection;
         private int windSpeed;
+        private Timer timer;
+        private string lastCity;
+
+        public Weather()
+        {
+            //cada 10 min
+            timer = new Timer(1000 * 60 * 10);
+            timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+            lastCity = "";
+            timer.Enabled = true;
+            GC.KeepAlive(timer);
+            maxTemperatureEvent = 29;
+            minTemperatureEvent = 16;
+        }
+
+        public Weather(string city)
+        {
+            //cada 10 min
+            timer = new Timer(1000 * 60 * 10);
+            timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
+            lastCity = city;
+            timer.Enabled = true;
+            GC.KeepAlive(timer);
+            maxTemperatureEvent = 29;
+            minTemperatureEvent = 16;
+            UpdateWeather(city);
+        }
+
+        void timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (lastCity != "")
+            {
+                UpdateWeather(lastCity);
+            }
+        }
+
+        public void ForceUpdate()
+        {
+            UpdateWeather(lastCity);
+        }
+
+        public int MaxTemperatureEvent
+        {
+            get { return maxTemperatureEvent; }
+            set { maxTemperatureEvent = value; }
+        }
+
+        public int MinTemperatureEvent
+        {
+            get { return minTemperatureEvent; }
+            set { minTemperatureEvent = value; }
+        }
+
+        public string City
+        {
+            get { return lastCity; }
+            set { lastCity = value; }
+        }
+
+        public void ChangeCity(string city)
+        {
+            UpdateWeather(city);
+        }
 
         public String Condition
         {
@@ -48,15 +115,10 @@ namespace Utils
             private set { windSpeed = value; }
         }
 
-        public Weather(string city)
-        {
-            UpdateWeather(city);
-        }
-
         private void UpdateWeather(String city)
         {
             XmlDocument xml = Data.HTTPRequest.GetXML("http://www.google.com/ig/api?weather="+city+"&hl="+ Languages.CodeRegion);
-
+            lastCity = city;
             if (xml != null)
             {
                 try 
@@ -79,17 +141,41 @@ namespace Utils
 
         private int ParseHumidity(String text)
         {
-            return 50;
+            try
+            {
+                text = text.Split(' ')[1].Split('%')[0];
+                return Convert.ToInt32(text);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         private string ParseWindDirection(String text)
         {
-            return "N";
+            try
+            {
+                text = text.Split(' ')[1];
+                return text;
+            }
+            catch (Exception)
+            {
+                return "Error";
+            }
         }
 
         private int ParseWindSpeed(String text)
         {
-            return 12;
+            try
+            {
+                text = text.Split(' ')[3];
+                return Convert.ToInt32(text);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

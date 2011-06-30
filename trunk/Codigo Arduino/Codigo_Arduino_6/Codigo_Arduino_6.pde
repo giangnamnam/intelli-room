@@ -11,7 +11,7 @@ IntelliRoom Arduino 0.70
 
 //Configuramos los dispositivos
 #define arrayLength 10  //Numero de dispositivos
-uint8_t devices[] = {2, 4, 7, 12, 13, 0, 0, 0, 0, 0}; //Salidas de cada uno de los dispositivos
+uint8_t devices[] = {4, 5, 6, 7}; //Salidas de cada uno de los dispositivos
 
 //Configuración de variables: para el degradado de colores, función GRANDIENT
 uint8_t rInit = 0;  //Valor rojo inicial

@@ -15,7 +15,10 @@ namespace Camera
             //transformamos la imagen de RGB to HSV
             Image<Hsv, Byte> imageHSV = image.Convert<Hsv, Byte>();
             //calculo la media del componente "V"
-            return imageHSV.GetAverage().Value;
+            double value = imageHSV.GetAverage().Value;
+            //para darlo en funcion de porcentaje (0 a 100)
+            return value * 100;
+
         }
 
         public static double GetMovement(Image<Bgr, Byte> image, Image<Bgr, Byte> lastImage)
@@ -47,7 +50,7 @@ namespace Camera
             gray._EqualizeHist();
 
             //leemos el XML con el entrenamiento (en nuestros caso usamos uno de caras frontales)
-            HaarCascade face = new HaarCascade("HaarCascade\\haarcascade_frontalface.xml");
+            HaarCascade face = new HaarCascade(Directories.GetHaarCascade());
 
             //Detectamos las caras de la imagen en blanco y negro
             //El primer dimensional contiene el canal (solo nos centraremos en el canal 0, porque estamos trabajando en blanco y negro)

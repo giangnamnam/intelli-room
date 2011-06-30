@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\HaarCascade\haarcascade_frontalface.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Grammar\es.xml">
       <SubType>Designer</SubType>

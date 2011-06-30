@@ -87,6 +87,7 @@ namespace Camera
                 LastResult.iluminance = iluminance;
                 if (iluminance >= Config.iluminanceEvent && iluminanceEvent != null)
                 {
+                    Data.InfoMessages.InformationMessage("La iluminacion es " + iluminance);
                     iluminanceEvent(iluminance);
                 }
             }
@@ -100,6 +101,7 @@ namespace Camera
                     //lanzar evento
                     if (movementDetected != null)
                     {
+                        Data.InfoMessages.InformationMessage("Movimiento " + movement);
                         movementDetected(movement);
                     }
 

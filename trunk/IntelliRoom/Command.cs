@@ -67,32 +67,32 @@ namespace IntelliRoom
 
         public int Temperature(string city)
         {
-            return new Utils.Weather(city).TemperatureC;
+            return IntelliRoomSystem.weather.TemperatureC;
         }
 
         public string Condition(string city)
         {
-            return new Utils.Weather(city).Condition;
+            return IntelliRoomSystem.weather.Condition;
         }
 
         public int TemperatureFarenheit(string city)
         {
-            return new Utils.Weather(city).TemperatureF;
+            return IntelliRoomSystem.weather.TemperatureF;
         }
 
         public int Humidity(string city)
         {
-            return new Utils.Weather(city).Humidity;
+            return IntelliRoomSystem.weather.Humidity;
         }
 
         public string WindDirection(string city)
         {
-            return new Utils.Weather(city).WindDirection;
+            return IntelliRoomSystem.weather.WindDirection;
         }
-
+        
         public int WindSpeed(string city)
         {
-            return new Utils.Weather(city).WindSpeed;
+            return IntelliRoomSystem.weather.WindSpeed;
         }
 
 

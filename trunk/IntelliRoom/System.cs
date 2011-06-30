@@ -2,6 +2,7 @@
 using Media;
 using Voice;
 using Camera;
+using Utils;
 
 namespace IntelliRoom
 {
@@ -15,6 +16,7 @@ namespace IntelliRoom
         public static IImageEngine camera;
         public static Events events;
         public static Programmer progammer;
+        public static Weather weather;
 
         public static void InitSystem()
         {
@@ -26,6 +28,7 @@ namespace IntelliRoom
             camera = new ImageEngine();
             events = new Events();
             progammer = new Programmer();
+            weather = new Weather();
         }
     }
 }

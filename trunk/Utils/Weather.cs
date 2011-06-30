@@ -131,6 +131,10 @@ namespace Utils
                     this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
                     this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
                     this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
+                    if ((temperatureC > maxTemperatureEvent || temperatureC < minTemperatureEvent) && temperatureEvent != null)
+                    {
+                        temperatureEvent(temperatureC);
+                    }
 	            }
 	            catch (Exception)
 	            {

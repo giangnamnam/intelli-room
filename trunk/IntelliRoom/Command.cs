@@ -95,6 +95,12 @@ namespace IntelliRoom
             return IntelliRoomSystem.weather.WindSpeed;
         }
 
+        public void ChangeRangeInTemperatureEvent(int min, int max)
+        {
+            IntelliRoomSystem.weather.MaxTemperatureEvent = max;
+            IntelliRoomSystem.weather.MinTemperatureEvent = min;
+        }
+
 
         //LIGHTING
 

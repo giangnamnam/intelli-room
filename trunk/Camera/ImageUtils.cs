@@ -17,7 +17,7 @@ namespace Camera
             //calculo la media del componente "V"
             double value = imageHSV.GetAverage().Value;
             //para darlo en funcion de porcentaje (0 a 100)
-            return value * 100;
+            return value/255*100;
 
         }
 
@@ -41,7 +41,7 @@ namespace Camera
 
         public static FaceResult FaceDetect(Image<Bgr, Byte> image)
         {
-            FaceResult result = new FaceResult(image);
+            FaceResult result = new FaceResult(image.Copy());
 
             //convierto a escala de grises
             Image<Gray, Byte> gray = image.Convert<Gray, Byte>();
@@ -89,7 +89,7 @@ namespace Camera
         {
             faces = new List<Rectangle>();
             image.ROI = Rectangle.Empty;
-            image = image.Copy();
+            this.image = image.Copy();
         }
 
         public Image<Bgr, Byte> Image

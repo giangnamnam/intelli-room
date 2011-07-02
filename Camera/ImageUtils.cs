@@ -18,7 +18,6 @@ namespace Camera
             double value = imageHSV.GetAverage().Value;
             //para darlo en funcion de porcentaje (0 a 100)
             return value/255*100;
-
         }
 
         public static double GetMovement(Image<Bgr, Byte> image, Image<Bgr, Byte> lastImage)
@@ -34,7 +33,7 @@ namespace Camera
             //sumamos sus diferencias
             Image<Bgr, byte> imageOr = imageSub1.Or(imageSub2);
 
-            //vemos cuanto valor tiene esa imagen
+            //vemos cuanto valor tiene esa imagen reutilizando la funcion GetIluminance
             return GetIluminance(imageOr);
 
         }

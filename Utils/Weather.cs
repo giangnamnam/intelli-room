@@ -11,7 +11,8 @@ namespace Utils
 {
     public class Weather
     {
-        public event Action<int> temperatureEvent;
+        public event Action<int> temperatureMaxEvent;
+        public event Action<int> temperatureMinEvent;
         private int maxTemperatureEvent;
         private int minTemperatureEvent;
         private String condition;
@@ -131,9 +132,13 @@ namespace Utils
                     this.humidity = ParseHumidity(current.Item(3).Attributes.GetNamedItem("data").Value);
                     this.windDirection = ParseWindDirection(current.Item(5).Attributes.GetNamedItem("data").Value);
                     this.windSpeed = ParseWindSpeed(current.Item(5).Attributes.GetNamedItem("data").Value);
-                    if ((temperatureC > maxTemperatureEvent || temperatureC < minTemperatureEvent) && temperatureEvent != null)
+                    if (temperatureC > maxTemperatureEvent && temperatureMaxEvent != null)
                     {
-                        temperatureEvent(temperatureC);
+                        temperatureMaxEvent(temperatureC);
+                    }
+                    if (temperatureC < minTemperatureEvent && temperatureMinEvent != null)
+                    {
+                        temperatureMinEvent(temperatureC);
                     }
 	            }
 	            catch (Exception)

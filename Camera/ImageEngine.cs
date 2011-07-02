@@ -25,7 +25,7 @@ namespace Camera
         public ImageEngine() 
         {
             time = new Stopwatch();
-            thread = new Thread(new ThreadStart(StartEngine));
+            thread = new Thread(new ThreadStart(Engine));
         }
 
         public LastResults LastResult
@@ -40,16 +40,6 @@ namespace Camera
             {
                 time.Start();
                 thread.Start();
-                while (thread.IsAlive)
-                {
-                    if (time.ElapsedMilliseconds >= Config.processMilliseconds)
-                    {
-                        time.Reset();
-                        time.Start();
-                        ProcessImage();
-                    }
-                    System.Threading.Thread.Sleep(20);
-                }
             }
         }
 
@@ -58,6 +48,20 @@ namespace Camera
             if (thread.IsAlive)
             {
                 thread.Abort();
+            }
+        }
+
+        private void Engine()
+        {
+            while (thread.IsAlive)
+            {
+                if (time.ElapsedMilliseconds >= Config.processMilliseconds)
+                {
+                    time.Reset();
+                    time.Start();
+                    ProcessImage();
+                }
+                System.Threading.Thread.Sleep(20);
             }
         }
 

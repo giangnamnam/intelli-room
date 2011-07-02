@@ -20,13 +20,19 @@ namespace IntelliRoom
             IntelliRoomSystem.camera.peopleDetected += new Action<Camera.FaceResult>(camera_peopleDetected);
             InfoMessages.newMessage += new Action<Message>(InfoMessages_newMessage);
             IntelliRoomSystem.voiceEngine.speechRecognizer += new EventHandler<System.Speech.Recognition.RecognitionEventArgs>(voiceEngine_speechRecognizer);
-            IntelliRoomSystem.weather.temperatureEvent += new Action<int>(weather_temperatureEvent);
+            IntelliRoomSystem.weather.temperatureMaxEvent += new Action<int>(weather_temperatureMaxEvent);
+            IntelliRoomSystem.weather.temperatureMinEvent += new Action<int>(weather_temperatureMinEvent);
             actions = new List<Action>();
         }
 
-        void weather_temperatureEvent(int obj)
+        void weather_temperatureMinEvent(int obj)
         {
-            CheckEvent("temperatureEvent");
+            CheckEvent("temperatureMinEvent");
+        }
+
+        void weather_temperatureMaxEvent(int obj)
+        {
+            CheckEvent("temperatureMaxEvent");
         }
 
         void voiceEngine_speechRecognizer(object sender, System.Speech.Recognition.RecognitionEventArgs e)

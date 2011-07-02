@@ -14,9 +14,9 @@ namespace IntelliRoom
         public static IMediaPlayer media;
         public static InterpreterSpeech speechInterpreter;
         public static IImageEngine camera;
+        public static Weather weather;
         public static Events events;
         public static Programmer progammer;
-        public static Weather weather;
 
         public static void InitSystem()
         {
@@ -26,9 +26,9 @@ namespace IntelliRoom
             media = new Media.MediaPlayer();
             speechInterpreter = new InterpreterSpeech();
             camera = new ImageEngine();
+            weather = new Weather();
             events = new Events();
             progammer = new Programmer();
-            weather = new Weather();
         }
     }
 }

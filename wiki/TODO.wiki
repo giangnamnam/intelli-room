@@ -27,18 +27,15 @@
 
 
 == Desarrollo ==
- * Solucionar error Invoke.CV.
+ * ~~Solucionar error Invoke.CV.~~
  * Problemas con las tareas y multihilo.
- * Reescribir la clase Message.
+ * ~~Reescribir la clase Message.~~
  * ~~Gestión de la clase Config desde la interfaz gráfica.~~
- * (Deprecate)Funcionalidad para la API de Picasa.
  * ~~Código iluminacion imagenes.~~
  * ~~Código diferencia de imágenes.~~
  * ~~Sistema de diferencia de comandos de voz con comandos de texto~~
- * Gestión de sistema de alarmas.
- * Construcción del circuito de gestión de dispositivos.
- * Cambio de idiomas.
+ * ~~Gestión de sistema de alarmas.~~
+ * ~~Construcción del circuito de gestión de dispositivos.~~
  * ~~Revisar eventos de camera.~~
- * Centralizar los eventos de los módulos.
+ * ~~Centralizar los eventos de los módulos.~~
  * Hacer tests a Reproductor de sonidos.
- * GoogleTranslate.

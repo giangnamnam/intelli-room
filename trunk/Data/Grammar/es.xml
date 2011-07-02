@@ -50,7 +50,7 @@
 
   <command name="gettemperature sevilla">
     <choice>
-      <element>temperatura</element>
+      <element></element>
       <element>temperatura en sevilla</element>
     </choice>
   </command>
@@ -58,13 +58,6 @@
   <command name="loadallmedia">
     <choice>
       <element>poner música</element>
-    </choice>
-  </command>
-
-  <command name="loadAlbum">
-    <choice>
-      <element>poner álbum musical</element>
-      <element>poner disco de música</element>
     </choice>
   </command>
 
@@ -102,25 +95,25 @@
     </choice>
   </command>
 
-  <command name="setgradientcolor red 500">
+  <command name="gradientcolor red 500">
     <choice>
       <element>color rojo</element>
     </choice>
   </command>
 
-  <command name="setgradientcolor blue 500">
+  <command name="gradientcolor blue 500">
     <choice>
       <element>color azul</element>
     </choice>
   </command>
 
-  <command name="setgradientcolor green 500">
+  <command name="gradientcolor green 500">
     <choice>
       <element>color verde</element>
     </choice>
   </command>
 
-  <command name="setgradientcolor orange 500">
+  <command name="gradientcolor orange 500">
     <choice>
       <element>color naranja</element>
     </choice>
@@ -147,6 +140,18 @@
   <command name="RandomColor 200">
     <choice>
       <element>modo discoteca</element>
+    </choice>
+  </command>
+
+  <command name="startprocessimage">
+    <choice>
+      <element>activar procesamiento imagen</element>
+    </choice>
+  </command>
+
+  <command name="stopprocessimage">
+    <choice>
+      <element>desactivar procesamiento imagen</element>
     </choice>
   </command>
 

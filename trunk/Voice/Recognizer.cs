@@ -121,7 +121,7 @@ namespace Voice
 
         void speechRecognition_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            InfoMessages.InformationMessage(e.Result.Text +"->"+ e.Result.Confidence);
+            //InfoMessages.InformationMessage(e.Result.Text +"->"+ e.Result.Confidence);
             if (e.Result.Confidence * 100 >= precision)
             {
                 speechRecognized(sender, e);

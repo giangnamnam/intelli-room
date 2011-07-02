@@ -36,5 +36,10 @@ namespace Camera
         {
             this.image = image;
         }
+
+        public override string ToString()
+        {
+            return "mov: " + movement + "; num of Faces: " + numberOfFaces + "; iluminance" + iluminance;
+        }
     }
 }

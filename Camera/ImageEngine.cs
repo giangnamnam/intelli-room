@@ -83,7 +83,7 @@ namespace Camera
         {
             GetImage();
 
-            LastResult = new LastResults(image.Copy());
+            LastResult = new LastResults(image);
 
             if (Config.calculeIluminance)
             {
@@ -138,6 +138,7 @@ namespace Camera
             if (finishImageProcess != null)
             {
                 finishImageProcess(LastResult);
+                Data.InfoMessages.InformationMessage(LastResult.ToString());
             }
            
         }

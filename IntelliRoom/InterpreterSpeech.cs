@@ -27,6 +27,7 @@ namespace IntelliRoom
             }
 
             IntelliRoomSystem.voiceEngine.Speak(result);
+            Data.InfoMessages.InformationMessage("Se ejecutó por comando de voz: " + e.Result.Grammar.Name + " .Con la frase: " + e.Result.Text + " .Devolviendo: " + result);
         }
 
         private String Command(String command)

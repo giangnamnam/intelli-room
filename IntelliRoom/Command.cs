@@ -10,7 +10,7 @@ using Camera;
 
 namespace IntelliRoom
 {
-    public class Command
+    public class Command : ICommand
     {
         //INIT
         public static void Init()
@@ -19,7 +19,7 @@ namespace IntelliRoom
         }
 
         //VOICE
-        public void Speak(String speakText)
+        public void Speak(string speakText)
         {
             IntelliRoomSystem.voiceEngine.Speak(speakText);
         }
@@ -49,6 +49,16 @@ namespace IntelliRoom
             IntelliRoomSystem.voiceEngine.LoadGrammar();
         }
 
+        public void LoadGrammarList(List<string> list, string context)
+        {
+            IntelliRoomSystem.voiceEngine.LoadListGrammar(list, context);
+        }
+
+        public void AddGrammarList(List<string> list, string context)
+        {
+            IntelliRoomSystem.voiceEngine.AddListGrammar(list, context);
+        }
+
         //UTILS
         public string Date()
         {
@@ -75,7 +85,7 @@ namespace IntelliRoom
             return IntelliRoomSystem.weather.Condition;
         }
 
-        public int TemperatureFarenheit(string city)
+        public int TemperatureFahrenheit(string city)
         {
             return IntelliRoomSystem.weather.TemperatureF;
         }
@@ -109,9 +119,9 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.DirectColor(color);
         }
 
-        public void DirectColor(byte r, byte g, byte b)
+        public void DirectColor(byte red, byte green, byte blue)
         {
-            IntelliRoomSystem.lighting.DirectColor(r,g,b);
+            IntelliRoomSystem.lighting.DirectColor(red,green,blue);
         }
 
         public void DirectColor(Color color)
@@ -119,9 +129,9 @@ namespace IntelliRoom
             IntelliRoomSystem.lighting.DirectColor(color);
         }
 
-        public void GradientColor(byte r, byte g, byte b, int timeMillis)
+        public void GradientColor(byte red, byte green, byte blue, int timeMillis)
         {
-            IntelliRoomSystem.lighting.GradientColor(r, g, b, timeMillis);
+            IntelliRoomSystem.lighting.GradientColor(red, green, blue, timeMillis);
         }
 
         public void GradientColor(string colorName, int timeMillis)
@@ -293,9 +303,9 @@ namespace IntelliRoom
             IntelliRoomSystem.media.LoadMediaAlbum(nameAlbum);
         }
 
-        public void LoadAuthor(string nameArtist)
+        public void LoadAuthor(string nameAuthor)
         {
-            IntelliRoomSystem.media.LoadMediaAuthor(nameArtist);
+            IntelliRoomSystem.media.LoadMediaAuthor(nameAuthor);
         }
 
         public void LoadGenre(string nameGenre)
@@ -335,7 +345,7 @@ namespace IntelliRoom
             return Camera.ImageEngine.FaceDetect();
         }
 
-        public int NumFacesDetect()
+        public int NumberFacesDetect()
         {
             return Camera.ImageEngine.FaceDetect().Faces.Count;
         }

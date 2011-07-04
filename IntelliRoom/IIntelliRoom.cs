@@ -1,7 +1,7 @@
 ﻿using System;
 namespace IntelliRoom
 {
-    public interface ICommand
+    public interface IIntelliRoom
     {
         void AddAction(string nameEvent, string command);
         void AddGrammar(System.Speech.Recognition.Grammar grammar);

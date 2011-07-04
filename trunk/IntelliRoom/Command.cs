@@ -10,7 +10,7 @@ using Camera;
 
 namespace IntelliRoom
 {
-    public class Command : ICommand
+    public class Command : IIntelliRoom
     {
         //INIT
         public static void Init()

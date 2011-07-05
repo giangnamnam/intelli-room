@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="8248393b-e6d9-455b-a2ec-d3d337a4874e" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="8163e08b-5319-4256-ba6b-df2dc9b73dac" name="Sistema de reflexion">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="85d0ccd1-dda8-4160-a64d-a2ccbed9d07f" direction="Forward">
+          <layerMoniker Id="7fc0cca7-67e5-4fdd-83fb-08f9c3cd75bd" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="8c4cb769-0899-493c-bdbd-2a60cfb9655e" name="Interprete de voz">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="e0ec673f-93cc-42fd-8dce-461f16eeaa66" direction="Forward">
+          <layerMoniker Id="8163e08b-5319-4256-ba6b-df2dc9b73dac" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="7534ba9a-4665-4213-bd06-fc870f367d81" name="Interprete de Tareas">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="791c5e5b-c044-423d-8ddd-2d46af792d56" direction="Forward">
+          <layerMoniker Id="8163e08b-5319-4256-ba6b-df2dc9b73dac" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="510198ec-381f-491a-abdc-51e8c4d28cba" name="Interprete de acciones">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="ec27b372-c947-429e-8306-de3c7c5fe9b4" direction="Forward">
+          <layerMoniker Id="8163e08b-5319-4256-ba6b-df2dc9b73dac" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="6def03c2-e592-4d44-837d-46650f9454b3" name="Programador">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="9ea52e3f-1cf8-4396-ab5a-3029b29735b5" direction="Bidirectional">
+          <layerMoniker Id="7534ba9a-4665-4213-bd06-fc870f367d81" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="fee4736b-44b0-4d6a-8209-321690904063" name="Gestor de eventos">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="c4e594fb-e6ba-435b-8040-277ebb083281" direction="Bidirectional">
+          <layerMoniker Id="510198ec-381f-491a-abdc-51e8c4d28cba" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="7fc0cca7-67e5-4fdd-83fb-08f9c3cd75bd" name="Fachada de comandos">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="5364caf0-a3fb-46cb-bcf0-4533b84c85be" direction="Bidirectional">
+          <layerMoniker Id="0a237fc7-847d-4897-bb86-beea5ccec60c" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="972129cf-257b-425b-abbe-cac5d1a5d77e" name="Comandos" />
+        <layer Id="7071be91-f4c6-4e3c-b7ec-021211074073" name="Comandos de voz" />
+      </childLayers>
+    </layer>
+    <layer Id="0a237fc7-847d-4897-bb86-beea5ccec60c" name="Conector con el resto de los modulos" />
+  </layers>
+</layerModel>

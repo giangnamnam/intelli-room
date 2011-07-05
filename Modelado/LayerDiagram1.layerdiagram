@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7793b8c1-c0ee-4cb1-a3b7-5bb98e50772b" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="c7f07b28-cc88-4e76-91e6-e487a4f4762f" name="Comment1">
+      <body>Comunicación establecida mediante puerto serie.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2d6f6905-3cbd-470e-b56c-8ebf7a8d742c" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="c5bee282-b438-437d-b286-7858f36e1d62" name="Arduino físico">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="503c1d3a-79ac-46da-8ff7-c0f3bed59a26" direction="Forward">
+          <layerMoniker Id="f26342df-4628-44ca-a3f4-9dc7dc7a145c" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="13a2b78c-6ad5-43ce-88a1-4bfe5d606dbf" name="IntelliRoom">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="eb1b7202-7b43-4713-ac12-f73ba6c00de2" direction="Bidirectional">
+          <layerMoniker Id="2c0956d3-5d5b-422d-a43f-32803b5e1be1" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="d2618a93-0f35-4b46-b25b-0ba0afb96ffd" direction="Bidirectional">
+          <layerMoniker Id="2d6f6905-3cbd-470e-b56c-8ebf7a8d742c" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="2d6f6905-3cbd-470e-b56c-8ebf7a8d742c" name="Módulo Arduino">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="60e134d4-b080-4014-a06f-e215b356184c" direction="Bidirectional">
+          <layerMoniker Id="c5bee282-b438-437d-b286-7858f36e1d62" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="2c0956d3-5d5b-422d-a43f-32803b5e1be1" name="Otros módulos" />
+    <layer Id="1620c7fd-8f88-465a-aa27-e6ca6f6c804f" name="Control de dispositivos" />
+    <layer Id="bd8e1719-cb99-4073-b03a-e8142a06133b" name="Control de iluminación" />
+    <layer Id="f26342df-4628-44ca-a3f4-9dc7dc7a145c" name="Circuitos intermedios">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="0541cb83-a571-4990-a119-26ae661b63e2" direction="Forward">
+          <layerMoniker Id="bd8e1719-cb99-4073-b03a-e8142a06133b" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="57e814c7-47ec-40e8-9eee-8c7ec59d88b3" direction="Forward">
+          <layerMoniker Id="1620c7fd-8f88-465a-aa27-e6ca6f6c804f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+  </layers>
+</layerModel>

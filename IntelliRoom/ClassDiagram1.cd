@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="IntelliRoom.Command">
+    <Position X="8.75" Y="1" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>JAQqQmjIZAeggiAECYAOg4AgSVQEeAABqmAKAgAmAxY=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IntelliRoom.SpeakCommand">
+    <Position X="9" Y="20" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAABAAAAAAAAAIAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntelliRoom.IntelliRoomSystem">
+    <Position X="14.5" Y="10.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAgAABAAABAAAAIAAABAAAAIAAAAABAQAAAA=</HashCode>
+      <FileName>System.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntelliRoom.Events">
+    <Position X="14.5" Y="3.25" Width="5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="IntelliRoom.Events.Action">
+        <TypeIdentifier>
+          <NewMemberFileName>Events.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>FAAAgAAAAQAAAGAIAAAAAAAAAAAgAAAAIAAAAAAgAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntelliRoom.InterpreterSpeech">
+    <Position X="14.5" Y="1" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAAAAABAAABAA=</HashCode>
+      <FileName>InterpreterSpeech.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntelliRoom.Programmer">
+    <Position X="20" Y="3.25" Width="5.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="IntelliRoom.Programmer.Task">
+        <TypeIdentifier>
+          <NewMemberFileName>Programmer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAQAACAAAAAAAAAAAAAAAAAAAACAAAgAgAAAAAAAAAA=</HashCode>
+      <FileName>Programmer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntelliRoom.Reflection">
+    <Position X="17.5" Y="10.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>QIAAAEAAABAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Reflection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

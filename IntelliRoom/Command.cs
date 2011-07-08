@@ -115,7 +115,6 @@ namespace IntelliRoom
         public void WeatherCity(string city)
         {
             IntelliRoomSystem.weather.ChangeCity(city);
-            IntelliRoomSystem.weather.ForceUpdate();
         }
 
         public void ChangeRangeInTemperatureEvent(int min, int max)
@@ -194,7 +193,7 @@ namespace IntelliRoom
             IntelliRoomSystem.device.SwitchOff(device);
         }
 
-        public void SwitchOnAllDevice()
+        public void SwitchOnAllDevices()
         {
             IntelliRoomSystem.device.SwitchOn(0);
             IntelliRoomSystem.device.SwitchOn(1);
@@ -202,7 +201,7 @@ namespace IntelliRoom
             IntelliRoomSystem.device.SwitchOn(3);
         }
 
-        public void SwitchOffAllDevice()
+        public void SwitchOffAllDevices()
         {
             IntelliRoomSystem.device.SwitchOff(0);
             IntelliRoomSystem.device.SwitchOff(1);

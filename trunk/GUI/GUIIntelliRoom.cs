@@ -71,8 +71,11 @@ namespace GUI
 
         private void UpdateInfoList(object sender, EventArgs e)
         {
-            errorList.Items.Clear();
-            errorList.Items.AddRange(IntelliRoom.Command.GetMessages().ToArray());
+            if (IntelliRoom.Command.GetMessages().Count != errorList.Items.Count)
+            {
+                errorList.Items.Clear();
+                errorList.Items.AddRange(IntelliRoom.Command.GetMessages().ToArray());
+            }
         }
 
         private void KeyPressCommand(object sender, KeyPressEventArgs e)

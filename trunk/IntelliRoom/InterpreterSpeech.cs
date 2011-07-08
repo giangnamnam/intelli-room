@@ -63,7 +63,7 @@ namespace IntelliRoom
 
         private String[] SeparateArguments(String command)
         {
-            String[] result = command.Split(new char[] { ' ' });
+            String[] result = command.Split(' ');
             for (int i = 0; i < result.Length; i++)
             {
                 result[i] = result[i].Replace("_", " ");
@@ -73,7 +73,7 @@ namespace IntelliRoom
 
         private String[] SeparateCommands(String str)
         {
-            String[] result = str.Split(new char[] { '|' });
+            String[] result = str.Split('|');
             return result;
         }
     }

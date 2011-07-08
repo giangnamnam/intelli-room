@@ -44,6 +44,13 @@ namespace IntelliRoom
             IntelliRoomSystem.voiceEngine.DeleteAllGrammars();
         }
 
+        public void ReloadGrammar()
+        {
+            IntelliRoomSystem.voiceEngine.DeleteAllGrammars();
+            IntelliRoomSystem.voiceEngine.LoadGrammar();
+
+        }
+
         public void LoadGrammar()
         {
             IntelliRoomSystem.voiceEngine.LoadGrammar();
@@ -75,34 +82,40 @@ namespace IntelliRoom
             return Utils.Time.GetDate();
         }
 
-        public int Temperature(string city)
+        public int Temperature()
         {
             return IntelliRoomSystem.weather.TemperatureC;
         }
 
-        public string Condition(string city)
+        public string Condition()
         {
             return IntelliRoomSystem.weather.Condition;
         }
 
-        public int TemperatureFahrenheit(string city)
+        public int TemperatureFahrenheit()
         {
             return IntelliRoomSystem.weather.TemperatureF;
         }
 
-        public int Humidity(string city)
+        public int Humidity()
         {
             return IntelliRoomSystem.weather.Humidity;
         }
 
-        public string WindDirection(string city)
+        public string WindDirection()
         {
             return IntelliRoomSystem.weather.WindDirection;
         }
         
-        public int WindSpeed(string city)
+        public int WindSpeed()
         {
             return IntelliRoomSystem.weather.WindSpeed;
+        }
+
+        public void WeatherCity(string city)
+        {
+            IntelliRoomSystem.weather.ChangeCity(city);
+            IntelliRoomSystem.weather.ForceUpdate();
         }
 
         public void ChangeRangeInTemperatureEvent(int min, int max)
@@ -181,6 +194,21 @@ namespace IntelliRoom
             IntelliRoomSystem.device.SwitchOff(device);
         }
 
+        public void SwitchOnAllDevice()
+        {
+            IntelliRoomSystem.device.SwitchOn(0);
+            IntelliRoomSystem.device.SwitchOn(1);
+            IntelliRoomSystem.device.SwitchOn(2);
+            IntelliRoomSystem.device.SwitchOn(3);
+        }
+
+        public void SwitchOffAllDevice()
+        {
+            IntelliRoomSystem.device.SwitchOff(0);
+            IntelliRoomSystem.device.SwitchOff(1);
+            IntelliRoomSystem.device.SwitchOff(2);
+            IntelliRoomSystem.device.SwitchOff(3);
+        }
 
         //MEDIA
         public void Play() 
@@ -340,6 +368,11 @@ namespace IntelliRoom
             return Camera.ImageEngine.GetIluminance();
         }
 
+        public double GetMovement()
+        {
+            return Camera.ImageEngine.GetMovement();
+        }
+
         public FaceResult FaceDetect()
         {
             return Camera.ImageEngine.FaceDetect();
@@ -375,14 +408,24 @@ namespace IntelliRoom
             return Camera.ImageEngine.GetIsMovement();
         }
 
-        public void ConfigCameraSetIluminanceEvent(int iluminance)
+        public void ConfigCameraSetLowIluminanceEvent(int iluminance)
         {
-            Camera.ImageEngine.SetIluminanceEvent(iluminance);
+            Camera.ImageEngine.SetLowIluminanceEvent(iluminance);
         }
 
-        public int ConfigCameraGetIluminanceEvent()
+        public int ConfigCameraGetLowIluminanceEvent()
         {
-            return Camera.ImageEngine.GetIluminanceEvent();
+            return Camera.ImageEngine.GetLowIluminanceEvent();
+        }
+
+        public void ConfigCameraSetHighIluminanceEvent(int iluminance)
+        {
+            Camera.ImageEngine.SetHighIluminanceEvent(iluminance);
+        }
+
+        public int ConfigCameraGetHighIluminanceEvent()
+        {
+            return Camera.ImageEngine.GetHighIluminanceEvent();
         }
 
         public void ConfigCameraSetCalculeIluminance(bool calculeIluminance)
@@ -440,7 +483,8 @@ namespace IntelliRoom
             string result = "";
             result +="ProcessMilliseconds = "+Camera.ImageEngine.GetProcessMilliseconds()+"\n";
             result += "IsMovement = " + Camera.ImageEngine.GetIsMovement() + "\n";
-            result += "IluminanceEvent = " + Camera.ImageEngine.GetIluminanceEvent() + "\n";
+            result += "LowIluminanceEvent = " + Camera.ImageEngine.GetLowIluminanceEvent() + "\n";
+            result += "HighIluminanceEvent = " + Camera.ImageEngine.GetHighIluminanceEvent() + "\n";
             result += "CalculeIluminance? = " + Camera.ImageEngine.GetCalculeIluminance() + "\n";
             result += "CalculeMovement? = " + Camera.ImageEngine.GetCalculeMovement() + "\n";
             result += "CalculeFace? = " + Camera.ImageEngine.GetCalculeFace() + "\n";
@@ -475,6 +519,11 @@ namespace IntelliRoom
         public void Exit()
         {
             System.Environment.Exit(0);
+        }
+
+        public void Sleep(int millis)
+        {
+            Thread.Sleep(millis);
         }
 
         //DATA

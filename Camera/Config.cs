@@ -14,7 +14,8 @@ namespace Camera
         public static int processMilliseconds = 1000; //numero de milisegundos que deben de pasar para procesar una nueva imagen
 
         public static int isMovement = 10;
-        public static int iluminanceEvent = 10;
+        public static int lowIluminanceEvent = 20;
+        public static int highIluminanceEvent = 70;
 
         public static bool calculeIluminance = true;
         public static bool calculeMovement = true;

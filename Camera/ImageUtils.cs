@@ -14,8 +14,10 @@ namespace Camera
         {
             //transformamos la imagen de RGB to HSV
             Image<Hsv, Byte> imageHSV = image.Convert<Hsv, Byte>();
+            
             //calculo la media del componente "V"
             double value = imageHSV.GetAverage().Value;
+
             //para darlo en funcion de porcentaje (0 a 100)
             return value/255*100;
         }
@@ -35,7 +37,6 @@ namespace Camera
 
             //vemos cuanto valor tiene esa imagen reutilizando la funcion GetIluminance
             return GetIluminance(imageOr);
-
         }
 
         public static FaceResult FaceDetect(Image<Bgr, Byte> image)

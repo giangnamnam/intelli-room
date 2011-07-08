@@ -117,7 +117,7 @@ namespace IntelliRoom
 
             public void ExecuteTask()
             {
-                string[] commands = command.Split(new char[] { '|' });
+                string[] commands = command.Split('|');
                 foreach (string cmd in commands)
                 {
                     Execute(cmd);
@@ -158,7 +158,7 @@ namespace IntelliRoom
 
             private String[] SeparateArguments(String command)
             {
-                String[] result = command.Split(new char[] { ' ' });
+                String[] result = command.Split(' ');
                 for (int i = 0; i < result.Length; i++)
                 {
                     result[i] = result[i].Replace("_", " ");

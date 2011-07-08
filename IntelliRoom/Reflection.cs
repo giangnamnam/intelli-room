@@ -19,6 +19,10 @@ namespace IntelliRoom
             for (int i = 0; i < parametresMethod.Length; i++)
 			{
                 parametresObj[i] = Cast(parametres[i], parametresMethod[i].ParameterType);
+                if (parametresObj[i] == null)
+                {
+                    return "Fallo en casteo";
+                }
 			}            
 
             var result = method.Invoke(instance, parametresObj);
@@ -28,7 +32,15 @@ namespace IntelliRoom
 
         public static object Cast(object value, Type type)
         {
-            return Convert.ChangeType(value, type);
+            try
+            {
+                return Convert.ChangeType(value, type);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
 
         public static MethodInfo[] SearchMethod(String command)

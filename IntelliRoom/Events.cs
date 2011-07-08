@@ -15,7 +15,8 @@ namespace IntelliRoom
         public Events()
         {
             IntelliRoomSystem.camera.finishImageProcess += new Action<Camera.LastResults>(camera_finishImageProcess);
-            IntelliRoomSystem.camera.iluminanceEvent += new Action<double>(camera_iluminanceEvent);
+            IntelliRoomSystem.camera.lowIluminanceEvent += new Action<double>(camera_lowIluminanceEvent);
+            IntelliRoomSystem.camera.highIluminanceEvent += new Action<double>(camera_highIluminanceEvent);
             IntelliRoomSystem.camera.movementDetected += new Action<double>(camera_movementDetected);
             IntelliRoomSystem.camera.peopleDetected += new Action<Camera.FaceResult>(camera_peopleDetected);
             InfoMessages.newMessage += new Action<Message>(InfoMessages_newMessage);
@@ -23,6 +24,16 @@ namespace IntelliRoom
             IntelliRoomSystem.weather.temperatureMaxEvent += new Action<int>(weather_temperatureMaxEvent);
             IntelliRoomSystem.weather.temperatureMinEvent += new Action<int>(weather_temperatureMinEvent);
             actions = new List<Action>();
+        }
+
+        void camera_highIluminanceEvent(double obj)
+        {
+            CheckEvent("highIluminanceEvent");
+        }
+
+        void camera_lowIluminanceEvent(double obj)
+        {
+            CheckEvent("lowIluminanceEvent");
         }
 
         void weather_temperatureMinEvent(int obj)
@@ -53,11 +64,6 @@ namespace IntelliRoom
         void camera_movementDetected(double obj)
         {
             CheckEvent("movementDetected");
-        }
-
-        void camera_iluminanceEvent(double obj)
-        {
-            CheckEvent("iluminanceEvent");
         }
 
         void camera_finishImageProcess(Camera.LastResults obj)
@@ -106,7 +112,7 @@ namespace IntelliRoom
 
             public void ExecuteAction()
             {
-                string[] commands = command.Split(new char[] { '|' });
+                string[] commands = command.Split('|');
                 foreach (string cmd in commands)
                 {
                     Execute(cmd);
@@ -147,7 +153,7 @@ namespace IntelliRoom
 
             private String[] SeparateArguments(String command)
             {
-                String[] result = command.Split(new char[] { ' ' });
+                String[] result = command.Split(' ');
                 for (int i = 0; i < result.Length; i++)
                 {
                     result[i] = result[i].Replace("_", " ");

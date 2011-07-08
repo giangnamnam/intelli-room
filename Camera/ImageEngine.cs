@@ -12,7 +12,8 @@ namespace Camera
     {
         public event Action<FaceResult> peopleDetected;
         public event Action<double> movementDetected;
-        public event Action<double> iluminanceEvent;
+        public event Action<double> lowIluminanceEvent;
+        public event Action<double> highIluminanceEvent;
         public event Action<LastResults> finishImageProcess;
 
         public Image<Bgr, Byte> image;
@@ -72,6 +73,14 @@ namespace Camera
             return ImageUtils.GetIluminance(image);
         }
 
+        public static double GetMovement()
+        {
+            Image<Bgr, Byte> lastimage = Config.camera.GetImage();
+            Thread.Sleep(Config.processMilliseconds);
+            Image<Bgr, Byte> image = Config.camera.GetImage();
+            return ImageUtils.GetMovement(image, lastimage);
+        }
+
         public static FaceResult FaceDetect()
         {
             Image<Bgr, Byte> image = Config.camera.GetImage();
@@ -89,10 +98,16 @@ namespace Camera
             {
                 double iluminance = ImageUtils.GetIluminance(image);
                 LastResult.iluminance = iluminance;
-                if (iluminance >= Config.iluminanceEvent && iluminanceEvent != null)
+                if (iluminance <= Config.lowIluminanceEvent && lowIluminanceEvent != null)
                 {
                     //Data.InfoMessages.InformationMessage("La iluminacion es " + iluminance);
-                    iluminanceEvent(iluminance);
+                    lowIluminanceEvent(iluminance);
+                }
+
+                if (iluminance >= Config.highIluminanceEvent && highIluminanceEvent != null)
+                {
+                    //Data.InfoMessages.InformationMessage("La iluminacion es " + iluminance);
+                    highIluminanceEvent(iluminance);
                 }
             }
 
@@ -163,14 +178,24 @@ namespace Camera
             return Config.isMovement;
         }
 
-        public static void SetIluminanceEvent(int iluminance)
+        public static void SetLowIluminanceEvent(int iluminance)
         {
-            Config.iluminanceEvent = iluminance;
+            Config.lowIluminanceEvent = iluminance;
         }
 
-        public static int GetIluminanceEvent()
+        public static int GetLowIluminanceEvent()
         {
-            return Config.iluminanceEvent;
+            return Config.lowIluminanceEvent;
+        }
+
+        public static void SetHighIluminanceEvent(int iluminance)
+        {
+            Config.highIluminanceEvent = iluminance;
+        }
+
+        public static int GetHighIluminanceEvent()
+        {
+            return Config.highIluminanceEvent;
         }
 
         public static void SetCalculeIluminance(bool calculeIluminance)

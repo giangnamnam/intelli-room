@@ -64,7 +64,7 @@ namespace Utils
 
         public int MaxTemperatureEvent
         {
-            get { return maxTemperatureEvent; }
+            get { return maxTemperatureEvent;}
             set { maxTemperatureEvent = value; }
         }
 

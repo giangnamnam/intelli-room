@@ -77,7 +77,7 @@ namespace Utils
         public string City
         {
             get { return lastCity; }
-            set { lastCity = value; }
+            set { ChangeCity(value); }
         }
 
         public void ChangeCity(string city)

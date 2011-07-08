@@ -86,9 +86,9 @@ namespace IntelliRoom
         void StartProcessImage();
         void Stop();
         void StopProcessImage();
-        void SwitchOffAllDevice();
+        void SwitchOffAllDevices();
         void SwitchOffDevice(int device);
-        void SwitchOnAllDevice();
+        void SwitchOnAllDevices();
         void SwitchOnDevice(int device);
         int Temperature();
         int TemperatureFahrenheit();

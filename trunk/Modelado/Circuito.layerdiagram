@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7b577bd6-aaed-4a3c-8507-df7013c553f4" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="5acedf7e-eb2e-4750-9db3-15c1fbd196f9" name="Comment1">
+      <body>Conexión con Arduino mediante salidas lógicas</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="25bd31b4-2e9a-4061-8551-f40a2c6dc450" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="dce646b5-beaf-427d-8ff1-18ab519ef546" name="Comment2">
+      <body>Conexión con Arduino mediante salidas PWM</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="6a3b57ed-66b7-459d-8bab-e6d6ac487b73" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="53e80101-99f9-452d-bbfe-874ac4eb46f4" name="Comment3">
+      <body>Conectado al PC con IntelliRoom</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="6b1d7a13-5e6b-48c9-898a-3fdc9f8f7ddd" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="c3ad79e3-a397-4b45-a4b3-d369a20f584b" name="Transformador de corriente">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d2ea1444-0c51-4355-91ce-5aafb32fbd5e" direction="Forward">
+          <layerMoniker Id="6ef73f10-5634-4e21-962e-948793c805df" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="6ef73f10-5634-4e21-962e-948793c805df" name="Circuito tensión">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="c9ae9187-cc79-41d8-9c23-58e5ecb59783" direction="Forward">
+          <layerMoniker Id="6b1d7a13-5e6b-48c9-898a-3fdc9f8f7ddd" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="7cff70c0-1bf4-4036-8c5f-16e25368a895" direction="Forward">
+          <layerMoniker Id="25bd31b4-2e9a-4061-8551-f40a2c6dc450" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="4e02d99d-53c7-44c1-9d4b-30b59fdb8c66" direction="Forward">
+          <layerMoniker Id="6a3b57ed-66b7-459d-8bab-e6d6ac487b73" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="6b1d7a13-5e6b-48c9-898a-3fdc9f8f7ddd" name="Arduino">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="730d4b17-1e00-4344-9861-b4c4cdaf66c9" direction="Forward">
+          <layerMoniker Id="25bd31b4-2e9a-4061-8551-f40a2c6dc450" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="617c4ee2-1554-40da-9476-11e859f3ba7d" direction="Forward">
+          <layerMoniker Id="6a3b57ed-66b7-459d-8bab-e6d6ac487b73" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="25bd31b4-2e9a-4061-8551-f40a2c6dc450" name="Circuito control de dispositivos">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="928c1411-d21a-4dde-95b5-c1ad0708097d" direction="Forward">
+          <layerMoniker Id="dcd99353-a264-4480-be44-84bfd1e6384f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="6a3b57ed-66b7-459d-8bab-e6d6ac487b73" name="Circuito control de ilumianción">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="4ee10682-3064-4535-b5a2-f0148275be9e" direction="Forward">
+          <layerMoniker Id="73671281-1d13-4966-9897-f437c425aef0" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="5207b653-fda6-4928-a392-c31207deaba7" name="Regleta eléctrica">
+      <childLayers>
+        <layer Id="dcd99353-a264-4480-be44-84bfd1e6384f" name="Relés" />
+      </childLayers>
+    </layer>
+    <layer Id="5efa372e-bd5a-4f83-9705-2a8c7b72b9e5" name="Lámpara">
+      <childLayers>
+        <layer Id="73671281-1d13-4966-9897-f437c425aef0" name="Leds RGB" />
+      </childLayers>
+    </layer>
+    <layer Id="65ac37f8-24e1-43e4-be6f-c7cb73882cf5" name="Red Electrica del hogar">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="474a4d70-0eee-4400-bb4e-8360ee35c778" direction="Forward">
+          <layerMoniker Id="5207b653-fda6-4928-a392-c31207deaba7" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="e7708fec-3165-477b-9bdf-53a3b355b136" direction="Forward">
+          <layerMoniker Id="c3ad79e3-a397-4b45-a4b3-d369a20f584b" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+  </layers>
+</layerModel>

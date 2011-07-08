@@ -46,6 +46,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Validate Include="Circuito.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="Circuito.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Circuito.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Circuito.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>Circuito.layerdiagram</DependentUpon>
+    </Validate>
     <Validate Include="Diagrama de IntelliRoomKernel.layerdiagram">
       <SubType>Content</SubType>
     </Validate>

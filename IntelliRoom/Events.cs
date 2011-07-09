@@ -76,6 +76,10 @@ namespace IntelliRoom
             actions.Add(new Action(nameEvent,command));
         }
 
+        public void DeleteAllActions()
+        {
+            actions.Clear();
+        }
 
         private void CheckEvent(string nameEvent)
         {

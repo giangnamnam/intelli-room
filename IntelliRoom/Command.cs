@@ -34,9 +34,19 @@ namespace IntelliRoom
             IntelliRoomSystem.voiceEngine.ChangePrecisionRecognizer(precision);
         }
 
+        public void AddGrammar(string urlGrammar)
+        {
+            IntelliRoomSystem.voiceEngine.AddGrammar(urlGrammar);
+        }
+
         public void AddGrammar(Grammar grammar)
         {
             IntelliRoomSystem.voiceEngine.AddGrammar(grammar);
+        }
+
+        public void LoadGrammar(string urlGrammar)
+        {
+            IntelliRoomSystem.voiceEngine.LoadGrammar(urlGrammar);
         }
 
         public void DeleteGrammar()
@@ -372,6 +382,11 @@ namespace IntelliRoom
             return Camera.ImageEngine.GetMovement();
         }
 
+        public void SaveImage()
+        {
+            Camera.ImageEngine.SaveImage();
+        }
+
         public FaceResult FaceDetect()
         {
             return Camera.ImageEngine.FaceDetect();
@@ -508,10 +523,56 @@ namespace IntelliRoom
             IntelliRoomSystem.progammer.AddTask(command, hour, minute);
         }
 
+        public void AddTask(string command, int remainMinutes)
+        {
+            IntelliRoomSystem.progammer.AddTask(command, remainMinutes);
+        }
+
+        public void DeleteAllTaks()
+        {
+            IntelliRoomSystem.progammer.DeleteAllTask();
+        }
+
+        public void SaveTasks()
+        {
+            IntelliRoomSystem.progammer.SaveTasks();
+        }
+
         //EVENTS
         public void AddAction(string nameEvent, string command)
         {
             IntelliRoomSystem.events.AddAction(nameEvent, command);
+        }
+
+        public void DeleteAllActions()
+        {
+            IntelliRoomSystem.events.DeleteAllActions();
+        }
+
+        //CONFIGURATIONS
+        public void AddConfiguration(string name, string command)
+        {
+            IntelliRoomSystem.configuration.AddConfiguration(name, command);
+        }
+
+        public void DeleteConfiguration()
+        {
+            IntelliRoomSystem.configuration.DeleteConfiguration();
+        }
+
+        public List<string> GetConfigurations()
+        {
+            return IntelliRoomSystem.configuration.GetConfigurations();
+        }
+
+        public void SaveConfigurations()
+        {
+            IntelliRoomSystem.configuration.SaveConfigurations();
+        }
+
+        public void ExecuteConfiguration(string nameConfiguration)
+        {
+            IntelliRoomSystem.configuration.ExecuteConfiguration(nameConfiguration);
         }
 
         //FUNCTIONS
@@ -523,6 +584,24 @@ namespace IntelliRoom
         public void Sleep(int millis)
         {
             Thread.Sleep(millis);
+        }
+
+        public void DefaultSettings()
+        {
+            //reproductor
+            ChangeVolume(50);
+            Stop();
+            //imagenes
+            StopProcessImage();
+            //dispositivos y luces
+            SwitchOffAllDevices();
+            TurnOffLight();
+            //voice
+            LoadGrammar();
+            //ejecutores
+            IntelliRoomSystem.progammer.LoadTasks();
+            IntelliRoomSystem.events.DeleteAllActions();
+            IntelliRoomSystem.configuration.LoadConfigurations();
         }
 
         //DATA

@@ -5,6 +5,7 @@ using System.Threading;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Collections.Generic;
+using Data;
 
 namespace Camera
 {
@@ -86,6 +87,12 @@ namespace Camera
             Image<Bgr, Byte> image = Config.camera.GetImage();
 
             return ImageUtils.FaceDetect(image);
+        }
+
+        public static void SaveImage()
+        {
+            int picName = Directories.GetNextNamePicture();
+            Config.camera.GetImage().Save(Directories.GetPicturesDirectory() + picName.ToString()+".jpg");
         }
 
         private void ProcessImage()

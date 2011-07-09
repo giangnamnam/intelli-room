@@ -17,6 +17,7 @@ namespace IntelliRoom
         public static Weather weather;
         public static Events events;
         public static Programmer progammer;
+        public static SystemConfiguration configuration;
 
         public static void InitSystem()
         {
@@ -29,6 +30,7 @@ namespace IntelliRoom
             weather = new Weather();
             events = new Events();
             progammer = new Programmer();
+            configuration = new SystemConfiguration();
         }
     }
 }

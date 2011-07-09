@@ -86,6 +86,45 @@ namespace Voice
             
         }
 
+        public void LoadGrammar(string url)
+        {
+            DeleteAllGrammars();
+            //cargamos el documento XML
+            XmlDocument xml = new XmlDocument();
+            try
+            {
+                xml.Load(Directories.GetGrammarDirectory()+"\\"+url);
+
+                foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)
+                {
+                    AddGrammar(LoadCommand(command));
+                }
+            }
+            catch (Exception)
+            {
+                InfoMessages.ErrorMessage("No se ha encontrado el archivo de gramática: " + Directories.GetGrammarXML() + ", no se cargará la gramática de voz");
+            }
+        }
+
+        public void AddGrammar(string url)
+        {
+            //cargamos el documento XML
+            XmlDocument xml = new XmlDocument();
+            try
+            {
+                xml.Load(Directories.GetGrammarDirectory() + "\\" + url);
+
+                foreach (XmlNode command in xml.ChildNodes[1].ChildNodes)
+                {
+                    AddGrammar(LoadCommand(command));
+                }
+            }
+            catch (Exception)
+            {
+                InfoMessages.ErrorMessage("No se ha encontrado el archivo de gramática: " + Directories.GetGrammarXML() + ", no se cargará la gramática de voz");
+            }
+        }
+
         private Grammar LoadCommand(XmlNode commandNode)
         {
             GrammarBuilder grammarBuilder = new GrammarBuilder();

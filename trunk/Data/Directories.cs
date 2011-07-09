@@ -13,6 +13,11 @@ namespace Data
             return Directory.GetCurrentDirectory() + "\\Data\\" + "Tasks.xml";
         }
 
+        public static string GetConfigurationXML()
+        {
+            return Directory.GetCurrentDirectory() + "\\Data\\" + "Configurations.xml";
+        }
+
         public static string GetHaarCascade()
         {
             return GetDataDirectory() + "\\HaarCascade\\haarcascade_frontalface.xml";

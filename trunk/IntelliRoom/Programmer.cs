@@ -22,7 +22,7 @@ namespace IntelliRoom
             LoadTasks();
             timer = new Timer();
             timer.Elapsed += new ElapsedEventHandler(CkeckTasks);
-            timer.Interval = 1000 * 30; //cada 30 segundos hacemos una comprobacion
+            timer.Interval = 1000; //cada segundo hacemos una comprobacion
             timer.Enabled = true;
             GC.KeepAlive(timer);
         }
@@ -81,6 +81,18 @@ namespace IntelliRoom
             int year = DateTime.Now.Year;
 
             tasks.Add(new Task(command, day, month, year, hour, minute));
+        }
+
+        public void AddTask(string command, int remainMinutes)
+        {
+            DateTime time = DateTime.Now.AddMinutes(remainMinutes);
+
+            tasks.Add(new Task(command, time));
+        }
+
+        public void DeleteAllTask()
+        {
+            tasks.Clear();
         }
 
         public ElapsedEventHandler ckeckTasks { get; set; }

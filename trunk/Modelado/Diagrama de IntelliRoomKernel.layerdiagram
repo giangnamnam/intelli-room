@@ -55,5 +55,19 @@
       </childLayers>
     </layer>
     <layer Id="0a237fc7-847d-4897-bb86-beea5ccec60c" name="Conector con el resto de los modulos" />
+    <layer Id="2bc39ad3-1037-4124-9c99-2cd0ac83823b" name="Interprete de configuración">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="b58b0e1d-f22a-45af-b280-2fee16afee05" direction="Forward">
+          <layerMoniker Id="8163e08b-5319-4256-ba6b-df2dc9b73dac" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="a2d33635-0cb6-4cc2-93f9-b8220a8fe989" name="Gestor de Configuraciones">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="101a12ea-c62b-42b8-a617-244ceed297d4" direction="Bidirectional">
+          <layerMoniker Id="2bc39ad3-1037-4124-9c99-2cd0ac83823b" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
   </layers>
 </layerModel>

@@ -578,6 +578,8 @@ namespace IntelliRoom
         //FUNCTIONS
         public void Exit()
         {
+            IntelliRoomSystem.progammer.SaveTasks();
+            IntelliRoomSystem.configuration.SaveConfigurations();
             System.Environment.Exit(0);
         }
 

@@ -53,7 +53,7 @@ namespace IntelliRoom
 
         public void AddConfiguration(string name, string command) 
         {
-            configurations.Add(new Configuration(name, command));
+            configurations.Add(new Configuration(name.ToLower(), command));
         }
 
         public void DeleteConfiguration()
@@ -75,6 +75,12 @@ namespace IntelliRoom
         {
             private String name;
             private String command;
+
+            public Configuration()
+            {
+                name = "";
+                command = "";
+            }
 
             public Configuration(String name, String command)
             {
@@ -127,7 +133,7 @@ namespace IntelliRoom
                             object resultObj = Reflection.Invoke(mi, parametres);
                             if (resultObj != null)
                                 result = resultObj.ToString();
-                            Data.InfoMessages.InformationMessage("Se ejecutó el comando " + command + " desde el sistema de configuración");
+                            Data.InfoMessages.InformationMessage("Se ejecutó el comando " + command + " desde el sistema de configuración, devolviendo: " + result);
                             break; //para no ejecutar mas de uno
                         }
                     }

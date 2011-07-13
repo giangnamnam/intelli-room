@@ -508,6 +508,11 @@ namespace IntelliRoom
         }
 
         //PROGRAMMER
+        public void AddTask(string command, int remainMinutes)
+        {
+            IntelliRoomSystem.progammer.AddTask(command, remainMinutes);
+        }
+
         public void AddTask(string command, DateTime date)
         {
             IntelliRoomSystem.progammer.AddTask(command, date);
@@ -523,11 +528,6 @@ namespace IntelliRoom
             IntelliRoomSystem.progammer.AddTask(command, hour, minute);
         }
 
-        public void AddTask(string command, int remainMinutes)
-        {
-            IntelliRoomSystem.progammer.AddTask(command, remainMinutes);
-        }
-
         public void DeleteAllTaks()
         {
             IntelliRoomSystem.progammer.DeleteAllTask();
@@ -535,7 +535,7 @@ namespace IntelliRoom
 
         public void SaveTasks()
         {
-            IntelliRoomSystem.progammer.SaveTasks();
+            //IntelliRoomSystem.progammer.SaveTasks();
         }
 
         //EVENTS
@@ -567,7 +567,7 @@ namespace IntelliRoom
 
         public void SaveConfigurations()
         {
-            IntelliRoomSystem.configuration.SaveConfigurations();
+            //IntelliRoomSystem.configuration.SaveConfigurations();
         }
 
         public void ExecuteConfiguration(string nameConfiguration)
@@ -578,8 +578,8 @@ namespace IntelliRoom
         //FUNCTIONS
         public void Exit()
         {
-            IntelliRoomSystem.progammer.SaveTasks();
-            IntelliRoomSystem.configuration.SaveConfigurations();
+            SaveTasks();
+            SaveConfigurations();
             System.Environment.Exit(0);
         }
 
@@ -602,7 +602,7 @@ namespace IntelliRoom
             LoadGrammar();
             //ejecutores
             IntelliRoomSystem.progammer.LoadTasks();
-            IntelliRoomSystem.events.DeleteAllActions();
+            DeleteAllActions();
             IntelliRoomSystem.configuration.LoadConfigurations();
         }
 

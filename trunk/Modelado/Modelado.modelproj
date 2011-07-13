@@ -57,6 +57,17 @@
       <SubType>Content</SubType>
       <DependentUpon>Circuito.layerdiagram</DependentUpon>
     </Validate>
+    <Validate Include="Copy of DiagramaCapas.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="Copy of DiagramaCapas.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Copy of DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Copy of DiagramaCapas.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>Copy of DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
     <Validate Include="Diagrama de IntelliRoomKernel.layerdiagram">
       <SubType>Content</SubType>
     </Validate>

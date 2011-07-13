@@ -83,7 +83,7 @@
     </choice>
   </command>
 
-  <command name="maximumvolume">
+  <command name="maximumvolume|loadAuthor eminem">
     <choice>
       <element>volumen máximo</element>
     </choice>

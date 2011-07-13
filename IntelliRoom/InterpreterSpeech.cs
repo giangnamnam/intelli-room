@@ -23,7 +23,7 @@ namespace IntelliRoom
             string[] commands = SeparateCommands(e.Result.Grammar.Name);
             foreach (string command in commands)
             {
-                result += Command(e.Result.Grammar.Name) +", ";
+                result += Command(command) +", ";
             }
 
             IntelliRoomSystem.voiceEngine.Speak(result);

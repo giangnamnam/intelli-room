@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b7c6ff51-2d7e-40b4-926b-ae6da7986844" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
   <layers>
-    <layer Id="f1ab8fe4-ac00-4116-91ab-d397acf2720c" name="Presentación">
+    <layer Id="f1ab8fe4-ac00-4116-91ab-d397acf2720c" name="Presentation">
       <dependencyToLayers>
         <dependencyFromLayerToLayer Id="bd1cff83-c11c-43ff-ac0c-9776b22a388f" direction="Bidirectional">
           <layerMoniker Id="8b87a4ac-a49f-4d92-b87d-a7a0d93117ae" />
@@ -12,7 +12,7 @@
         <layer Id="7ccfbba1-50f0-473b-97ae-2a5820e7bdfe" name="GUI" />
       </childLayers>
     </layer>
-    <layer Id="8b87a4ac-a49f-4d92-b87d-a7a0d93117ae" name="Lógica de negocio">
+    <layer Id="8b87a4ac-a49f-4d92-b87d-a7a0d93117ae" name="Application">
       <dependencyToLayers>
         <dependencyFromLayerToLayer Id="3e0730a5-5c39-474b-9622-0c1b51f6f025" direction="Bidirectional">
           <layerMoniker Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" />
@@ -47,14 +47,14 @@
         <layer Id="00c0f74e-5773-4f4a-b136-437f70132989" name="Utils" />
         <layer Id="9fe3d40b-a716-4914-b18a-7c5f65ae5541" name="IntelliRoom">
           <childLayers>
-            <layer Id="f2e388d9-6d57-42c7-aaec-2bd4aa85e661" name="Interpretes" />
-            <layer Id="4f99c97d-04f1-449b-a4f1-0676286b1186" name="Eventos" />
-            <layer Id="0c881011-05d1-46ff-b024-45c1c8dec7be" name="Program" />
-            <layer Id="13fab476-db7a-446b-9177-e392915bce58" name="Temas" />
+            <layer Id="f2e388d9-6d57-42c7-aaec-2bd4aa85e661" name="Interpreter" />
+            <layer Id="4f99c97d-04f1-449b-a4f1-0676286b1186" name="Events" />
+            <layer Id="0c881011-05d1-46ff-b024-45c1c8dec7be" name="Programmer" />
+            <layer Id="13fab476-db7a-446b-9177-e392915bce58" name="Themes" />
           </childLayers>
         </layer>
       </childLayers>
     </layer>
-    <layer Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" name="Datos" />
+    <layer Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" name="Data" />
   </layers>
 </layerModel>

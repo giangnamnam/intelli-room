@@ -46,10 +46,10 @@
             <layerShape Id="f3dd3ce8-e050-4b95-b410-5d6bcac7d090" absoluteBounds="1.5, 2.625, 1.125, 0.375" customColor="255, 128, 0">
               <layerMoniker Id="f2e388d9-6d57-42c7-aaec-2bd4aa85e661" />
             </layerShape>
-            <layerShape Id="faaa90c7-580b-4662-8369-d7a116f5eba9" absoluteBounds="2.75, 2.625, 1, 0.375" customColor="255, 128, 0">
+            <layerShape Id="faaa90c7-580b-4662-8369-d7a116f5eba9" absoluteBounds="2.75, 2.625, 0.875, 0.375" customColor="255, 128, 0">
               <layerMoniker Id="4f99c97d-04f1-449b-a4f1-0676286b1186" />
             </layerShape>
-            <layerShape Id="0d8e05cd-7ed8-4d16-bd63-8a8157bc69d2" absoluteBounds="3.875, 2.625, 1.125, 0.375" customColor="255, 128, 0">
+            <layerShape Id="0d8e05cd-7ed8-4d16-bd63-8a8157bc69d2" absoluteBounds="3.75, 2.625, 1.25, 0.375" customColor="255, 128, 0">
               <layerMoniker Id="0c881011-05d1-46ff-b024-45c1c8dec7be" />
             </layerShape>
             <layerShape Id="5fb9019c-e929-424c-9fb9-64b039174463" absoluteBounds="5.125, 2.625, 1, 0.375" customColor="255, 128, 0">
@@ -91,7 +91,7 @@
         <layerShapeMoniker Id="c500d203-b705-4dde-b755-5550f0c33c95" />
       </nodes>
     </dependencyConnector>
-    <layerShape Id="d00e3695-eff4-4ba2-8975-f78dbcd30abe" absoluteBounds="1.25, 4.75, 5.125, 0.5" customColor="255, 255, 128">
+    <layerShape Id="d00e3695-eff4-4ba2-8975-f78dbcd30abe" absoluteBounds="1.25, 4.75, 5.125, 0.375" customColor="255, 255, 128">
       <layerMoniker Id="f64d8c91-b9e3-466e-b19d-ac949d4dfc20" />
     </layerShape>
     <dependencyConnector edgePoints="[(3.8125 : 4.5); (3.8125 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
